@@ -1,9 +1,14 @@
-const Sidebar = () => {
+import DailyJournal from "./DailyJournal";
+import Searchbar from "./Searchbar";
+import Files from "./Files";
+
+const Sidebar = ({ files }) => {
   return (
     <div className="sidebar">
       <h2>Prabin's journey</h2>
-      <input type="text" placeholder="Search" />
-      <button>Daily Journal</button>
+      <Searchbar />
+      <DailyJournal />
+      <Files files={files} />
     </div>
   );
 };

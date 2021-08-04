@@ -24,3 +24,33 @@ body {
   margin-left: 200px;
   padding: 10px;
 }
+
+input {
+  font-size: 16px;
+  margin-top: 30px;
+  padding: 2px 3px;
+  border: solid;
+  border-color: black;
+  width: 150px;
+}
+
+.dailyjournal {
+  margin-top: 40px;
+}
+
+.files {
+  margin-top: 25px;
+}
+
+.file {
+  background: rgb(220, 229, 229);
+  color: #000;
+  border: none;
+  padding: 4px 8px;
+  margin: 2px;
+  border-radius: 5px;
+}
+
+.dailyjournal > .file {
+  background: rgb(66, 230, 230);
+}
