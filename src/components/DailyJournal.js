@@ -1,9 +1,14 @@
 import File from "./File";
 
-const DailyJournal = () => {
+const DailyJournal = ({ onClick }) => {
+  const file = {
+    id: 0,
+    title: "My Journal",
+    content: "TODO: Complete the Journal Project.",
+  };
   return (
     <div className="dailyjournal">
-      <File fileName="Daily Journal" />
+      <File key={file.id} file={file} onClick={onClick} />
     </div>
   );
 };

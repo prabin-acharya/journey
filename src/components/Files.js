@@ -1,11 +1,11 @@
 import File from "./File";
 
-const Files = ({ files }) => {
+const Files = ({ files, onClick }) => {
   return (
     <div className="files">
       <ul>
         {files.map((file) => (
-          <File key={file.id} fileName={file.filename} />
+          <File key={file.id} file={file} onClick={onClick} />
         ))}
       </ul>
     </div>

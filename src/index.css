@@ -54,3 +54,8 @@ input {
 .dailyjournal > .file {
   background: rgb(66, 230, 230);
 }
+
+button {
+  background: none;
+  border: none;
+}

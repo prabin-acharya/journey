@@ -1,7 +1,9 @@
-const File = ({ fileName }) => {
+const File = ({ file, onClick }) => {
   return (
     <div className="file">
-      <b>{fileName}</b>
+      <button onClick={() => onClick(file)}>
+        <b>{file.title}</b>
+      </button>
     </div>
   );
 };

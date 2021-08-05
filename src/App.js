@@ -1,17 +1,22 @@
+import { useState } from "react";
 import Sidebar from "./components/Sidebar";
 import Main from "./components/Main";
+import files from "./articles";
 
 function App() {
-  const files = [
-    { id: 1, filename: "My Aricle 1" },
-    { id: 2, filename: "My Aricle 2" },
-    { id: 3, filename: "My Aricle 3" },
-    { id: 4, filename: "My Article 4" },
-  ];
+  const [openFile, setopenFile] = useState(
+    files.filter((file) => file.id === 1)[0]
+  );
+
+  const clickedFile = (file) => {
+    console.log(file);
+    setopenFile(file);
+  };
+
   return (
     <div className="App">
-      <Sidebar files={files} />
-      <Main />
+      <Sidebar files={files} onClick={clickedFile} />
+      <Main file={openFile} />
     </div>
   );
 }
