@@ -59,3 +59,9 @@ button {
   background: none;
   border: none;
 }
+
+.addpage {
+  margin-top: 20px;
+  padding: 4px 8px;
+  background-color: cadetblue;
+}

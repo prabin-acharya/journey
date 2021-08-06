@@ -9,7 +9,6 @@ function App() {
   );
 
   const clickedFile = (file) => {
-    console.log(file);
     setopenFile(file);
   };
 

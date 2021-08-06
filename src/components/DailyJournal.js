@@ -1,4 +1,4 @@
-import File from "./File";
+import Button from "./Button";
 
 const DailyJournal = ({ onClick }) => {
   const file = {
@@ -8,7 +8,7 @@ const DailyJournal = ({ onClick }) => {
   };
   return (
     <div className="dailyjournal">
-      <File key={file.id} file={file} onClick={onClick} />
+      <Button key={file.id} text={file.title} file={file} onClick={onClick} />
     </div>
   );
 };
