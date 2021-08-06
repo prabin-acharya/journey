@@ -28,6 +28,8 @@ const Sidebar = ({ files, onClick }) => {
           ))}
         </ul>
       </div>
+
+      <Button text="Add Page" onClick={() => onClicked("AddPage")} />
     </div>
   );
 };

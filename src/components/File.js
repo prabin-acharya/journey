@@ -1,11 +1,12 @@
-const Main_file = ({ file }) => {
+const File = ({ file }) => {
   return (
     <div>
       <h1>{file.title}</h1>
       <hr />
+      <br />
       <p>{file.content}</p>
     </div>
   );
 };
 
-export default Main_file;
+export default File;
