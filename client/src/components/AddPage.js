@@ -1,19 +1,19 @@
 import { useState } from "react";
 import React from "react";
 
-const AddPage = () => {
+const AddPage = ({ onAdd }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
   const onSubmit = (e) => {
     e.preventDefault();
-    // if (!title) {
-    //   alert("Please add a title!");
-    //   return;
-    // }
-    // onAdd({ title, content });
-    // setTitle("");
-    // setContent("");
+    if (!title) {
+      alert("Please add a title!");
+      return;
+    }
+    onAdd({ title, content });
+    setTitle("");
+    setContent("");
   };
 
   return (
@@ -22,6 +22,7 @@ const AddPage = () => {
         <input
           type="text"
           placeholder="Title"
+          value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
       </div>
@@ -29,6 +30,7 @@ const AddPage = () => {
         <input
           type="text"
           placeholder="Content"
+          value={content}
           onChange={(e) => setContent(e.target.value)}
         />
       </div>
