@@ -1,13 +1,14 @@
 import Searchbar from "./Searchbar";
 import Button from "./Button";
 
-const Sidebar = ({ files, onClick }) => {
-  const onClicked = (file) => onClick(file);
+const Sidebar = ({ pages, onClick }) => {
+  const onClicked = (page) => onClick(page);
   const journal = {
     id: 0,
     title: "My Journal",
     content: "TODO: Complete the Journal Project.",
   };
+  console.log(pages);
 
   return (
     <div className="sidebar">
@@ -17,13 +18,13 @@ const Sidebar = ({ files, onClick }) => {
 
       <Button text="Daily Journal" onClick={() => onClicked(journal)} />
 
-      <div className="files">
+      <div className="pages">
         <ul>
-          {files.map((file) => (
+          {pages.map((page) => (
             <Button
-              key={file.id}
-              text={file.title}
-              onClick={() => onClicked(file)}
+              key={page._id}
+              text={page.title}
+              onClick={() => onClicked(page)}
             />
           ))}
         </ul>

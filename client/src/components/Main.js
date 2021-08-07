@@ -1,11 +1,11 @@
 import AddPage from "./AddPage";
-import File from "./File";
+import Page from "./Page";
 
-const Main = ({ file, addPage }) => {
+const Main = ({ page, addPage }) => {
   return (
     <div className="main">
       Inside Main component
-      {file === "AddPage" ? <AddPage onAdd={addPage} /> : <File file={file} />}
+      {page === "AddPage" ? <AddPage onAdd={addPage} /> : <Page page={page} />}
     </div>
   );
 };
