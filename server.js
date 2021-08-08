@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 var cors = require("cors");
 require("dotenv/config");
 const Page = require("./models/Page");
+const Journal = require("./models/Journal");
 
 const app = express();
 
@@ -18,7 +19,7 @@ app.get("/", (req, res) => {
 
 app.get("/api/pages", (req, res) => {
   Page.find()
-    .sort({ date: -1 })
+    .sort({ Date: -1 })
     .then((pages) => res.json(pages));
 });
 
@@ -34,6 +35,19 @@ app.delete("/api/pages/:id", (req, res) => {
   Page.findById(req.params.id)
     .then((page) => page.remove().then(() => res.json({ success: true })))
     .catch((err) => res.status(404).json({ success: false }));
+});
+
+app.get("/api/journal", (req, res) => {
+  Journal.find()
+    .sort({ Date: -1 })
+    .then((journal) => res.json(journal));
+});
+
+app.post("/api/journal", (req, res) => {
+  const newJournal = new Journal({
+    content: req.body.content,
+  });
+  newJournal.save().then((journal) => res.json(journal));
 });
 
 //Connect to DB

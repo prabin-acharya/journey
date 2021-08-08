@@ -16,7 +16,7 @@ const Sidebar = ({ pages, onClick }) => {
 
       <Searchbar />
 
-      <Button text="Daily Journal" onClick={() => onClicked(journal)} />
+      <Button text="Daily Journal" onClick={() => onClicked("Journal")} />
 
       <div className="pages">
         <ul>

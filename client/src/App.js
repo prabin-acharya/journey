@@ -7,6 +7,8 @@ function App() {
   const [pages, setPages] = useState([]);
   const [openPage, setopenPage] = useState(pages[0]);
 
+  const [notes, setNotes] = useState([]);
+
   useEffect(() => {
     const getPages = async () => {
       const pagesfromServer = await fetchPages();
@@ -14,10 +16,22 @@ function App() {
       setopenPage(pagesfromServer[0]);
     };
     getPages();
+
+    const getNotes = async () => {
+      const notesfromServer = await fetchNotes();
+      setNotes(notesfromServer);
+    };
+    getNotes();
   }, []);
 
   const fetchPages = async () => {
     const res = await fetch("http://localhost:5000/api/pages");
+    const data = await res.json();
+    return data;
+  };
+
+  const fetchNotes = async () => {
+    const res = await fetch("http://localhost:5000/api/journal");
     const data = await res.json();
     return data;
   };
@@ -36,6 +50,16 @@ function App() {
     setPages([...pages, data]);
   };
 
+  const addNote = async (note) => {
+    const res = await fetch(`http://localhost:5000/api/journal`, {
+      method: "POST",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify(note),
+    });
+    const data = await res.json();
+    setNotes([...notes, data]);
+  };
+
   const clickedPage = (page) => {
     setopenPage(page);
   };
@@ -43,7 +67,14 @@ function App() {
   return (
     <div className="App">
       <Sidebar pages={pages} onClick={clickedPage} />
-      {openPage && <Main page={openPage} addPage={addPage} />}
+      {openPage && (
+        <Main
+          page={openPage}
+          addPage={addPage}
+          notes={notes}
+          addNote={addNote}
+        />
+      )}
     </div>
   );
 }

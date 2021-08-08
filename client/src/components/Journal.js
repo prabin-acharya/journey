@@ -1,11 +1,19 @@
-const Journal = ({ journal }) => {
+import AddNote from "./AddNote";
+
+const Journal = ({ notes, onAddNote }) => {
+  console.log(notes);
   return (
     <div>
-      <h2>{journal.date}</h2>
-      {journal.topics.forEach((topic) => {
-        <b>topic</b>;
-      })}
-      <p>{journal.content}</p>
+      <AddNote onAddNote={onAddNote} />
+      <br />
+      {notes.map((note) => (
+        <>
+          <h4>{note.Date}</h4>
+          <b>{note.content}</b>
+          <hr />
+          <br />
+        </>
+      ))}
     </div>
   );
 };

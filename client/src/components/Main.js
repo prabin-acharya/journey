@@ -1,7 +1,10 @@
 import AddPage from "./AddPage";
 import Page from "./Page";
+import Journal from "./Journal";
 
-const Main = ({ page, addPage }) => {
+const Main = ({ page, addPage, notes, addNote }) => {
+  console.log(page);
+  console.log(notes);
   // const mainPage = (page) => {
   //   if (page === "AddPage") {
   //     return <AddPage onAdd={addPage} />;
@@ -15,7 +18,13 @@ const Main = ({ page, addPage }) => {
   return (
     <div className="main">
       Inside Main component
-      {page === "AddPage" ? <AddPage onAdd={addPage} /> : <Page page={page} />}
+      {page === "Journal" ? (
+        <Journal notes={notes} onAddNote={addNote} />
+      ) : page === "AddPage" ? (
+        <AddPage onAdd={addPage} />
+      ) : (
+        <Page page={page} />
+      )}
     </div>
   );
 };
