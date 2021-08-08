@@ -23,10 +23,17 @@ function App() {
   };
 
   //Add Page
-  const addPage = (page) => {
-    const id = Math.floor(Math.random() * 1000) + 1;
-    const newPage = { id, ...page };
-    setPages([...pages, newPage]);
+  const addPage = async (page) => {
+    // const id = Math.floor(Math.random() * 1000) + 1;
+    // const newPage = { id, ...page };
+    // setPages([...pages, newPage]);
+    const res = await fetch(`http://localhost:5000/api/pages`, {
+      method: "POST",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify(page),
+    });
+    const data = await res.json();
+    setPages([...pages, data]);
   };
 
   const clickedPage = (page) => {
