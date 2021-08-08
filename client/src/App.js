@@ -4,20 +4,14 @@ import Main from "./components/Main";
 // import files from "./articles";
 
 function App() {
-  const [pages, setPages] = useState([
-    { id: 1, title: "Prabin", content: "Default" },
-  ]);
-
-  const [openPage, setopenPage] = useState({
-    id: 1,
-    title: "Prabin",
-    content: "Default",
-  });
+  const [pages, setPages] = useState([]);
+  const [openPage, setopenPage] = useState(pages[0]);
 
   useEffect(() => {
     const getPages = async () => {
       const pagesfromServer = await fetchPages();
       setPages(pagesfromServer);
+      setopenPage(pagesfromServer[0]);
     };
     getPages();
   }, []);
@@ -42,7 +36,7 @@ function App() {
   return (
     <div className="App">
       <Sidebar pages={pages} onClick={clickedPage} />
-      <Main page={openPage} addPage={addPage} />
+      {openPage && <Main page={openPage} addPage={addPage} />}
     </div>
   );
 }
