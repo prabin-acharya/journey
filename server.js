@@ -19,7 +19,7 @@ app.get("/", (req, res) => {
 
 app.get("/api/pages", (req, res) => {
   Page.find()
-    .sort({ Date: -1 })
+    .sort({ Date: 1 })
     .then((pages) => res.json(pages));
 });
 

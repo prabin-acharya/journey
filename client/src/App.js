@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import Sidebar from "./components/Sidebar";
 import Main from "./components/Main";
-// import files from "./articles";
-
 function App() {
   const [pages, setPages] = useState([]);
   const [openPage, setopenPage] = useState(pages[0]);
@@ -57,7 +55,7 @@ function App() {
       body: JSON.stringify(note),
     });
     const data = await res.json();
-    setNotes([...notes, data]);
+    setNotes([data, ...notes]);
   };
 
   const clickedPage = (page) => {

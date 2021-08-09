@@ -1,10 +1,13 @@
+import { useState } from "react";
 import AddNote from "./AddNote";
 
 const Journal = ({ notes, onAddNote }) => {
-  console.log(notes);
+  const [showAddNote, setShowAddNote] = useState(false);
+
   return (
     <div>
-      <AddNote onAddNote={onAddNote} />
+      <button onClick={() => setShowAddNote(!showAddNote)}>Add a note</button>
+      {showAddNote && <AddNote onAddNote={onAddNote} />}
       <br />
       {notes.map((note) => (
         <>
