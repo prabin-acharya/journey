@@ -18,8 +18,9 @@ const AddPage = ({ onAdd }) => {
 
   return (
     <form className="addpage-form" onSubmit={onSubmit}>
-      <div className="form-control">
+      <div className="form-control-title">
         <input
+          className="title"
           type="text"
           placeholder="Title"
           value={title}
@@ -27,7 +28,7 @@ const AddPage = ({ onAdd }) => {
         />
       </div>
       <div className="form-control">
-        <input
+        <textarea
           type="text"
           placeholder="Content"
           value={content}

@@ -9,10 +9,9 @@ body {
 }
 
 .sidebar {
-  background-color: #f0f0f0;
+  background-color: rgb(244, 245, 225);
   height: 100%;
-  padding: 20px;
-  width: 200px;
+  width: 230px;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -21,8 +20,11 @@ body {
 }
 
 .main {
-  margin-left: 200px;
+  width: 800px;
+  margin: auto;
+  margin-top: 130px;
   padding: 10px;
+  font-size: 21px;
 }
 
 input {
@@ -34,6 +36,55 @@ input {
   width: 150px;
 }
 
+.btn {
+  display: inline-block;
+  background: rgb(217, 228, 169);
+  color: rgb(86, 92, 31);
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: inherit;
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+input {
+  border: none;
+  width: 100%;
+  height: 40px;
+  margin: 5px;
+  padding: 3px 7px;
+  font-size: 17px;
+}
+
+input:focus {
+  outline: none;
+}
+
+.addpage-form .form-control-title input {
+  font-size: 32px;
+}
+
+textarea {
+  border: none;
+  width: 100%;
+  height: 300px;
+  margin: 5px;
+  padding: 3px 7px;
+  font-size: 21px;
+}
+
+textarea:focus {
+  outline: none;
+}
+
 .dailyjournal {
   margin-top: 40px;
 }
@@ -43,12 +94,25 @@ input {
 }
 
 .page {
-  background: rgb(220, 229, 229);
-  color: #000;
   border: none;
-  padding: 4px 8px;
-  margin: 2px;
   border-radius: 5px;
+}
+
+.page button {
+  display: block;
+  width: 100%;
+  margin: 1px 0px;
+  padding: 3px 30px;
+  color: rgb(86, 92, 31);
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: left;
+  font-size: 15px;
+}
+
+.page button:hover {
+  background: rgb(174, 187, 116);
+  color: rgb(0, 0, 0);
 }
 
 .dailyjournal > .file {
@@ -64,4 +128,27 @@ button {
   margin-top: 20px;
   padding: 4px 8px;
   background-color: cadetblue;
+}
+
+.journal {
+  width: 700px;
+}
+
+.journal textarea {
+  height: 90px;
+}
+
+.note {
+  width: 700px;
+  border: solid 1px orangered;
+  border-radius: 8px;
+  margin-top: 6px;
+  padding: 12px 8px;
+  font-size: 20px;
+  font-weight: 450;
+}
+
+.note b {
+  font-size: 16px;
+  font-weight: 600;
 }

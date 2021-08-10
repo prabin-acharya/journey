@@ -13,7 +13,7 @@ const AddNote = ({ onAddNote }) => {
   return (
     <form className="addnote-form" onSubmit={onSubmit}>
       <div className="form-control">
-        <input
+        <textarea
           type="text"
           placeholder="Content"
           value={content}

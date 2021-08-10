@@ -5,17 +5,19 @@ const Journal = ({ notes, onAddNote }) => {
   const [showAddNote, setShowAddNote] = useState(false);
 
   return (
-    <div>
-      <button onClick={() => setShowAddNote(!showAddNote)}>Add a note</button>
+    <div className="journal">
+      <button className="btn" onClick={() => setShowAddNote(!showAddNote)}>
+        Add a note
+      </button>
       {showAddNote && <AddNote onAddNote={onAddNote} />}
       <br />
       {notes.map((note) => (
-        <>
-          <h4>{note.Date}</h4>
-          <b>{note.content}</b>
-          <hr />
+        <div className="note">
+          <b>{note.Date}</b>
           <br />
-        </>
+          {note.content}
+          <br />
+        </div>
       ))}
     </div>
   );
