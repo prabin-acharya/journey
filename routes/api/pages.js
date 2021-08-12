@@ -3,6 +3,8 @@ const router = express.Router();
 
 const Page = require("../../models/Page");
 
+const auth = require("../../middleware/auth");
+
 router.get("/", (req, res) => {
   Page.find()
     .sort({ Date: 1 })

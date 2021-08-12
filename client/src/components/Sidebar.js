@@ -3,11 +3,6 @@ import Button from "./Button";
 
 const Sidebar = ({ pages, onClick }) => {
   const onClicked = (page) => onClick(page);
-  const journal = {
-    id: 0,
-    title: "My Journal",
-    content: "TODO: Complete the Journal Project.",
-  };
   console.log(pages);
 
   return (

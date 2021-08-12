@@ -13,6 +13,8 @@ app.use(express.json());
 //Use Routes
 app.use("/api/pages", require("./routes/api/pages"));
 app.use("/api/journal", require("./routes/api/journal"));
+app.use("/api/users", require("./routes/api/users"));
+app.use("/api/auth", require("./routes/api/auth"));
 
 //Routes
 app.get("/", (req, res) => {
@@ -21,7 +23,7 @@ app.get("/", (req, res) => {
 
 //Connect to DB
 mongoose
-  .connect(process.env.DB_CONNECTION, {
+  .connect(process.env.mongoURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
