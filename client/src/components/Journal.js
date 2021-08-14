@@ -11,14 +11,15 @@ const Journal = ({ notes, onAddNote }) => {
       </button>
       {showAddNote && <AddNote onAddNote={onAddNote} />}
       <br />
-      {notes.map((note) => (
-        <div className="note">
-          <b>{note.Date}</b>
-          <br />
-          {note.content}
-          <br />
-        </div>
-      ))}
+      {notes &&
+        notes.map((note) => (
+          <div className="note">
+            <b>{note.Date}</b>
+            <br />
+            {note.content}
+            <br />
+          </div>
+        ))}
     </div>
   );
 };

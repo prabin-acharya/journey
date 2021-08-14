@@ -1,18 +1,45 @@
 import { useState, useEffect } from "react";
 import Sidebar from "./components/Sidebar";
 import Main from "./components/Main";
+import Login from "./components/Login";
 
-import { Provider } from "react-redux";
-import store from "./store";
-import { loadUser } from "./actions/authActions";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+// import { Provider } from "react-redux";
+// import store from "./store";
+// import { loadUser } from "./actions/authActions";
 function App() {
+  const [authStatus, setAuthStatus] = useState(false);
+  const getUser = async () => {
+    try {
+      const res = await fetch("http://localhost:5000/api/auth/user", {
+        method: "GET",
+        headers: {
+          "Content-type": "application/json",
+          "x-auth-token": localStorage.getItem("token"),
+        },
+      });
+      const data = await res.json();
+      console.log(data);
+      setAuthStatus(true);
+    } catch (err) {
+      setAuthStatus(false);
+      console.log(err);
+    }
+  };
+
   const [pages, setPages] = useState([]);
   const [openPage, setopenPage] = useState(pages[0]);
 
   const [notes, setNotes] = useState([]);
 
   useEffect(() => {
-    store.dispatch(loadUser());
+    const token = localStorage.getItem("token");
+    if (token) getUser();
+    console.log("Prabin");
+    console.log(authStatus);
+    console.log(token);
+    // store.dispatch(loadUser());
 
     const getPages = async () => {
       const pagesfromServer = await fetchPages();
@@ -29,13 +56,25 @@ function App() {
   }, []);
 
   const fetchPages = async () => {
-    const res = await fetch("http://localhost:5000/api/pages");
+    const res = await fetch("http://localhost:5000/api/pages", {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+        "x-auth-token": localStorage.getItem("token"),
+      },
+    });
     const data = await res.json();
     return data;
   };
 
   const fetchNotes = async () => {
-    const res = await fetch("http://localhost:5000/api/journal");
+    const res = await fetch("http://localhost:5000/api/journal", {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+        "x-auth-token": localStorage.getItem("token"),
+      },
+    });
     const data = await res.json();
     return data;
   };
@@ -44,7 +83,10 @@ function App() {
   const addPage = async (page) => {
     const res = await fetch(`http://localhost:5000/api/pages`, {
       method: "POST",
-      headers: { "Content-type": "application/json" },
+      headers: {
+        "Content-type": "application/json",
+        "x-auth-token": localStorage.getItem("token"),
+      },
       body: JSON.stringify(page),
     });
     const data = await res.json();
@@ -54,7 +96,10 @@ function App() {
   const addNote = async (note) => {
     const res = await fetch(`http://localhost:5000/api/journal`, {
       method: "POST",
-      headers: { "Content-type": "application/json" },
+      headers: {
+        "Content-type": "application/json",
+        "x-auth-token": localStorage.getItem("token"),
+      },
       body: JSON.stringify(note),
     });
     const data = await res.json();
@@ -66,19 +111,25 @@ function App() {
   };
 
   return (
-    <Provider store={store}>
-      <div className="App">
-        <Sidebar pages={pages} onClick={clickedPage} />
-        {openPage && (
+    // <Provider store={store}>
+    <div className="App">
+      {authStatus ? (
+        <div>
+          <Sidebar pages={pages} onClick={clickedPage} />
           <Main
             page={openPage}
             addPage={addPage}
             notes={notes}
             addNote={addNote}
           />
-        )}
-      </div>
-    </Provider>
+        </div>
+      ) : (
+        <div>
+          <Login setAuthStatus={setAuthStatus} />
+        </div>
+      )}
+    </div>
+    // { </Provider> }
   );
 }
 

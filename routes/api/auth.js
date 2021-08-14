@@ -32,9 +32,7 @@ router.post("/", (req, res) => {
         },
         (err, token) => {
           if (err) throw err;
-          localStorage.setItem("token", token);
           res.json({
-            token: localStorage.getItem("token"),
             user: { id: user.id, name: user.name, email: user.email },
           });
         }
