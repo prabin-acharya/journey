@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Sidebar from "./components/Sidebar";
 import Main from "./components/Main";
-import Login from "./components/Login";
+import Login from "./components/auth/Login";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -36,7 +36,7 @@ function App() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) getUser();
-    console.log("Prabin");
+
     console.log(authStatus);
     console.log(token);
     // store.dispatch(loadUser());

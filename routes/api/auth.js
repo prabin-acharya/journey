@@ -3,12 +3,13 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const auth = require("../../middleware/auth");
-
 require("dotenv/config");
-
 const User = require("../../models/User");
 const { JsonWebTokenError } = require("jsonwebtoken");
 
+//@route  POST api/auth
+//@desc   LogIn User
+//@access Public
 router.post("/", (req, res) => {
   const { email, password } = req.body;
 
@@ -33,6 +34,7 @@ router.post("/", (req, res) => {
         (err, token) => {
           if (err) throw err;
           res.json({
+            token,
             user: { id: user.id, name: user.name, email: user.email },
           });
         }

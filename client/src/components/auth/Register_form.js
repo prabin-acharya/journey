@@ -1,7 +1,7 @@
 import { useState } from "react";
 import React from "react";
 
-const Login = ({ setAuthStatus }) => {
+const Register_form = ({ setAuthStatus }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -71,4 +71,4 @@ const Login = ({ setAuthStatus }) => {
   );
 };
 
-export default Login;
+export default Register_form;

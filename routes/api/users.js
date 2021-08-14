@@ -2,12 +2,13 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-
 require("dotenv/config");
-
 const User = require("../../models/User");
 const { JsonWebTokenError } = require("jsonwebtoken");
 
+//@route  POST api/users
+//@desc   Register a user
+//@access Public
 router.post("/", (req, res) => {
   const { name, email, password } = req.body;
 

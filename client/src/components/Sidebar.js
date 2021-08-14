@@ -1,16 +1,26 @@
 import Searchbar from "./Searchbar";
 import Button from "./Button";
+import { useState, useEffect } from "react";
 
 const Sidebar = ({ pages, onClick }) => {
   const onClicked = (page) => onClick(page);
-  console.log(pages);
+  const [name, setName] = useState("");
+
+  fetch(`http://localhost:5000/api/auth/user`, {
+    headers: {
+      "Content-type": "application/json",
+      "x-auth-token": localStorage.getItem("token"),
+    },
+  }).then((res) =>
+    res.json().then((data) => {
+      setName(data.name);
+    })
+  );
 
   return (
     <div className="sidebar">
-      <h2>Prabin's journey</h2>
-
+      <h2>{name}'s journey</h2>
       <Searchbar />
-
       <Button text="Daily Journal" onClick={() => onClicked("Journal")} />
 
       <div className="pages">
