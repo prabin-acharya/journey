@@ -2,15 +2,15 @@ import AddPage from "./AddPage";
 import Page from "./Page";
 import Journal from "./Journal";
 
-const Main = ({ page, addPage, notes, addNote }) => {
+const Main = ({ page, addPage, addNote }) => {
   return (
     <div className="main">
       {page === "Journal" ? (
-        <Journal notes={notes} onAddNote={addNote} />
+        <Journal onAddNote={addNote} />
       ) : page === "AddPage" ? (
         <AddPage onAdd={addPage} />
       ) : (
-        <Page page={page} />
+        <Page page={page} onAdd={addPage} />
       )}
     </div>
   );

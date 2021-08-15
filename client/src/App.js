@@ -61,18 +61,6 @@ function App() {
     return data;
   };
 
-  const fetchNotes = async () => {
-    const res = await fetch("http://localhost:5000/api/journal", {
-      method: "GET",
-      headers: {
-        "Content-type": "application/json",
-        "x-auth-token": localStorage.getItem("token"),
-      },
-    });
-    const data = await res.json();
-    return data;
-  };
-
   //Add Page
   const addPage = async (page) => {
     const res = await fetch(`http://localhost:5000/api/pages`, {
@@ -107,19 +95,14 @@ function App() {
   return (
     <div className="App">
       {authStatus ? (
-        <div>
+        <>
           <Sidebar pages={pages} onClick={clickedPage} />
-          <Main
-            page={openPage}
-            addPage={addPage}
-            notes={notes}
-            addNote={addNote}
-          />
-        </div>
+          <Main page={openPage} addPage={addPage} addNote={addNote} />
+        </>
       ) : (
-        <div>
+        <>
           <Login setAuthStatus={setAuthStatus} />
-        </div>
+        </>
       )}
     </div>
   );
