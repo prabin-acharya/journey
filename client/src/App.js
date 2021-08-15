@@ -3,11 +3,6 @@ import Sidebar from "./components/Sidebar";
 import Main from "./components/Main";
 import Login from "./components/auth/Login";
 
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
-// import { Provider } from "react-redux";
-// import store from "./store";
-// import { loadUser } from "./actions/authActions";
 function App() {
   const [authStatus, setAuthStatus] = useState(false);
   const getUser = async () => {
@@ -39,7 +34,6 @@ function App() {
 
     console.log(authStatus);
     console.log(token);
-    // store.dispatch(loadUser());
 
     const getPages = async () => {
       const pagesfromServer = await fetchPages();
@@ -111,7 +105,6 @@ function App() {
   };
 
   return (
-    // <Provider store={store}>
     <div className="App">
       {authStatus ? (
         <div>
@@ -129,7 +122,6 @@ function App() {
         </div>
       )}
     </div>
-    // { </Provider> }
   );
 }
 
