@@ -17,7 +17,7 @@ const Journal = () => {
       .then((data) => {
         setNotes(data);
       });
-  }, []);
+  }, [notes]);
 
   return (
     <div className="journal">
