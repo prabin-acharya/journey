@@ -16,7 +16,6 @@ const Journal = () => {
       .then((res) => res.json())
       .then((data) => {
         setNotes(data);
-        console.log("Hello");
       });
   }, []);
 
