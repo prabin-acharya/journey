@@ -1,8 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import AddNote from "./AddNote";
 
-const Journal = ({ notes, onAddNote }) => {
+const Journal = ({ onAddNote }) => {
   const [showAddNote, setShowAddNote] = useState(false);
+  const [notes, setNotes] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/journal", {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+        "x-auth-token": localStorage.getItem("token"),
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setNotes(data);
+      });
+  }, []);
 
   return (
     <div className="journal">
