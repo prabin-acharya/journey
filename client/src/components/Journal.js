@@ -16,15 +16,16 @@ const Journal = () => {
       .then((res) => res.json())
       .then((data) => {
         setNotes(data);
+        console.log("Hello");
       });
-  }, [notes]);
+  }, []);
 
   return (
     <div className="journal">
       <button className="btn" onClick={() => setShowAddNote(!showAddNote)}>
         Add a note
       </button>
-      {showAddNote && <AddNote />}
+      {showAddNote && <AddNote notes={notes} setNotes={setNotes} />}
       <br />
       {notes.map((note) => (
         <div className="note" key={note._id}>

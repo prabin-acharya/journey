@@ -32,13 +32,16 @@ function App() {
 
     console.log(authStatus);
     console.log(token);
+  }, []);
 
+  useEffect(() => {
     const getPages = async () => {
       const pagesfromServer = await fetchPages();
       setPages(pagesfromServer);
       setopenPage(pagesfromServer[0]);
     };
     getPages();
+    console.log("Hello");
   }, []);
 
   const fetchPages = async () => {
@@ -49,8 +52,7 @@ function App() {
         "x-auth-token": localStorage.getItem("token"),
       },
     });
-    const data = await res.json();
-    return data;
+    return await res.json();
   };
 
   //Add Page

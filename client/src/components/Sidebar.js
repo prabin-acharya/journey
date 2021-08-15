@@ -25,13 +25,14 @@ const Sidebar = ({ pages, onClick }) => {
 
       <div className="pages">
         <ul>
-          {pages.map((page) => (
-            <Button
-              key={page._id}
-              text={page.title}
-              onClick={() => onClicked(page)}
-            />
-          ))}
+          {pages[0] &&
+            pages.map((page) => (
+              <Button
+                key={page._id}
+                text={page.title}
+                onClick={() => onClicked(page)}
+              />
+            ))}
         </ul>
       </div>
 

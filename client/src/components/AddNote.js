@@ -1,7 +1,7 @@
 import { useState } from "react";
 import React from "react";
 
-const AddNote = () => {
+const AddNote = ({ notes, setNotes }) => {
   const [content, setContent] = useState("");
 
   const addNote = (note) => {
@@ -12,12 +12,18 @@ const AddNote = () => {
         "x-auth-token": localStorage.getItem("token"),
       },
       body: JSON.stringify(note),
-    }).catch((err) => console.log(err));
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setNotes([data, ...notes]);
+      })
+      .catch((err) => console.log(err));
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
     addNote({ content });
+
     setContent("");
   };
 
