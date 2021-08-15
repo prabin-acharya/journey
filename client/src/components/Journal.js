@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import AddNote from "./AddNote";
 
-const Journal = ({ onAddNote }) => {
+const Journal = () => {
   const [showAddNote, setShowAddNote] = useState(false);
   const [notes, setNotes] = useState([]);
 
@@ -24,7 +24,7 @@ const Journal = ({ onAddNote }) => {
       <button className="btn" onClick={() => setShowAddNote(!showAddNote)}>
         Add a note
       </button>
-      {showAddNote && <AddNote onAddNote={onAddNote} />}
+      {showAddNote && <AddNote />}
       <br />
       {notes.map((note) => (
         <div className="note" key={note._id}>

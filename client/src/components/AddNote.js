@@ -1,12 +1,23 @@
 import { useState } from "react";
 import React from "react";
 
-const AddNote = ({ onAddNote }) => {
+const AddNote = () => {
   const [content, setContent] = useState("");
+
+  const addNote = (note) => {
+    fetch(`http://localhost:5000/api/journal`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        "x-auth-token": localStorage.getItem("token"),
+      },
+      body: JSON.stringify(note),
+    }).catch((err) => console.log(err));
+  };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    onAddNote({ content });
+    addNote({ content });
     setContent("");
   };
 

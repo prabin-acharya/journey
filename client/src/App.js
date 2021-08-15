@@ -26,8 +26,6 @@ function App() {
   const [pages, setPages] = useState([]);
   const [openPage, setopenPage] = useState(pages[0]);
 
-  const [notes, setNotes] = useState([]);
-
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) getUser();
@@ -41,12 +39,6 @@ function App() {
       setopenPage(pagesfromServer[0]);
     };
     getPages();
-
-    const getNotes = async () => {
-      const notesfromServer = await fetchNotes();
-      setNotes(notesfromServer);
-    };
-    getNotes();
   }, []);
 
   const fetchPages = async () => {
@@ -75,19 +67,6 @@ function App() {
     setPages([...pages, data]);
   };
 
-  const addNote = async (note) => {
-    const res = await fetch(`http://localhost:5000/api/journal`, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-        "x-auth-token": localStorage.getItem("token"),
-      },
-      body: JSON.stringify(note),
-    });
-    const data = await res.json();
-    setNotes([data, ...notes]);
-  };
-
   const clickedPage = (page) => {
     setopenPage(page);
   };
@@ -97,7 +76,7 @@ function App() {
       {authStatus ? (
         <>
           <Sidebar pages={pages} onClick={clickedPage} />
-          <Main page={openPage} addPage={addPage} addNote={addNote} />
+          <Main page={openPage} addPage={addPage} />
         </>
       ) : (
         <>
