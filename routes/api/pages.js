@@ -24,6 +24,21 @@ router.post("/", auth, (req, res) => {
   newPage.save().then((page) => res.json(page));
 });
 
+//@route  Put api/pages/id
+//@desc   Update the page
+//@access Private
+router.put("/:id", auth, (req, res) => {
+  Page.findById(req.params.id)
+    .then((page) => {
+      page.title = req.body.title;
+      page.content = req.body.content;
+      page.save().then((page) => res.json(page));
+    })
+    .catch((err) => {
+      res.status(404).json({ success: false });
+    });
+});
+
 //@route  POST api/pages/id
 //@desc   Delete the page
 //@access Private
