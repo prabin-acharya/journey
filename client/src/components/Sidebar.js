@@ -6,16 +6,18 @@ const Sidebar = ({ pages, onClick }) => {
   const onClicked = (page) => onClick(page);
   const [name, setName] = useState("");
 
-  fetch(`http://localhost:5000/api/auth/user`, {
-    headers: {
-      "Content-type": "application/json",
-      "x-auth-token": localStorage.getItem("token"),
-    },
-  }).then((res) =>
-    res.json().then((data) => {
-      setName(data.name);
-    })
-  );
+  useEffect(() => {
+    fetch(`http://localhost:5000/api/auth/user`, {
+      headers: {
+        "Content-type": "application/json",
+        "x-auth-token": localStorage.getItem("token"),
+      },
+    }).then((res) =>
+      res.json().then((data) => {
+        setName(data.name);
+      })
+    );
+  }, [name]);
 
   return (
     <div className="sidebar">

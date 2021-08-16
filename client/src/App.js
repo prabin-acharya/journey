@@ -26,14 +26,14 @@ function App() {
   }
 
   const [pages, setPages] = useState([]);
-  const [openPage, setopenPage] = useState(pages[0]);
+  const [openPage, setopenPage] = useState("Journal");
 
   useEffect(() => {
     if (authStatus) {
       const getPages = async () => {
         const pagesfromServer = await fetchPages();
         setPages(pagesfromServer);
-        setopenPage(pagesfromServer[0]);
+        // setopenPage(pagesfromServer[0]);
       };
       getPages();
     }

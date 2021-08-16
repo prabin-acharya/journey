@@ -16,8 +16,10 @@ router.get("/", auth, (req, res) => {
 //@desc   Save a note
 //@access Private
 router.post("/", auth, (req, res) => {
+  const topics = req.body.content.match(/#\w+/g);
   const newJournal = new Journal({
     userid: req.user.id,
+    topics,
     content: req.body.content,
   });
   newJournal.save().then((journal) => res.json(journal));

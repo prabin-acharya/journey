@@ -26,14 +26,23 @@ const Journal = () => {
       </button>
       {showAddNote && <AddNote notes={notes} setNotes={setNotes} />}
       <br />
-      {notes.map((note) => (
-        <div className="note" key={note._id}>
-          <b>{note.Date}</b>
-          <br />
-          {note.content}
-          <br />
-        </div>
-      ))}
+      {notes[0] &&
+        notes.map((note) => (
+          <div className="note" key={note._id}>
+            <b>{note.Date}</b>
+            <span
+              style={{
+                color: "rgb(29, 161, 242)",
+                padding: "0px 8px",
+              }}
+            >
+              {note.topics}
+            </span>
+            <br />
+            {note.content}
+            <br />
+          </div>
+        ))}
     </div>
   );
 };
