@@ -1,16 +1,16 @@
 import { useState } from "react";
 import React from "react";
-import Login_form from "./Login_form";
-import Register_form from "./Register_form";
+import LoginForm from "./LoginForm";
+import RegisterForm from "./RegisterForm";
 
 const Login = ({ setAuthStatus }) => {
   const [registerStatus, setregisterStatus] = useState(false);
   return (
     <>
       {registerStatus ? (
-        <Register_form setAuthStatus={setAuthStatus} />
+        <RegisterForm setAuthStatus={setAuthStatus} />
       ) : (
-        <Login_form setAuthStatus={setAuthStatus} />
+        <LoginForm setAuthStatus={setAuthStatus} />
       )}
       <button onClick={() => setregisterStatus(!registerStatus)}>
         {registerStatus ? "Log In" : "Register"}
