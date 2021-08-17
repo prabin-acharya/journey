@@ -7,7 +7,7 @@ const Sidebar = ({ pages, onClick }) => {
   const [name, setName] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/auth/user`, {
+    fetch("/api/auth/user", {
       headers: {
         "Content-type": "application/json",
         "x-auth-token": localStorage.getItem("token"),

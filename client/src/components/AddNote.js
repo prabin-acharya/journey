@@ -5,7 +5,7 @@ const AddNote = ({ notes, setNotes }) => {
   const [content, setContent] = useState("");
 
   const addNote = (note) => {
-    fetch(`http://localhost:5000/api/journal`, {
+    fetch("/api/journal", {
       method: "POST",
       headers: {
         "Content-type": "application/json",

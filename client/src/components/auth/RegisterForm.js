@@ -19,7 +19,7 @@ const Register_form = ({ setAuthStatus }) => {
       password: password,
     };
 
-    fetch("http://localhost:5000/api/users", {
+    fetch("/api/users", {
       method: "POST",
       headers: {
         "Content-type": "application/json",

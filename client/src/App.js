@@ -7,7 +7,7 @@ function App() {
   const [authStatus, setAuthStatus] = useState(false);
 
   const getUser = async () => {
-    fetch("http://localhost:5000/api/auth/user", {
+    fetch("/api/auth/user", {
       method: "GET",
       headers: {
         "Content-type": "application/json",
@@ -40,7 +40,7 @@ function App() {
   }, [authStatus]);
 
   const fetchPages = async () => {
-    const res = await fetch("http://localhost:5000/api/pages", {
+    const res = await fetch("/api/pages", {
       method: "GET",
       headers: {
         "Content-type": "application/json",
@@ -52,7 +52,7 @@ function App() {
 
   //Add Page
   const addPage = async (page) => {
-    const res = await fetch(`http://localhost:5000/api/pages`, {
+    const res = await fetch(`/api/pages`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",

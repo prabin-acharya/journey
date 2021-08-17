@@ -6,7 +6,7 @@ const Journal = () => {
   const [notes, setNotes] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/journal", {
+    fetch("/api/journal", {
       method: "GET",
       headers: {
         "Content-type": "application/json",

@@ -17,7 +17,7 @@ const Login_form = ({ setAuthStatus }) => {
       password: password,
     };
 
-    fetch("http://localhost:5000/api/auth", {
+    fetch("/api/auth", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
