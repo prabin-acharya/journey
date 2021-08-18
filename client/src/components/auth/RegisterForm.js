@@ -28,9 +28,10 @@ const Register_form = ({ setAuthStatus }) => {
     })
       .then((res) => res.json())
       // .then((data) => console.log(data.token))
-      .then((data) => localStorage.setItem("token", data.token));
-
-    setAuthStatus(true);
+      .then((data) => {
+        localStorage.setItem("token", data.token);
+        setAuthStatus(true);
+      });
 
     setName("");
     setEmail("");
