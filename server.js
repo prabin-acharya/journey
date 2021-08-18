@@ -17,10 +17,10 @@ app.use("/api/journal", require("./routes/api/journal"));
 app.use("/api/users", require("./routes/api/users"));
 app.use("/api/auth", require("./routes/api/auth"));
 
-//Routes
-app.get("/", (req, res) => {
-  res.send("We are Home.");
-});
+// //Routes
+// app.get("/", (req, res) => {
+//   res.send("We are Home.");
+// });
 
 //serve static assets if on production
 if (process.env.NODE_ENV === "production") {

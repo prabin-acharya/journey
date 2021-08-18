@@ -11,12 +11,10 @@ const Login_form = ({ setAuthStatus }) => {
       alert("Please Enter all information!");
       return;
     }
-
     const data = {
       email: email,
       password: password,
     };
-
     fetch("/api/auth", {
       method: "POST",
       headers: {
