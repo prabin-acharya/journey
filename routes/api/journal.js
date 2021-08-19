@@ -25,4 +25,17 @@ router.post("/", auth, (req, res) => {
   newJournal.save().then((journal) => res.json(journal));
 });
 
+//@route  GET api/topics
+//@desc   Get journal topics
+//@access Private
+router.get("/topics", auth, (req, res) => {
+  Journal.find({ userid: req.user.id })
+    .sort({ Date: -1 })
+    .then((journal) => {
+      topics = [...new Set([].concat(...journal.map((note) => note.topics)))];
+      topics.pop();
+      res.json(topics);
+    });
+});
+
 module.exports = router;
