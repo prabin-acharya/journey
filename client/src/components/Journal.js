@@ -20,7 +20,6 @@ const Journal = () => {
   };
 
   useEffect(() => {
-    console.log("Journal");
     fetchJournal();
   }, []);
 

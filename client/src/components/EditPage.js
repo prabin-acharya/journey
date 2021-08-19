@@ -23,10 +23,13 @@ const EditPage = ({ page, clickPage, fetchPages, setEditStatus }) => {
         "x-auth-token": localStorage.getItem("token"),
       },
       body: JSON.stringify({ title, content }),
-    }).catch((err) => console.log(err));
-    fetchPages();
-    setEditStatus(false);
-    clickPage(newPage);
+    })
+      .then(() => {
+        fetchPages();
+        setEditStatus(false);
+        clickPage(newPage);
+      })
+      .catch((err) => console.log(err));
   };
 
   return (

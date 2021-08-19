@@ -9,7 +9,6 @@ const Sidebar = ({ pages, clickPage }) => {
   const [name, setName] = useState("");
 
   useEffect(() => {
-    console.log("Sidebar");
     fetch("/api/auth/user", {
       headers: {
         "Content-type": "application/json",

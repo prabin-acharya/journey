@@ -14,8 +14,9 @@ const AddPage = ({ fetchPages }) => {
         "x-auth-token": localStorage.getItem("token"),
       },
       body: JSON.stringify(page),
-    });
-    fetchPages();
+    })
+      .then(() => fetchPages())
+      .catch((err) => console.log(err));
   };
 
   const onSubmit = (e) => {
