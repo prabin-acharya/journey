@@ -10,7 +10,7 @@ const Main = ({ page, clickPage, fetchPages }) => {
       ) : page === "AddPage" ? (
         <AddPage fetchPages={fetchPages} />
       ) : (
-        <Page page={page} clickPage={clickPage} />
+        <Page page={page} clickPage={clickPage} fetchPages={fetchPages} />
       )}
     </div>
   );

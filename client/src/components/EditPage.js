@@ -1,22 +1,9 @@
 import { useState } from "react";
 import React from "react";
 
-const AddPage = ({ fetchPages }) => {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-
-  //Add Page
-  const addPage = (page) => {
-    fetch("/api/pages", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-        "x-auth-token": localStorage.getItem("token"),
-      },
-      body: JSON.stringify(page),
-    });
-    fetchPages();
-  };
+const EditPage = ({ page, clickPage, fetchPages, setEditStatus }) => {
+  const [title, setTitle] = useState(page.title);
+  const [content, setContent] = useState(page.content);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -24,9 +11,22 @@ const AddPage = ({ fetchPages }) => {
       alert("Please add a title!");
       return;
     }
-    addPage({ title, content });
-    setTitle("");
-    setContent("");
+    const newPage = { _id: page._id, title, content };
+    editPage(newPage);
+  };
+
+  const editPage = (newPage) => {
+    fetch(`/api/pages/${newPage._id}`, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+        "x-auth-token": localStorage.getItem("token"),
+      },
+      body: JSON.stringify({ title, content }),
+    }).catch((err) => console.log(err));
+    fetchPages();
+    setEditStatus(false);
+    clickPage(newPage);
   };
 
   return (
@@ -53,4 +53,4 @@ const AddPage = ({ fetchPages }) => {
   );
 };
 
-export default AddPage;
+export default EditPage;

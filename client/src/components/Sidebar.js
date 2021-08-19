@@ -3,7 +3,9 @@ import Button from "./Button";
 import { useState, useEffect } from "react";
 
 const Sidebar = ({ pages, clickPage }) => {
-  const onClicked = (page) => clickPage(page);
+  const onClicked = (page) => {
+    clickPage(page);
+  };
   const [name, setName] = useState("");
 
   useEffect(() => {

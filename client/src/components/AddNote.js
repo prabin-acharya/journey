@@ -12,12 +12,8 @@ const AddNote = ({ fetchJournal }) => {
         "x-auth-token": localStorage.getItem("token"),
       },
       body: JSON.stringify(note),
-    })
-      .then((res) => {
-        console.log(res.json());
-        fetchJournal();
-      })
-      .catch((err) => console.log(err));
+    }).catch((err) => console.log(err));
+    fetchJournal();
   };
 
   const onSubmit = (e) => {
