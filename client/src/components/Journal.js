@@ -5,7 +5,7 @@ const Journal = () => {
   const [showAddNote, setShowAddNote] = useState(false);
   const [notes, setNotes] = useState([]);
 
-  useEffect(() => {
+  const getJournals = () => {
     fetch("/api/journal", {
       method: "GET",
       headers: {
@@ -17,6 +17,11 @@ const Journal = () => {
       .then((data) => {
         setNotes(data);
       });
+  };
+
+  useEffect(() => {
+    console.log("Journal");
+    getJournals();
   }, []);
 
   return (
@@ -24,7 +29,7 @@ const Journal = () => {
       <button className="btn" onClick={() => setShowAddNote(!showAddNote)}>
         Add a note
       </button>
-      {showAddNote && <AddNote notes={notes} setNotes={setNotes} />}
+      {showAddNote && <AddNote getJournals={getJournals} />}
       <br />
       {notes[0] &&
         notes.map((note) => (

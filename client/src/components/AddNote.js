@@ -1,7 +1,7 @@
 import { useState } from "react";
 import React from "react";
 
-const AddNote = ({ notes, setNotes }) => {
+const AddNote = ({ getJournals }) => {
   const [content, setContent] = useState("");
 
   const addNote = (note) => {
@@ -13,9 +13,9 @@ const AddNote = ({ notes, setNotes }) => {
       },
       body: JSON.stringify(note),
     })
-      .then((res) => res.json())
-      .then((data) => {
-        setNotes([data, ...notes]);
+      .then((res) => {
+        console.log(res.json());
+        getJournals();
       })
       .catch((err) => console.log(err));
   };
@@ -23,7 +23,6 @@ const AddNote = ({ notes, setNotes }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     addNote({ content });
-
     setContent("");
   };
 
