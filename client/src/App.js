@@ -5,8 +5,10 @@ import Login from "./components/auth/Login";
 
 function App() {
   const [authStatus, setAuthStatus] = useState(false);
+  const [pages, setPages] = useState([]);
+  const [openPage, setOpenPage] = useState("Journal");
 
-  const getUser = async () => {
+  const getUser = () => {
     fetch("/api/auth/user", {
       method: "GET",
       headers: {
@@ -25,18 +27,8 @@ function App() {
     getUser();
   }
 
-  const [pages, setPages] = useState([]);
-  const [openPage, setopenPage] = useState("Journal");
-
   useEffect(() => {
-    if (authStatus) {
-      const getPages = async () => {
-        const pagesfromServer = await fetchPages();
-        setPages(pagesfromServer);
-        // setopenPage(pagesfromServer[0]);
-      };
-      getPages();
-    }
+    if (authStatus) fetchPages();
   }, [authStatus]);
 
   const fetchPages = async () => {
@@ -47,25 +39,12 @@ function App() {
         "x-auth-token": localStorage.getItem("token"),
       },
     });
-    return await res.json();
-  };
-
-  //Add Page
-  const addPage = async (page) => {
-    const res = await fetch(`/api/pages`, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-        "x-auth-token": localStorage.getItem("token"),
-      },
-      body: JSON.stringify(page),
-    });
     const data = await res.json();
-    setPages([...pages, data]);
+    setPages(data);
   };
 
   const clickedPage = (page) => {
-    setopenPage(page);
+    setOpenPage(page);
   };
 
   if (!authStatus) {
@@ -78,8 +57,8 @@ function App() {
 
   return (
     <div className="App">
-      <Sidebar pages={pages} onClick={clickedPage} />
-      <Main page={openPage} addPage={addPage} />
+      <Sidebar pages={pages} clickPage={clickedPage} />
+      <Main page={openPage} fetchPages={fetchPages} clickPage={clickedPage} />
     </div>
   );
 }

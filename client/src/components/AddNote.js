@@ -1,7 +1,7 @@
 import { useState } from "react";
 import React from "react";
 
-const AddNote = ({ getJournals }) => {
+const AddNote = ({ fetchJournal }) => {
   const [content, setContent] = useState("");
 
   const addNote = (note) => {
@@ -15,7 +15,7 @@ const AddNote = ({ getJournals }) => {
     })
       .then((res) => {
         console.log(res.json());
-        getJournals();
+        fetchJournal();
       })
       .catch((err) => console.log(err));
   };

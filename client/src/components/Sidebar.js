@@ -2,11 +2,12 @@ import Searchbar from "./Searchbar";
 import Button from "./Button";
 import { useState, useEffect } from "react";
 
-const Sidebar = ({ pages, onClick }) => {
-  const onClicked = (page) => onClick(page);
+const Sidebar = ({ pages, clickPage }) => {
+  const onClicked = (page) => clickPage(page);
   const [name, setName] = useState("");
 
   useEffect(() => {
+    console.log("Sidebar");
     fetch("/api/auth/user", {
       headers: {
         "Content-type": "application/json",

@@ -1,9 +1,24 @@
 import { useState } from "react";
 import React from "react";
 
-const AddPage = ({ onAdd }) => {
+const AddPage = ({ fetchPages }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+
+  //Add Page
+  const addPage = async (page) => {
+    const res = await fetch("/api/pages", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        "x-auth-token": localStorage.getItem("token"),
+      },
+      body: JSON.stringify(page),
+    });
+    const data = await res.json();
+    fetchPages();
+    // setPages([...pages, data]);
+  };
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -11,7 +26,7 @@ const AddPage = ({ onAdd }) => {
       alert("Please add a title!");
       return;
     }
-    onAdd({ title, content });
+    addPage({ title, content });
     setTitle("");
     setContent("");
   };

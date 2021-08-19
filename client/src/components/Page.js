@@ -1,9 +1,15 @@
-const Page = ({ page }) => {
+import { useState } from "react";
+import EditPage from "./EditPage";
+
+const Page = ({ page, clickPage }) => {
+  const [editStatus, setEditStatus] = useState(false);
   return (
     <div>
-      {page && <h1>{page.title}</h1>}
+      {!editStatus && <h1>{page.title}</h1>}
+      <button onClick={() => setEditStatus(!editStatus)}>Edit</button>
+      {editStatus && <EditPage page={page} clickPage={clickPage} />}
       <br />
-      {page && <p>{page.content}</p>}
+      {!editStatus && <p>{page.content}</p>}
     </div>
   );
 };
