@@ -5,4 +5,5 @@ Deployed at : https://myjourney-prabin.herokuapp.com/
 - Log Out
 - <strike> Journal Topics</strike>
 - <strike>Search Journal by topics</srrike>
+- Time zone
 
