@@ -2,7 +2,7 @@ import Searchbar from "./Searchbar";
 import Button from "./Button";
 import { useState, useEffect } from "react";
 
-const Sidebar = ({ pages, clickPage }) => {
+const Sidebar = ({ pages, clickPage, search, setSearch }) => {
   const onClicked = (page) => {
     clickPage(page);
   };
@@ -24,7 +24,7 @@ const Sidebar = ({ pages, clickPage }) => {
   return (
     <div className="sidebar">
       <h2>{name}'s journey</h2>
-      <Searchbar />
+      <Searchbar search={search} setSearch={setSearch} />
       <Button text="Daily Journal" onClick={() => onClicked("Journal")} />
 
       <div className="pages">

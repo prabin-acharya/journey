@@ -2,11 +2,11 @@ import AddPage from "./AddPage";
 import Page from "./Page";
 import Journal from "./Journal";
 
-const Main = ({ page, clickPage, fetchPages }) => {
+const Main = ({ page, clickPage, fetchPages, search }) => {
   return (
     <div className="main">
       {page === "Journal" ? (
-        <Journal />
+        <Journal search={search} />
       ) : page === "AddPage" ? (
         <AddPage fetchPages={fetchPages} />
       ) : (

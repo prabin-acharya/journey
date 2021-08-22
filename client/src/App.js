@@ -7,6 +7,7 @@ function App() {
   const [authStatus, setAuthStatus] = useState(false);
   const [pages, setPages] = useState([]);
   const [openPage, setOpenPage] = useState("Journal");
+  const [search, setSearch] = useState("");
 
   const getUser = () => {
     fetch("/api/auth/user", {
@@ -57,8 +58,18 @@ function App() {
 
   return (
     <div className="App">
-      <Sidebar pages={pages} clickPage={clickedPage} />
-      <Main page={openPage} fetchPages={fetchPages} clickPage={clickedPage} />
+      <Sidebar
+        pages={pages}
+        clickPage={clickedPage}
+        search={search}
+        setSearch={setSearch}
+      />
+      <Main
+        page={openPage}
+        fetchPages={fetchPages}
+        clickPage={clickedPage}
+        search={search}
+      />
     </div>
   );
 }

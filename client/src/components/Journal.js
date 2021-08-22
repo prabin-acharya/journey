@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import AddNote from "./AddNote";
 
-const Journal = () => {
+const Journal = ({ search }) => {
   const [showAddNote, setShowAddNote] = useState(false);
   const [notes, setNotes] = useState([]);
+  const [searchedNotes, setSearchedNotes] = useState(notes);
 
   const fetchJournal = () => {
     fetch("/api/journal", {
@@ -23,6 +24,21 @@ const Journal = () => {
     fetchJournal();
   }, []);
 
+  useEffect(() => {
+    console.log("filter");
+    if (!search) setSearchedNotes(notes);
+    else {
+      const notesWithTopics = notes.filter((note) => note.topics);
+      setSearchedNotes(notesWithTopics);
+      setSearchedNotes(
+        notesWithTopics.filter((note) => {
+          return note.topics.filter((topic) => topic.indexOf(search) > -1)
+            .length;
+        })
+      );
+    }
+  }, [search, notes]);
+
   return (
     <div className="journal">
       <button className="btn" onClick={() => setShowAddNote(!showAddNote)}>
@@ -30,8 +46,9 @@ const Journal = () => {
       </button>
       {showAddNote && <AddNote fetchJournal={fetchJournal} />}
       <br />
-      {notes[0] &&
-        notes.map((note) => (
+
+      {searchedNotes[0] &&
+        searchedNotes.map((note) => (
           <div className="note" key={note._id}>
             <b>{note.Date}</b>
             <span
