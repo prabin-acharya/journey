@@ -23,11 +23,13 @@ const Sidebar = ({ pages, clickPage, search, setSearch }) => {
 
   return (
     <div className="sidebar">
-      <h2>{name}'s journey</h2>
+      <span className="name">
+        <h2> {name}'s journey</h2>
+      </span>
       <Searchbar search={search} setSearch={setSearch} />
       <Button text="Daily Journal" onClick={() => onClicked("Journal")} />
 
-      <div className="pages">
+      <div className="pages-sidebar">
         <ul>
           {pages[0] &&
             pages.map((page) => (

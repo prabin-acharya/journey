@@ -57,7 +57,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="app">
       <Sidebar
         pages={pages}
         clickPage={clickedPage}

@@ -39,7 +39,7 @@ const Register_form = ({ setAuthStatus }) => {
   };
 
   return (
-    <form className="login-form" onSubmit={onSubmit}>
+    <form className="register-form" onSubmit={onSubmit}>
       <div className="form-control-name">
         <input
           className="name"

@@ -6,7 +6,8 @@ import RegisterForm from "./RegisterForm";
 const Login = ({ setAuthStatus }) => {
   const [registerStatus, setregisterStatus] = useState(false);
   return (
-    <>
+    <div className="auth">
+      <h1>myjourney</h1>
       {registerStatus ? (
         <RegisterForm setAuthStatus={setAuthStatus} />
       ) : (
@@ -15,7 +16,7 @@ const Login = ({ setAuthStatus }) => {
       <button onClick={() => setregisterStatus(!registerStatus)}>
         {registerStatus ? "Log In" : "Register"}
       </button>
-    </>
+    </div>
   );
 };
 

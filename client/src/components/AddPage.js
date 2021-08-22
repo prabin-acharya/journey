@@ -31,7 +31,7 @@ const AddPage = ({ fetchPages }) => {
   };
 
   return (
-    <form className="addpage-form" onSubmit={onSubmit}>
+    <form className="addpage" onSubmit={onSubmit}>
       <div className="form-control-title">
         <input
           className="title"

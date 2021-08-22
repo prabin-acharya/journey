@@ -4,7 +4,7 @@ import EditPage from "./EditPage";
 const Page = ({ page, clickPage, fetchPages }) => {
   const [editStatus, setEditStatus] = useState(false);
   return (
-    <div>
+    <div className="page">
       {!editStatus && <h1>{page.title}</h1>}
       <button onClick={() => setEditStatus(!editStatus)}>Edit</button>
       {editStatus && (
