@@ -4,6 +4,5 @@ Deployed at : https://myjourney-prabin.herokuapp.com/
 - <strike> Register and Sign In</strike>
 - Log Out
 - <strike> Journal Topics</strike>
-- Search Journal by topics
-- Search pages by tittle
+- <strike>Search Journal by topics</srrike>
 
