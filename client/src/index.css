@@ -83,6 +83,7 @@ input:focus {
   align-items: left;
   justify-content: flex-start;
   width: 70%;
+  white-space: pre-wrap;
 }
 
 .journal {

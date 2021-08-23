@@ -16,7 +16,7 @@ const Page = ({ page, clickPage, fetchPages }) => {
         />
       )}
       <br />
-      {!editStatus && <p>{page.content}</p>}
+      {!editStatus && page.content}
     </div>
   );
 };
