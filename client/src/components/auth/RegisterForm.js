@@ -40,7 +40,7 @@ const Register_form = ({ setAuthStatus }) => {
 
   return (
     <form className="register-form" onSubmit={onSubmit}>
-      <div className="form-control-name">
+      <div className="form-control">
         <input
           className="name"
           type="text"

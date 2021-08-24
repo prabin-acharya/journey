@@ -22,15 +22,7 @@
   padding: 8px 8px;
 }
 
-.main {
-  margin-left: 16%;
-  padding-left: 200px;
-  padding-top: 100px;
-  font-size: 21px;
-  position: relative;
-}
-
-.name {
+.sidebar .name {
   color: rgb(245, 134, 74);
   font-size: 16px;
 }
@@ -53,12 +45,12 @@ button {
   display: block;
   width: 100%;
   margin: 1px 0px;
-  padding: 3px 30px;
+  padding: 3px 12px;
   color: rgb(114, 98, 98);
   border-radius: 4px;
   cursor: pointer;
   text-align: left;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .page-sidebar button:hover {
@@ -79,11 +71,13 @@ input:focus {
   outline: none;
 }
 
-.page {
-  align-items: left;
-  justify-content: flex-start;
-  width: 70%;
-  white-space: pre-wrap;
+.main {
+  margin-left: 14%;
+  padding-left: 200px;
+  padding-top: 100px;
+  font-size: 16px;
+  position: relative;
+  line-height: 1.4;
 }
 
 .journal {
@@ -100,13 +94,11 @@ input:focus {
   border-radius: 8px;
   margin-top: 6px;
   padding: 12px 8px;
-  font-size: 20px;
-  font-weight: 450;
 }
 
 .note b {
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 550;
 }
 
 textarea {
@@ -115,11 +107,18 @@ textarea {
   height: 300px;
   margin: 5px;
   padding: 3px 7px;
-  font-size: 21px;
+  font-size: 16px;
 }
 
 textarea:focus {
   outline: none;
+}
+
+.page {
+  align-items: left;
+  justify-content: flex-start;
+  width: 70%;
+  white-space: pre-wrap;
 }
 
 .addpage {
@@ -128,13 +127,13 @@ textarea:focus {
   background: none;
 }
 
-.addpage-form .form-control-title input {
+.addpage .form-control-title input {
   font-size: 32px;
 }
 
 .btn {
   display: inline-block;
-  background: rgba(245, 134, 74, 0.637);
+  background: rgba(245, 118, 50, 0.836);
   color: rgb(255, 255, 255);
   padding: 10px 20px;
   border-radius: 5px;
@@ -142,10 +141,14 @@ textarea:focus {
   font-size: 15px;
 }
 
+.btn:hover {
+  background: rgba(209, 90, 26, 0.836);
+}
+
 .btn-block {
   width: 80%;
   height: auto;
-  background: rgba(245, 134, 74, 0.637);
+  background: rgba(245, 118, 50, 0.836);
   color: rgb(255, 255, 255);
   border-radius: 5px;
   padding: 10px 0px;
@@ -170,12 +173,31 @@ textarea:focus {
   height: auto;
   margin: 8px;
   padding: 10px 18px;
-  font-size: 17px;
+  font-size: 18px;
+  border: solid;
+  border-width: 1px;
   border-radius: 4px;
-  border-color: rgb(232, 244, 255);
 }
 
-.auth button {
-  color: rgba(248, 153, 124, 0.781);
-  font-size: 18px;
+.auth input:focus {
+  width: 80%;
+  height: auto;
+  margin: 8px;
+  padding: 10px 18px;
+  font-size: 17px;
+  border: solid;
+  border-width: 1px;
+  border-radius: 4px;
+  border-color: rgb(230, 160, 122);
+}
+
+.auth .authstatus {
+  color: rgb(230, 160, 122);
+  font-size: 16px;
+  font-weight: 550;
+}
+
+.auth .authstatus:hover {
+  color: rgb(228, 111, 49);
+  text-decoration: underline;
 }

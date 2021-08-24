@@ -14,7 +14,9 @@ const Login = ({ setAuthStatus }) => {
         <LoginForm setAuthStatus={setAuthStatus} />
       )}
       <button onClick={() => setregisterStatus(!registerStatus)}>
-        {registerStatus ? "Log In" : "Register"}
+        <span className="authstatus">
+          {registerStatus ? "Log In" : "Register"}
+        </span>
       </button>
     </div>
   );
