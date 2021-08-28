@@ -55,7 +55,9 @@ const Login_form = ({ setAuthStatus }) => {
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>
-      <input type="submit" value="Log In" className="btn btn-block" />
+      <div className="form-control-submit">
+        <input type="submit" value="Log In" className="btn-block" />
+      </div>
     </form>
   );
 };

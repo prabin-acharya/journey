@@ -147,7 +147,7 @@ textarea:focus {
 
 .btn-block {
   width: 80%;
-  height: auto;
+  height: 45px;
   background: rgba(245, 118, 50, 0.836);
   color: rgb(255, 255, 255);
   border-radius: 5px;
@@ -170,25 +170,34 @@ textarea:focus {
 
 .auth input {
   width: 80%;
-  height: auto;
+  height: 50px;
   margin: 8px;
   padding: 10px 18px;
-  font-size: 18px;
+  font-size: 16px;
   border: solid;
-  border-width: 1px;
-  border-radius: 4px;
+  border-width: 2px;
+  border-radius: 2px;
+  border-color: #a39c9c;
+  background-color: #f4f4f4;
 }
 
-.auth input:focus {
+.auth .form-control-submit input {
+  background-color: rgb(245, 134, 74);
+  border: 2px rgb(245, 134, 74);
+}
+
+.auth .form-control-submit input:hover {
+  background-color: rgb(228, 97, 26);
+  border: 2px rgb(219, 109, 49);
+}
+
+.auth input:hover {
   width: 80%;
-  height: auto;
-  margin: 8px;
+  height: 50px;
   padding: 10px 18px;
-  font-size: 17px;
   border: solid;
-  border-width: 1px;
-  border-radius: 4px;
-  border-color: rgb(230, 160, 122);
+  border-width: 2px;
+  border-color: rgb(236, 104, 33);
 }
 
 .auth .authstatus {

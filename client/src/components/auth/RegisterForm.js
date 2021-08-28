@@ -67,7 +67,9 @@ const Register_form = ({ setAuthStatus }) => {
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>
-      <input type="submit" value="Register" className="btn btn-block" />
+      <div className="form-control-submit">
+        <input type="submit" value="Register" className="btn-block" />
+      </div>
     </form>
   );
 };
