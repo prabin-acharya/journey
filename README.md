@@ -19,9 +19,17 @@ blogs/essays
 
 # Features :rocket:
 
-- Journal/Notes: Document your thoughts, ideas, daily happenings and reflection on your goals.
+- Journal/Notes:
+
+  - Document your thoughts, ideas, daily happenings and reflection on your goals.
   - Categorize your Notes by Topics and search them by topics.
-- Pages : Collect your thoughts,ideas from Notes and write essays,blogs.
+
+- Pages :
+  - Collect your thoughts,ideas from Notes and write essays,blogs.
+
+<div align="center">
+    <img src="./assets/journal-screenshot.png">
+</div>
 
 # Built Using
 
