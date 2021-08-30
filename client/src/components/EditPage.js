@@ -33,7 +33,7 @@ const EditPage = ({ page, clickPage, fetchPages, setEditStatus }) => {
   };
 
   return (
-    <form className="addpage-form" onSubmit={onSubmit}>
+    <form className="editpage" onSubmit={onSubmit}>
       <div className="form-control-title">
         <input
           className="title"

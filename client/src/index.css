@@ -7,9 +7,23 @@
 
 /* body {}
    */
-/* 
+
 .app {
-} */
+  display: flex;
+}
+
+textarea {
+  width: 100%;
+  height: 300px;
+  margin: 5px;
+  padding: 3px 7px;
+  font-size: 16px;
+}
+
+textarea:focus {
+  outline: none;
+  border: solid 1px orangered;
+}
 
 .sidebar {
   background-color: rgba(214, 186, 171, 0.178);
@@ -59,7 +73,6 @@ button {
 }
 
 input {
-  border: none;
   width: 100%;
   height: 30px;
   padding: 3px 18px;
@@ -72,7 +85,7 @@ input:focus {
 }
 
 .main {
-  margin-left: 14%;
+  margin-left: 16%;
   padding-left: 200px;
   padding-top: 100px;
   font-size: 16px;
@@ -85,7 +98,9 @@ input:focus {
 }
 
 .journal textarea {
+  border: solid 1px rgb(253, 163, 131);
   height: 90px;
+  border-radius: 5px;
 }
 
 .note {
@@ -101,19 +116,6 @@ input:focus {
   font-weight: 550;
 }
 
-textarea {
-  border: none;
-  width: 80%;
-  height: 300px;
-  margin: 5px;
-  padding: 3px 7px;
-  font-size: 16px;
-}
-
-textarea:focus {
-  outline: none;
-}
-
 .page {
   align-items: left;
   justify-content: flex-start;
@@ -121,10 +123,52 @@ textarea:focus {
   white-space: pre-wrap;
 }
 
-.addpage {
+.editpage {
+  width: 800px;
   margin-top: 20px;
   padding: 4px 8px;
-  background: none;
+}
+
+.editpage input {
+  width: 100%;
+  height: 45px;
+  padding: 3px 18px;
+  font-size: 16px;
+  margin: 8px 0px;
+  padding: 8px 5px;
+}
+
+.editpage .form-control-title input {
+  font-size: 32px;
+}
+
+.addpage {
+  width: 800px;
+  margin-top: 20px;
+  padding: 4px 8px;
+}
+
+.addpage input {
+  width: 100%;
+  height: 45px;
+  padding: 3px 18px;
+  font-size: 16px;
+  margin: 25px 0px;
+  padding: 8px 5px;
+  margin-bottom: 8px;
+}
+
+.addpage textarea {
+  outline: none;
+  width: 100%;
+  height: 300px;
+  margin: 5px;
+  padding: 3px 7px;
+  font-size: 16px;
+}
+
+.addpage textarea:focus {
+  outline: none;
 }
 
 .addpage .form-control-title input {
@@ -146,7 +190,7 @@ textarea:focus {
 }
 
 .btn-block {
-  width: 80%;
+  /* width: 80%; */
   height: 45px;
   background: rgba(245, 118, 50, 0.836);
   color: rgb(255, 255, 255);

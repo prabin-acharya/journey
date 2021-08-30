@@ -33,7 +33,9 @@ const AddNote = ({ fetchJournal }) => {
           onChange={(e) => setContent(e.target.value)}
         />
       </div>
-      <input type="submit" value="Save" className="btn btn-block" />
+      <button type="submit" className="btn">
+        Save
+      </button>
     </form>
   );
 };
