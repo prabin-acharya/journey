@@ -36,7 +36,7 @@ textarea:focus {
   padding: 8px 8px;
 }
 
-.sidebar .name {
+.name {
   color: rgb(245, 134, 74);
   font-size: 16px;
 }
@@ -86,15 +86,15 @@ input:focus {
 
 .main {
   margin-left: 16%;
-  padding-left: 200px;
-  padding-top: 100px;
+  padding-left: 180px;
+  padding-top: 70px;
   font-size: 16px;
   position: relative;
   line-height: 1.4;
 }
 
 .journal {
-  width: 700px;
+  width: 650px;
 }
 
 .journal textarea {

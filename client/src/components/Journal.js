@@ -41,12 +41,20 @@ const Journal = ({ search }) => {
 
   return (
     <div className="journal">
+      <span className="name">
+        <h1>Journal</h1>
+      </span>
+      <p>
+        {" "}
+        Document your journey-thoughts, ideas, daily happenings. Keep track of
+        your progress, take notes.
+      </p>
+      <br />
       <button className="btn" onClick={() => setShowAddNote(!showAddNote)}>
         Add a note
       </button>
       {showAddNote && <AddNote fetchJournal={fetchJournal} />}
       <br />
-
       {searchedNotes[0] &&
         searchedNotes.map((note) => (
           <div className="note" key={note._id}>
