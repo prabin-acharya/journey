@@ -119,7 +119,6 @@ input:focus {
 }
 
 .page {
-  border: 1px solid red;
   align-items: left;
   justify-content: flex-start;
   width: 70%;
