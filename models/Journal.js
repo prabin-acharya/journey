@@ -5,14 +5,18 @@ const JournalSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  topics: { type: Array },
-  content: {
-    type: String,
-  },
-  Date: {
-    type: Date,
-    default: Date.now,
-  },
+  notes: [
+    {
+      topics: { type: Array },
+      content: {
+        type: String,
+      },
+      Date: {
+        type: Date,
+        default: Date.now,
+      },
+    },
+  ],
 });
 
 module.exports = mongoose.model("journal", JournalSchema);

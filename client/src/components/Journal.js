@@ -25,7 +25,6 @@ const Journal = ({ search }) => {
   }, []);
 
   useEffect(() => {
-    console.log("filter");
     if (!search) setSearchedNotes(notes);
     else {
       const notesWithTopics = notes.filter((note) => note.topics);

@@ -31,6 +31,13 @@ const Register_form = ({ setAuthStatus }) => {
       .then((data) => {
         localStorage.setItem("token", data.token);
         setAuthStatus(true);
+        fetch("/api/journal", {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+            "x-auth-token": localStorage.getItem("token"),
+          },
+        });
       });
 
     setName("");

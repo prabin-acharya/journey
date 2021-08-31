@@ -6,7 +6,7 @@ const AddNote = ({ fetchJournal }) => {
 
   const addNote = (note) => {
     fetch("/api/journal", {
-      method: "POST",
+      method: "PUT",
       headers: {
         "Content-type": "application/json",
         "x-auth-token": localStorage.getItem("token"),

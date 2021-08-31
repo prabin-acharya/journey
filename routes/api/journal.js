@@ -7,22 +7,45 @@ const Journal = require("../../models/Journal");
 //@desc   Get user's notes
 //@access Private
 router.get("/", auth, (req, res) => {
-  Journal.find({ userid: req.user.id })
-    .sort({ Date: -1 })
-    .then((journal) => res.json(journal));
+  Journal.findOne({ userid: req.user.id })
+    .then((journal) => {
+      notes = journal.notes.reverse();
+      return res.json(notes);
+    })
+    .catch((err) => console.log(err));
 });
 
 //@route  POST api/journal
-//@desc   Save a note
+//@desc   Save a Journal for new User
 //@access Private
 router.post("/", auth, (req, res) => {
-  const topics = req.body.content.match(/#\w+/g);
+  const content = "Welcome#journey";
+  const topics = content.match(/#\w+/g);
+  const initialNote = { content, topics };
   const newJournal = new Journal({
     userid: req.user.id,
-    topics,
-    content: req.body.content,
+    notes: [initialNote],
   });
   newJournal.save().then((journal) => res.json(journal));
+});
+
+//@route  PUT api/journal
+//@desc   Save a note to end of notes
+//@access Private
+router.put("/", auth, (req, res) => {
+  const topics = req.body.content.match(/#\w+/g);
+  const newNote = { content: req.body.content, topics };
+  Journal.findOneAndUpdate(
+    { userid: req.user.id },
+    { $push: { notes: newNote } },
+    (err, raw) => {
+      if (err) {
+        res.status(404).json({ success: false, err });
+      } else {
+        res.json({ success: true, raw });
+      }
+    }
+  );
 });
 
 //@route  GET api/topics
