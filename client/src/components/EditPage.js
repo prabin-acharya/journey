@@ -51,7 +51,9 @@ const EditPage = ({ page, clickPage, fetchPages, setEditStatus }) => {
           onChange={(e) => setContent(e.target.value)}
         />
       </div>
-      <input type="submit" value="Save Page" className="btn btn-block" />
+      <button type="submit" className="btn">
+        Save Page
+      </button>
     </form>
   );
 };

@@ -25,18 +25,31 @@ textarea:focus {
   border: solid 1px orangered;
 }
 
+button {
+  background: none;
+  border: none;
+}
+
+input {
+  width: 100%;
+  height: 30px;
+  padding: 3px 18px;
+  font-size: 17px;
+  margin: 25px 5px;
+}
+
 .sidebar {
   background-color: rgba(214, 186, 171, 0.178);
   height: 100vh;
-  width: 16%;
+  width: 250px;
   min-width: 200px;
   position: fixed;
-  overflow-x: hidden;
-  padding-top: 16px;
-  padding: 8px 8px;
+  padding-top: 10px;
 }
 
 .name {
+  padding-left: 5px;
+  margin-left: 10px;
   color: rgb(245, 134, 74);
   font-size: 16px;
 }
@@ -45,39 +58,28 @@ textarea:focus {
   margin-top: 25px;
 }
 
-.page-sidebar {
-  border: none;
-  border-radius: 5px;
-}
-
-button {
-  background: none;
-  border: none;
-}
-
-.page-sidebar button {
+.sidebar button {
   display: block;
   width: 100%;
-  margin: 1px 0px;
-  padding: 3px 12px;
-  color: rgb(114, 98, 98);
-  border-radius: 4px;
+  padding: 3px 25px;
+  color: rgb(122, 113, 113);
   cursor: pointer;
   text-align: left;
   font-size: 14px;
 }
 
-.page-sidebar button:hover {
-  background: rgba(214, 186, 171, 0.5);
+#button-clicked {
+  background: rgba(223, 215, 212, 0.822);
   color: rgba(245, 134, 74, 0.877);
 }
 
-input {
-  width: 100%;
-  height: 30px;
-  padding: 3px 18px;
-  font-size: 17px;
-  margin: 25px 0px;
+.sidebar button:hover {
+  background: rgba(223, 215, 212, 0.822);
+}
+
+.sidebar input {
+  width: 230px;
+  margin: 25px 10px;
 }
 
 input:focus {

@@ -1,8 +1,8 @@
-const Button = ({ text, onClick }) => {
+const Button = ({ text, onClick, id }) => {
   return (
-    <div className="page-sidebar">
-      <button onClick={onClick}>
-        <b>{text}</b>
+    <div>
+      <button id={id} onClick={onClick}>
+        <strong>{text}</strong>
       </button>
     </div>
   );

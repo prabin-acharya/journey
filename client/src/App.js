@@ -44,7 +44,7 @@ function App() {
     setPages(data);
   };
 
-  const clickedPage = (page) => {
+  const clickPage = (page) => {
     setOpenPage(page);
   };
 
@@ -60,14 +60,15 @@ function App() {
     <div className="app">
       <Sidebar
         pages={pages}
-        clickPage={clickedPage}
+        clickPage={clickPage}
         search={search}
         setSearch={setSearch}
+        openPage={openPage}
       />
       <Main
         page={openPage}
         fetchPages={fetchPages}
-        clickPage={clickedPage}
+        clickPage={clickPage}
         search={search}
       />
     </div>

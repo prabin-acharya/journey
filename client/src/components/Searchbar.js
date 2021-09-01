@@ -12,7 +12,7 @@ const Searchbar = ({ search, setSearch }) => {
   }, []);
 
   return (
-    <div>
+    <div className="search">
       <input
         type="text"
         placeholder="Search by Topics"
