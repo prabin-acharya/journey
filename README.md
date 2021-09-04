@@ -33,6 +33,7 @@ blogs/essays
 
 # Built Using
 
-- Backend: Nodejs,Express
 - Frontend: React
+- Backend: Nodejs,Express
+- Database: MongoDB
 - Hosting: Heroku
