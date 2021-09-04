@@ -120,6 +120,11 @@ input:focus {
   font-weight: 550;
 }
 
+.note-topics {
+  color: rgb(29, 161, 242);
+  padding: 0px 8px;
+}
+
 .page {
   align-items: left;
   justify-content: flex-start;

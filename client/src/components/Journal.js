@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import AddNote from "./AddNote";
+import Note from "./Note";
 
 const Journal = ({ search }) => {
   const [showAddNote, setShowAddNote] = useState(false);
@@ -52,23 +53,7 @@ const Journal = ({ search }) => {
       </button>
       {showAddNote && <AddNote fetchJournal={fetchJournal} />}
       <br />
-      {searchedNotes[0] &&
-        searchedNotes.map((note) => (
-          <div className="note" key={note._id}>
-            <b>{note.Date}</b>
-            <span
-              style={{
-                color: "rgb(29, 161, 242)",
-                padding: "0px 8px",
-              }}
-            >
-              {note.topics}
-            </span>
-            <br />
-            {note.content}
-            <br />
-          </div>
-        ))}
+      {searchedNotes[0] && searchedNotes.map((note) => Note(note))}
     </div>
   );
 };
