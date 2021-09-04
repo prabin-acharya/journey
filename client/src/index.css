@@ -87,6 +87,7 @@ input:focus {
 }
 
 .main {
+  width: 100%;
   margin-left: 16%;
   padding-left: 180px;
   padding-top: 70px;
@@ -112,7 +113,6 @@ input:focus {
   margin-top: 6px;
   padding: 12px 8px;
   white-space: pre-wrap;
-  white-space: pre-wrap;
 }
 
 .note b {
@@ -127,7 +127,6 @@ input:focus {
 
 .page {
   align-items: left;
-  justify-content: flex-start;
   width: 70%;
   white-space: pre-wrap;
 }
