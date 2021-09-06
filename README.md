@@ -31,8 +31,19 @@ blogs/essays
     <img src="./assets/journal-screenshot.png">
 </div>
 
-# Built Using
+## Why I built the project this way
+- My plan was to understand how a full web app works while building a delightful experience for users. That's why I built the frontend, backend, connected to DB, and deployed it.
+- I tried implementing redux but found it too complex. I was just starting with react and just got overwhelmed so decided to understand React a little better first .
 
-- Backend: Nodejs,Express
+## If I had more time I would change this
+- Improve user authentication: Currently, the app stores JWT tokens in local Storage for authentication which is not totally secure.
+- Make the Add Page/Edit Page form more intuitive, where you can just start typing and the page will be saved automatically. Remove edit Page.
+- Change the theme of the Login/Register Page to match the App: Remove blank spaces, Add an introduction, important features, a screenshot of the app. 
+- Add tests: Testing is an essential part of production applications. Cover the essential features of the app with tests.
+
+## Built Using
+
 - Frontend: React
+- Backend: Nodejs,Express
+- Database: MongoDB
 - Hosting: Heroku
