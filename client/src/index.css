@@ -194,11 +194,21 @@ input:focus {
 }
 
 .btn:hover {
-  background: rgba(209, 90, 26, 0.836);
+  background: rgba(235, 93, 17, 0.836);
+}
+
+.btn:disabled {
+  display: inline-block;
+  background: rgba(245, 118, 50, 0.836);
+  color: rgb(255, 255, 255);
+  opacity: 0.8;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
 }
 
 .btn-block {
-  /* width: 80%; */
   height: 45px;
   background: rgba(245, 118, 50, 0.836);
   color: rgb(255, 255, 255);

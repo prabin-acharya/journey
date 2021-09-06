@@ -33,7 +33,7 @@ const AddNote = ({ fetchJournal }) => {
           onChange={(e) => setContent(e.target.value)}
         />
       </div>
-      <button type="submit" className="btn">
+      <button disabled={!content.trim()} type="submit" className="btn">
         Save
       </button>
     </form>

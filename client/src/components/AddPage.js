@@ -21,10 +21,6 @@ const AddPage = ({ fetchPages }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (!title) {
-      alert("Please add a title!");
-      return;
-    }
     addPage({ title, content });
     setTitle("");
     setContent("");
@@ -49,7 +45,7 @@ const AddPage = ({ fetchPages }) => {
           onChange={(e) => setContent(e.target.value)}
         />
       </div>
-      <button type="submit" className="btn">
+      <button disabled={!title.trim()} type="submit" className="btn">
         Save Page
       </button>
     </form>
