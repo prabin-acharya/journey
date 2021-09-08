@@ -40,7 +40,7 @@ const Login_form = ({ setAuthStatus }) => {
       <div className="form-control">
         <input
           className="email"
-          type="text"
+          type="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
