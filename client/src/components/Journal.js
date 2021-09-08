@@ -29,11 +29,11 @@ const Journal = ({ search }) => {
     if (!search) setSearchedNotes(notes);
     else {
       const notesWithTopics = notes.filter((note) => note.topics);
-      setSearchedNotes(notesWithTopics);
       setSearchedNotes(
         notesWithTopics.filter((note) => {
-          return note.topics.filter((topic) => topic.indexOf(search) > -1)
-            .length;
+          return note.topics.filter(
+            (topic) => topic.toUpperCase().indexOf(search.toUpperCase()) > -1
+          ).length;
         })
       );
     }
