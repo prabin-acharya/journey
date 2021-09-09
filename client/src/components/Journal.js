@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import AddNote from "./AddNote";
 import Note from "./Note";
+import { FaTimes } from "react-icons/fa";
 
 const Journal = ({ search }) => {
   const [showAddNote, setShowAddNote] = useState(false);
@@ -49,7 +50,7 @@ const Journal = ({ search }) => {
         your progress, take notes.
       </p>
       <button className="btn" onClick={() => setShowAddNote(!showAddNote)}>
-        Add a note
+        {showAddNote ? <FaTimes /> : "Add note"}
       </button>
       {showAddNote && <AddNote fetchJournal={fetchJournal} />}
       <br />

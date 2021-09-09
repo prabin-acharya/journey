@@ -184,6 +184,8 @@ input:focus {
 
 .btn {
   display: inline-block;
+  align-content: center;
+  justify-content: center;
   background: rgba(245, 118, 50, 0.836);
   color: rgb(255, 255, 255);
   padding: 10px 20px;

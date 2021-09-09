@@ -28,7 +28,7 @@ const AddNote = ({ fetchJournal }) => {
       <div className="form-control">
         <textarea
           type="text"
-          placeholder="Content"
+          placeholder="Take a note..."
           value={content}
           onChange={(e) => setContent(e.target.value)}
         />
