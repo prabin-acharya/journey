@@ -75,7 +75,7 @@ const Register_form = ({ setAuthStatus }) => {
         />
       </div>
       <div className="form-control-submit">
-        <input type="submit" value="Register" className="btn-block" />
+        <input type="submit" value="Sign Up" className="btn-block" />
       </div>
     </form>
   );
