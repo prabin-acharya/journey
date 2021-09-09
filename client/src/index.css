@@ -77,10 +77,6 @@ input {
   margin: 25px 10px;
 }
 
-input:focus {
-  outline: none;
-}
-
 .main {
   width: 100%;
   margin-left: 16%;
@@ -131,6 +127,13 @@ input:focus {
   white-space: pre-wrap;
 }
 
+.page-heading {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .editpage {
   width: 800px;
   margin-top: 20px;
@@ -150,6 +153,9 @@ input:focus {
   font-size: 32px;
 }
 
+/* .editpage textarea {
+  outline: none;
+} */
 .addpage {
   width: 800px;
   margin-top: 20px;
@@ -172,10 +178,6 @@ input:focus {
   margin: 5px;
   padding: 3px 7px;
   font-size: 16px;
-}
-
-.addpage textarea:focus {
-  outline: none;
 }
 
 .addpage .form-control-title input {
@@ -270,14 +272,11 @@ input:focus {
   background-color: #f4f4f4;
 }
 
-.auth .form-control-submit input {
-  background-color: rgb(245, 134, 74);
-  border: 2px rgb(245, 134, 74);
-}
-
-.auth .form-control-submit input:hover {
-  background-color: rgb(228, 97, 26);
-  border: 2px rgb(219, 109, 49);
+.auth input:focus {
+  outline: none;
+  border: solid;
+  border-width: 2px;
+  border-color: rgb(236, 104, 33);
 }
 
 .auth input:hover {
@@ -287,6 +286,16 @@ input:focus {
   border: solid;
   border-width: 2px;
   border-color: rgb(236, 104, 33);
+}
+
+.auth .form-control-submit input {
+  background-color: rgb(245, 134, 74);
+  border: 2px rgb(245, 134, 74);
+}
+
+.auth .form-control-submit input:hover {
+  background-color: rgb(228, 97, 26);
+  border: 2px rgb(219, 109, 49);
 }
 
 .auth .authstatus {
