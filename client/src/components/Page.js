@@ -2,7 +2,7 @@ import { useState } from "react";
 import EditPage from "./EditPage";
 import { BiPencil } from "react-icons/bi";
 
-const Page = ({ page, clickPage, fetchPages }) => {
+const Page = ({ page, setOpenPage, fetchPages }) => {
   const [editStatus, setEditStatus] = useState(false);
   return (
     <div className="page">
@@ -14,7 +14,7 @@ const Page = ({ page, clickPage, fetchPages }) => {
         {editStatus && (
           <EditPage
             page={page}
-            clickPage={clickPage}
+            setOpenPage={setOpenPage}
             fetchPages={fetchPages}
             setEditStatus={setEditStatus}
           />

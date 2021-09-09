@@ -1,7 +1,7 @@
 import { useState } from "react";
 import React from "react";
 
-const AddPage = ({ fetchPages }) => {
+const AddPage = ({ fetchPages, setOpenPage }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
@@ -15,15 +15,16 @@ const AddPage = ({ fetchPages }) => {
       },
       body: JSON.stringify(page),
     })
-      .then(() => fetchPages())
+      .then((res) => res.json())
+      .then((addedPage) => {
+        fetchPages().then(() => setOpenPage(addedPage));
+      })
       .catch((err) => console.log(err));
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
     addPage({ title, content });
-    setTitle("");
-    setContent("");
   };
 
   return (

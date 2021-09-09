@@ -44,10 +44,6 @@ function App() {
     setPages(data);
   };
 
-  const clickPage = (page) => {
-    setOpenPage(page);
-  };
-
   if (!authStatus) {
     return (
       <>
@@ -60,7 +56,7 @@ function App() {
     <div className="app">
       <Sidebar
         pages={pages}
-        clickPage={clickPage}
+        setOpenPage={setOpenPage}
         search={search}
         setSearch={setSearch}
         openPage={openPage}
@@ -68,7 +64,7 @@ function App() {
       <Main
         page={openPage}
         fetchPages={fetchPages}
-        clickPage={clickPage}
+        setOpenPage={setOpenPage}
         search={search}
       />
     </div>

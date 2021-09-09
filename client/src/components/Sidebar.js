@@ -2,10 +2,7 @@ import Searchbar from "./Searchbar";
 import Button from "./Button";
 import { useState, useEffect } from "react";
 
-const Sidebar = ({ pages, clickPage, search, setSearch, openPage }) => {
-  const onClicked = (page) => {
-    clickPage(page);
-  };
+const Sidebar = ({ pages, setOpenPage, search, setSearch, openPage }) => {
   const [name, setName] = useState("");
 
   useEffect(() => {
@@ -29,7 +26,7 @@ const Sidebar = ({ pages, clickPage, search, setSearch, openPage }) => {
       <Searchbar search={search} setSearch={setSearch} />
       <Button
         text="Daily Journal"
-        onClick={() => onClicked("Journal")}
+        onClick={() => setOpenPage("Journal")}
         id={openPage === "Journal" ? "button-clicked" : ""}
       />
 
@@ -41,7 +38,7 @@ const Sidebar = ({ pages, clickPage, search, setSearch, openPage }) => {
                 id={openPage._id === page._id ? "button-clicked" : ""}
                 key={page._id}
                 text={page.title}
-                onClick={() => onClicked(page)}
+                onClick={() => setOpenPage(page)}
               />
             ))}
         </ul>
@@ -49,7 +46,7 @@ const Sidebar = ({ pages, clickPage, search, setSearch, openPage }) => {
 
       <Button
         text="Add Page"
-        onClick={() => onClicked("AddPage")}
+        onClick={() => setOpenPage("AddPage")}
         id={openPage === "AddPage" ? "button-clicked" : ""}
       />
     </div>

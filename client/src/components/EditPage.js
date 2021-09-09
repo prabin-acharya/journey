@@ -1,7 +1,7 @@
 import { useState } from "react";
 import React from "react";
 
-const EditPage = ({ page, clickPage, fetchPages, setEditStatus }) => {
+const EditPage = ({ page, setOpenPage, fetchPages, setEditStatus }) => {
   const [title, setTitle] = useState(page.title);
   const [content, setContent] = useState(page.content);
 
@@ -25,9 +25,10 @@ const EditPage = ({ page, clickPage, fetchPages, setEditStatus }) => {
       body: JSON.stringify({ title, content }),
     })
       .then(() => {
-        fetchPages();
-        setEditStatus(false);
-        clickPage(newPage);
+        fetchPages().then(() => {
+          setOpenPage(newPage);
+          setEditStatus(false);
+        });
       })
       .catch((err) => console.log(err));
   };
