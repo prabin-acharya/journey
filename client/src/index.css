@@ -88,25 +88,32 @@ input {
 }
 
 .journal {
-  width: 650px;
+  width: 65%;
+  overflow: hidden;
+  padding: 5px 5px;
 }
 
 .journal textarea {
-  border: solid 1px rgb(253, 163, 131);
-  height: 90px;
+  width: 100%;
+  border: solid 3px rgb(243, 133, 93);
+  height: 60px;
+  padding-top: 15px;
+  font-size: 24px;
   border-radius: 5px;
+  margin: 5px 0px;
 }
 
 .journal textarea:focus {
   outline: none;
-  border: solid 1px orangered;
+  border: solid 2px orangered;
+  height: 90px;
 }
 
 .note {
-  width: 700px;
+  width: auto;
   border: solid 1px orangered;
   border-radius: 8px;
-  margin-top: 6px;
+  margin: 6px 8px 0px 8px;
   padding: 12px 8px;
   white-space: pre-wrap;
 }
@@ -202,9 +209,9 @@ input {
 
 .btn:disabled {
   display: inline-block;
-  background: rgba(245, 118, 50, 0.836);
+  background: rgba(247, 144, 89, 0.836);
   color: rgb(255, 255, 255);
-  opacity: 0.8;
+  opacity: 0.6;
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;

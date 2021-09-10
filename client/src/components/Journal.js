@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
 import AddNote from "./AddNote";
 import Note from "./Note";
-import { FaTimes } from "react-icons/fa";
 
 const Journal = ({ search }) => {
-  const [showAddNote, setShowAddNote] = useState(false);
   const [notes, setNotes] = useState([]);
   const [searchedNotes, setSearchedNotes] = useState(notes);
 
@@ -49,11 +47,7 @@ const Journal = ({ search }) => {
         Document your journey- thoughts, ideas, daily happenings. Keep track of
         your progress, take notes.
       </p>
-      <button className="btn" onClick={() => setShowAddNote(!showAddNote)}>
-        {showAddNote ? <FaTimes /> : "Add note"}
-      </button>
-      {showAddNote && <AddNote fetchJournal={fetchJournal} />}
-      <br />
+      <AddNote fetchJournal={fetchJournal} />
       {searchedNotes[0] && searchedNotes.map((note) => Note(note))}
     </div>
   );

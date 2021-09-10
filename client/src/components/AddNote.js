@@ -3,6 +3,7 @@ import React from "react";
 
 const AddNote = ({ fetchJournal }) => {
   const [content, setContent] = useState("");
+  const [showSave, setShowSave] = useState(false);
 
   const addNote = (note) => {
     fetch("/api/journal", {
@@ -19,6 +20,7 @@ const AddNote = ({ fetchJournal }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    document.querySelector("#textarea-note").blur();
     addNote({ content });
     setContent("");
   };
@@ -27,15 +29,25 @@ const AddNote = ({ fetchJournal }) => {
     <form className="addnote-form" onSubmit={onSubmit}>
       <div className="form-control">
         <textarea
+          id="textarea-note"
           type="text"
           placeholder="Take a note..."
           value={content}
           onChange={(e) => setContent(e.target.value)}
+          onFocus={() => setShowSave(true)}
+          onBlur={() => setShowSave(false)}
         />
       </div>
-      <button disabled={!content.trim()} type="submit" className="btn">
-        Save
-      </button>
+      {showSave && (
+        <button
+          type="submit"
+          className="btn"
+          onMouseDown={(e) => onSubmit(e)}
+          disabled={!content.trim()}
+        >
+          Save
+        </button>
+      )}
     </form>
   );
 };
