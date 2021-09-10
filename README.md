@@ -1,11 +1,5 @@
 Deployed at : https://myjourney-prabin.herokuapp.com/
 
-<!-- # TODO:
-- <strike> Register and Sign In</strike>
-- Log Out
-- <strike> Journal Topics</strike>
-- <strike>Search Journal by topics</strike>
-- Time zone -->
 
 <div align="center">
   <img src="./assets/myjourney.png">
@@ -15,7 +9,7 @@ Deployed at : https://myjourney-prabin.herokuapp.com/
 
 myJourney is a Journal and a Writing app where Users can
 Sign In and record their daily thoughts/ideas and write long
-blogs/essays
+blogs, essays
 
 # Features :rocket:
 
@@ -36,7 +30,7 @@ blogs/essays
 - I tried implementing redux but found it too complex. I was just starting with react and just got overwhelmed so decided to understand React a little better first .
 
 ## If I had more time I would change this
-- Improve user authentication: Currently, the app stores JWT tokens in local Storage for authentication which is not totally secure.
+- Improve authentication: Currently, the app stores JWT tokens in local Storage for authentication which is not totally secure. Add Log Out.
 - Make the Add Page/Edit Page form more intuitive, where you can just start typing and the page will be saved automatically. Remove edit Page.
 - Add tests: Testing is an essential part of production applications. Cover the essential features of the app with tests.
 
