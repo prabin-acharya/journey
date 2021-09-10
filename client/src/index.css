@@ -88,7 +88,7 @@ input {
 }
 
 .journal {
-  width: 65%;
+  width: 66%;
   overflow: hidden;
   padding: 5px 5px;
 }
@@ -100,12 +100,13 @@ input {
   padding-top: 15px;
   font-size: 24px;
   border-radius: 5px;
-  margin: 5px 0px;
+  margin: 3px 0px;
+  margin-top: 20px;
 }
 
 .journal textarea:focus {
   outline: none;
-  border: solid 2px orangered;
+  border: solid 3px rgb(243, 133, 93);
   height: 90px;
 }
 

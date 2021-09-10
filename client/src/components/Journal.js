@@ -43,10 +43,11 @@ const Journal = ({ search }) => {
       <span className="name">
         <h1>Journal</h1>
       </span>
-      <p>
-        Document your journey- thoughts, ideas, daily happenings. Keep track of
-        your progress, take notes.
-      </p>
+      <div>
+        Document your journey- thoughts, ideas, daily happenings.
+        <br />
+        Keep track of your progress, take notes.
+      </div>
       <AddNote fetchJournal={fetchJournal} />
       {searchedNotes[0] && searchedNotes.map((note) => Note(note))}
     </div>
