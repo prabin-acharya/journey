@@ -8,7 +8,7 @@ const Page = ({ page, setOpenPage, fetchPages }) => {
     <div className="page">
       <div className="page-heading">
         {!editStatus && <h1>{page.title}</h1>}
-        <button onClick={() => setEditStatus(!editStatus)}>
+        <button id="page-edit-icon" onClick={() => setEditStatus(!editStatus)}>
           {!editStatus && <BiPencil />}
         </button>
         {editStatus && (
