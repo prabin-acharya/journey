@@ -49,6 +49,32 @@ input {
   font-size: 16px;
 }
 
+.user {
+  padding-left: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  color: rgb(245, 134, 74);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#logout {
+  padding: 0px;
+  margin: 0px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+#logout:hover {
+  background: none;
+  width: 23px;
+  height: 23px;
+}
+
 .pages-sidebar {
   margin-top: 25px;
 }
