@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const auth = require("../../middleware/auth");
 const Journal = require("../../models/Journal");
-const initialNotes = require("../../utils/defaults.js");
+const initialNotes = require("../../utils/initialNotes.js");
 
 //@route  GET api/journal
 //@desc   Get user's notes

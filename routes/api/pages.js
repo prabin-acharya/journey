@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Page = require("../../models/Page");
 const auth = require("../../middleware/auth");
+const initialPages = require("../../utils/initialPages.js");
 
 //@route  GET api/pages
 //@desc   Get user's pages
@@ -21,7 +22,7 @@ router.get("/", auth, (req, res) => {
 router.post("/", auth, (req, res) => {
   const newPagesArray = new Page({
     userid: req.user.id,
-    pages: [],
+    pages: [...initialPages],
   });
   newPagesArray.save().then((pages) => res.json(pages));
 });
