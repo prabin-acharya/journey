@@ -17,7 +17,16 @@ function App() {
         "x-auth-token": localStorage.getItem("token"),
       },
     })
-      .then((res) => setAuthStatus(true))
+      .then((res) => {
+        if (res.status === 400) {
+          localStorage.removeItem("token");
+          setAuthStatus(false);
+        } else if (res.status === 401) {
+          setAuthStatus(false);
+        } else {
+          setAuthStatus(true);
+        }
+      })
       .catch((err) => {
         setAuthStatus(false);
       });
