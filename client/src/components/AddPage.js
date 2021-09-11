@@ -8,7 +8,7 @@ const AddPage = ({ fetchPages, setOpenPage }) => {
   //Add Page
   const addPage = (page) => {
     fetch("/api/pages", {
-      method: "POST",
+      method: "PUT",
       headers: {
         "Content-type": "application/json",
         "x-auth-token": localStorage.getItem("token"),
@@ -17,7 +17,8 @@ const AddPage = ({ fetchPages, setOpenPage }) => {
     })
       .then((res) => res.json())
       .then((addedPage) => {
-        fetchPages().then(() => setOpenPage(addedPage));
+        addedPage = addedPage.raw.pages;
+        fetchPages().then(() => setOpenPage(addedPage[addedPage.length - 1]));
       })
       .catch((err) => console.log(err));
   };

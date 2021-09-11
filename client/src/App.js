@@ -42,15 +42,19 @@ function App() {
   }, [authStatus]);
 
   const fetchPages = async () => {
-    const res = await fetch("/api/pages", {
-      method: "GET",
-      headers: {
-        "Content-type": "application/json",
-        "x-auth-token": localStorage.getItem("token"),
-      },
-    });
-    const data = await res.json();
-    setPages(data);
+    try {
+      const res = await fetch("/api/pages", {
+        method: "GET",
+        headers: {
+          "Content-type": "application/json",
+          "x-auth-token": localStorage.getItem("token"),
+        },
+      });
+      const data = await res.json();
+      setPages(data);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   if (!authStatus) {

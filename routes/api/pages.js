@@ -7,21 +7,42 @@ const auth = require("../../middleware/auth");
 //@desc   Get user's pages
 //@access Private
 router.get("/", auth, (req, res) => {
-  Page.find({ userid: req.user.id })
-    .sort({ Date: 1 })
-    .then((pages) => res.json(pages));
+  Page.findOne({ userid: req.user.id })
+    .then((pagesArray) => {
+      pages = pagesArray.pages;
+      return res.json(pages);
+    })
+    .catch((err) => console.log(err));
 });
 
 //@route  POST api/pages
-//@desc   Save a page
+//@desc   Save Pages  for new User
 //@access Private
 router.post("/", auth, (req, res) => {
-  const newPage = new Page({
+  const newPagesArray = new Page({
     userid: req.user.id,
-    title: req.body.title,
-    content: req.body.content,
+    pages: [],
   });
-  newPage.save().then((page) => res.json(page));
+  newPagesArray.save().then((pages) => res.json(pages));
+});
+
+//@route  PUT api/pages
+//@desc   Save a new page to array of pages
+//@access Private
+router.put("/", auth, (req, res) => {
+  const newPage = { title: req.body.title, content: req.body.content };
+  Page.findOneAndUpdate(
+    { userid: req.user.id },
+    { $push: { pages: newPage } },
+    { new: true },
+    (err, raw) => {
+      if (err) {
+        res.status(404).json({ success: false, err });
+      } else {
+        res.json({ success: true, raw });
+      }
+    }
+  );
 });
 
 //@route  Put api/pages/id
@@ -29,14 +50,20 @@ router.post("/", auth, (req, res) => {
 //@access Private
 router.put("/:id", auth, async (req, res) => {
   try {
-    await Page.findByIdAndUpdate(
-      req.params.id,
+    await Page.updateOne(
+      { userid: req.user.id, "pages._id": req.params.id },
       {
-        title: req.body.title,
-        content: req.body.content,
+        $set: {
+          "pages.$.title": req.body.title,
+          "pages.$.content": req.body.content,
+        },
       },
-      () => {
-        res.json({ success: true });
+      (err, raw) => {
+        if (err) {
+          res.status(404).json({ success: false, err });
+        } else {
+          res.json({ success: true, raw });
+        }
       }
     );
   } catch (err) {

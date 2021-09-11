@@ -17,7 +17,8 @@ const Journal = ({ search }) => {
       .then((res) => res.json())
       .then((data) => {
         setNotes(data);
-      });
+      })
+      .catch((err) => console.log(err));
   };
 
   useEffect(() => {
