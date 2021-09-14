@@ -30,7 +30,7 @@ blogs, essays
 - I tried implementing redux but found it too complex. I was just starting with react and just got overwhelmed so decided to understand React a little better first .
 
 ## If I had more time I would change this
-- Improve authentication: Currently, the app stores JWT tokens in local Storage for authentication which is not totally secure. Add Log Out.
+- Improve authentication: Currently, the app stores JWT tokens in local Storage for authentication which is not totally secure.
 - Make the Add Page/Edit Page form more intuitive, where you can just start typing and the page will be saved automatically. Remove edit Page.
 - Add tests: Testing is an essential part of production applications. Cover the essential features of the app with tests.
 
