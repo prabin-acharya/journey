@@ -4,7 +4,8 @@ import Main from "./components/Main";
 import Login from "./components/auth/Login";
 
 function App() {
-  const [authStatus, setAuthStatus] = useState(false);
+  const token = localStorage.getItem("token");
+  const [authStatus, setAuthStatus] = useState(token ? true : false);
   const [pages, setPages] = useState([]);
   const [openPage, setOpenPage] = useState("Journal");
   const [search, setSearch] = useState("");
@@ -14,7 +15,7 @@ function App() {
       method: "GET",
       headers: {
         "Content-type": "application/json",
-        "x-auth-token": localStorage.getItem("token"),
+        "x-auth-token": token,
       },
     })
       .then((res) => {
@@ -32,22 +33,13 @@ function App() {
       });
   };
 
-  const token = localStorage.getItem("token");
-  if (token) {
-    getUser();
-  }
-
-  useEffect(() => {
-    if (authStatus) fetchPages();
-  }, [authStatus]);
-
   const fetchPages = async () => {
     try {
       const res = await fetch("/api/pages", {
         method: "GET",
         headers: {
           "Content-type": "application/json",
-          "x-auth-token": localStorage.getItem("token"),
+          "x-auth-token": token,
         },
       });
       const data = await res.json();
@@ -56,6 +48,12 @@ function App() {
       console.log(err);
     }
   };
+
+  token && getUser();
+
+  useEffect(() => {
+    authStatus && fetchPages();
+  }, [authStatus]);
 
   if (!authStatus) {
     return (
