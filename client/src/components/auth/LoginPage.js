@@ -26,7 +26,7 @@ const Loginpage = ({ setAuthStatus }) => {
         <a href=" #login">
           <i
             id="lead-down-icon"
-            class="fa fa-chevron-down"
+            className="fa fa-chevron-down"
             aria-hidden="true"
             style={{ color: "rgb(255, 104, 74)" }}
           ></i>

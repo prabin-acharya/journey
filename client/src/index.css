@@ -73,7 +73,6 @@ button {
   background-color: rgba(214, 186, 171, 0.178);
   height: 100vh;
   width: 250px;
-  min-width: 200px;
   position: fixed;
   padding-top: 10px;
 }
@@ -145,7 +144,7 @@ button {
 
 .main {
   width: 100%;
-  margin-left: 16%;
+  margin-left: 250px;
   padding-left: 180px;
   padding-top: 70px;
   font-size: 16px;

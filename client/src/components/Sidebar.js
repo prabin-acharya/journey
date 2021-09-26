@@ -12,6 +12,11 @@ const Sidebar = ({
   setAuthStatus,
 }) => {
   const [name, setName] = useState("");
+  const [isLoading, setLoading] = useState(true);
+  let user = name + "'s ";
+  if (user.length > 24) {
+    user = name.substring(0, 24) + "..";
+  }
 
   useEffect(() => {
     fetch("/api/auth/user", {
@@ -22,14 +27,15 @@ const Sidebar = ({
     }).then((res) =>
       res.json().then((data) => {
         setName(data.name);
+        setLoading(false);
       })
     );
-  }, [name]);
+  }, []);
 
   return (
     <div className="sidebar">
       <div className="user">
-        <h2> {name}'s journey</h2>
+        <h2> {!isLoading && user + "Journey"}</h2>
 
         <button
           id="logout"
