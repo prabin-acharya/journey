@@ -4,7 +4,6 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 require("dotenv/config");
 const User = require("../../models/User");
-const { JsonWebTokenError } = require("jsonwebtoken");
 
 //@route  POST api/users
 //@desc   Register a user
@@ -18,6 +17,11 @@ router.post("/", (req, res) => {
 
   User.findOne({ email }).then((user) => {
     if (user) return res.status(400).json({ msg: "User already exists" });
+
+    if (password.length < 5)
+      return res
+        .status(400)
+        .json({ msg: "Password is too short (minimum is 8 characters)" });
 
     const newUser = new User({
       name,

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import React from "react";
 
-const Register_form = ({ setAuthStatus }) => {
+const Register_form = ({ setAuthStatus, setError }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -13,7 +13,7 @@ const Register_form = ({ setAuthStatus }) => {
       return;
     }
 
-    const data = {
+    const newUser = {
       name: name,
       email: email,
       password: password,
@@ -24,12 +24,15 @@ const Register_form = ({ setAuthStatus }) => {
       headers: {
         "Content-type": "application/json",
       },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) => {
+      body: JSON.stringify(newUser),
+    }).then((res) => {
+      if (res.status === 400) {
+        return res.json().then((err) => err.msg && setError(err.msg));
+      }
+      return res.json().then((data) => {
         localStorage.setItem("token", data.token);
         setAuthStatus(true);
+
         fetch("/api/journal", {
           method: "POST",
           headers: {
@@ -45,41 +48,39 @@ const Register_form = ({ setAuthStatus }) => {
           },
         });
       });
-
-    setName("");
-    setEmail("");
-    setPassword("");
+    });
   };
 
   return (
     <form className="register-form" onSubmit={onSubmit}>
-      <div className="form-control">
-        <input
-          className="name"
-          type="text"
-          placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-      </div>
-      <div className="form-control">
-        <input
-          className="email"
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </div>
-      <div className="form-control">
-        <input
-          className="password"
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
+      <input
+        type="text"
+        placeholder="Name"
+        value={name}
+        onChange={(e) => {
+          setName(e.target.value);
+          setError();
+        }}
+      />
+      <input
+        className="email"
+        type="email"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => {
+          setEmail(e.target.value);
+          setError();
+        }}
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => {
+          setPassword(e.target.value);
+          setError();
+        }}
+      />
       <div className="form-control-submit">
         <input type="submit" value="Sign Up" className="btn-block" />
       </div>

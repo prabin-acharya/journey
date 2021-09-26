@@ -1,60 +1,60 @@
 import { useState } from "react";
 import React from "react";
 
-const Login_form = ({ setAuthStatus }) => {
+const Login_form = ({ setAuthStatus, setError }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const onSubmit = (e) => {
     e.preventDefault();
     if (!email || !password) {
-      alert("Please Enter all information!");
+      alert("Please Enter all Fields!");
       return;
     }
-    const data = {
+    const loginUser = {
       email: email,
       password: password,
     };
+
     fetch("/api/auth", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
       },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) => {
+      body: JSON.stringify(loginUser),
+    }).then((res) => {
+      if (res.status === 400) {
+        return res.json().then((err) => err.msg && setError(err.msg));
+      }
+      return res.json().then((data) => {
         if (data.token) {
           localStorage.setItem("token", data.token);
           setAuthStatus(true);
         }
-      })
-      .catch((err) => console.log(err));
-
-    setEmail("");
-    setPassword("");
+      });
+    });
   };
 
   return (
     <form className="login-form" onSubmit={onSubmit}>
-      <div className="form-control">
-        <input
-          className="email"
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </div>
-      <div className="form-control">
-        <input
-          className="password"
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
+      <input
+        type="email"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => {
+          setEmail(e.target.value);
+          setError();
+        }}
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => {
+          setPassword(e.target.value);
+          setError();
+        }}
+      />
       <div className="form-control-submit">
         <input type="submit" value="Log In" className="btn-block" />
       </div>

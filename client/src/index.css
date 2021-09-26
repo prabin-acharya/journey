@@ -352,3 +352,8 @@ input {
   color: rgb(228, 111, 49);
   text-decoration: underline;
 }
+
+.auth-error {
+  color: rgb(255, 0, 0);
+  font-size: 16px;
+}

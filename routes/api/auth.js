@@ -5,7 +5,6 @@ const jwt = require("jsonwebtoken");
 const auth = require("../../middleware/auth");
 require("dotenv/config");
 const User = require("../../models/User");
-const { JsonWebTokenError } = require("jsonwebtoken");
 
 //@route  POST api/auth
 //@desc   LogIn User
@@ -20,10 +19,8 @@ router.post("/", (req, res) => {
   User.findOne({ email }).then((user) => {
     if (!user) return res.status(400).json({ msg: "User Does not exists" });
 
-    //Validate password
     bcrypt.compare(password, user.password).then((isMatch) => {
-      if (!isMatch)
-        return res.status(400).json({ msg: "Invalid Credentials." });
+      if (!isMatch) return res.status(400).json({ msg: "Incorrect Password." });
 
       jwt.sign(
         { id: user.id },

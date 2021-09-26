@@ -4,7 +4,9 @@ import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
 
 const Login = ({ setAuthStatus }) => {
-  const [registerStatus, setregisterStatus] = useState(false);
+  const [displayRegister, setDisplayRegister] = useState(false);
+  const [error, setError] = useState();
+
   return (
     <div className="auth-container">
       <nav>
@@ -13,20 +15,27 @@ const Login = ({ setAuthStatus }) => {
         </a>
       </nav>
 
-      <h1>{registerStatus ? "Sign Up" : "Log In"}</h1>
+      <h1>{displayRegister ? "Sign Up" : "Log In"}</h1>
 
       <div className="auth">
-        {registerStatus ? (
-          <RegisterForm setAuthStatus={setAuthStatus} />
+        {displayRegister ? (
+          <RegisterForm setAuthStatus={setAuthStatus} setError={setError} />
         ) : (
-          <LoginForm setAuthStatus={setAuthStatus} />
+          <LoginForm setAuthStatus={setAuthStatus} setError={setError} />
         )}
-        <button onClick={() => setregisterStatus(!registerStatus)}>
-          {registerStatus
+        {error && <div className="auth-error">{error}</div>}
+
+        <button
+          onClick={() => {
+            setError();
+            setDisplayRegister(!displayRegister);
+          }}
+        >
+          {displayRegister
             ? "Already have an account? "
             : "Don't have an account? "}
           <span className="authstatus">
-            {registerStatus ? "Log In" : "Sign Up"}
+            {displayRegister ? "Log In" : "Sign Up"}
           </span>
         </button>
       </div>
