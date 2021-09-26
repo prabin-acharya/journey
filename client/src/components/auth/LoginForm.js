@@ -37,24 +37,34 @@ const Login_form = ({ setAuthStatus, setError }) => {
 
   return (
     <form className="login-form" onSubmit={onSubmit}>
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => {
-          setEmail(e.target.value);
-          setError();
-        }}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => {
-          setPassword(e.target.value);
-          setError();
-        }}
-      />
+      <div className="form-control">
+        <label>
+          Email
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              setError();
+            }}
+          />
+        </label>
+      </div>
+      <div className="form-control">
+        <label>
+          Enter your password
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              setError();
+            }}
+          />
+        </label>
+      </div>
       <div className="form-control-submit">
         <input type="submit" value="Log In" className="btn-block" />
       </div>

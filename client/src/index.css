@@ -3,13 +3,19 @@
   padding: 0;
   box-sizing: border-box;
   font-family: sans-serif;
+  scroll-behavior: smooth;
 }
-
-/* body {}
-   */
 
 .app {
   display: flex;
+}
+
+input {
+  width: 100%;
+  height: 30px;
+  padding: 3px 18px;
+  font-size: 17px;
+  margin: 25px 5px;
 }
 
 textarea {
@@ -25,14 +31,44 @@ button {
   border: none;
 }
 
-input {
-  width: 100%;
-  height: 30px;
-  padding: 3px 18px;
-  font-size: 17px;
-  margin: 25px 5px;
+.btn {
+  display: inline-block;
+  align-content: center;
+  justify-content: center;
+  background: rgba(245, 118, 50, 0.836);
+  color: rgb(255, 255, 255);
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
 }
 
+.btn:hover {
+  background: rgba(235, 93, 17, 0.836);
+}
+
+.btn:disabled {
+  display: inline-block;
+  background: rgba(247, 144, 89, 0.836);
+  color: rgb(255, 255, 255);
+  opacity: 0.6;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.btn-block {
+  height: 45px;
+  background: rgba(245, 118, 50, 0.836);
+  color: rgb(255, 255, 255);
+  border-radius: 5px;
+  padding: 10px 0px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+/* ----------Sidebar-----------  */
 .sidebar {
   background-color: rgba(214, 186, 171, 0.178);
   height: 100vh;
@@ -102,6 +138,10 @@ input {
   width: 230px;
   margin: 25px 10px;
 }
+
+/* --------------End Sidebar-------------- */
+
+/* ----------------Main--------------------- */
 
 .main {
   width: 100%;
@@ -228,127 +268,139 @@ input {
   font-size: 32px;
 }
 
-.btn {
-  display: inline-block;
-  align-content: center;
-  justify-content: center;
-  background: rgba(245, 118, 50, 0.836);
-  color: rgb(255, 255, 255);
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 15px;
-}
+/* -----------------End main--------------- */
 
-.btn:hover {
-  background: rgba(235, 93, 17, 0.836);
-}
-
-.btn:disabled {
-  display: inline-block;
-  background: rgba(247, 144, 89, 0.836);
-  color: rgb(255, 255, 255);
-  opacity: 0.6;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 15px;
-}
-
-.btn-block {
-  height: 45px;
-  background: rgba(245, 118, 50, 0.836);
-  color: rgb(255, 255, 255);
-  border-radius: 5px;
-  padding: 10px 0px;
-  cursor: pointer;
-  font-size: 15px;
-}
-
-.auth-container {
+/* ------------------login-page------------ */
+.login-page {
+  background: #f9f9f9;
   align-items: center;
-  justify-content: center;
   text-align: center;
+  justify-content: center;
 }
 
-.auth {
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  width: 550px;
-  margin: 30px auto;
-  overflow: auto;
-  min-height: 300px;
-  border: 1px solid steelblue;
-  padding: 50px 20px;
-  border-radius: 5px;
+.login-page strong {
+  color: rgb(243, 133, 93);
 }
 
-.auth-container strong {
+nav strong {
   display: inline-block;
-  color: rgb(245, 134, 74);
+  color: rgb(255, 105, 24);
   margin: 10px 120px;
   font-size: 42px;
 }
 
-.auth-container h1 {
-  margin: 40px auto;
+nav {
+  overflow: hidden;
+  position: fixed;
+  background: white;
+  width: 100%;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  text-align: left;
+  color: rgb(245, 134, 74);
+  font-size: 36px;
+  top: 0;
+}
+
+.intro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 60px 20px 20px 20px;
+}
+
+.intro-text {
+  width: 300px;
+  color: #999996;
+  font-weight: 550;
+}
+.intro-text h1 {
+  font-size: 32px;
+  color: rgb(228, 111, 49);
+  margin-bottom: 10px;
+}
+
+.intro img {
+  width: 913px;
+  height: 572px;
+  margin-left: 50px;
+  margin-top: 40px;
+  border-radius: 2%;
+  box-shadow: 3px 4px 4px 0 #c2c2c2;
+}
+
+.login {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  padding: auto;
+  text-align: center;
+}
+
+.login h1 {
   color: rgb(122, 113, 113);
   font-family: "Helvetica neue", Arial, sans-serif;
   font-weight: 100;
 }
 
-.auth-container nav {
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
-  text-align: left;
+.login-main {
+  margin-top: 50px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 400px;
+  overflow: hidden;
+  border-radius: 5px;
+  font-size: 15px;
 }
 
-.auth input {
-  width: 80%;
-  height: 50px;
-  margin: 8px;
+.login input {
+  width: 90%;
+  height: auto;
+  margin: 4px;
   padding: 10px 18px;
   font-size: 16px;
   border: solid;
   border-width: 2px;
-  border-radius: 2px;
+  border-radius: 4px;
   border-color: #a39c9c;
   background-color: #f4f4f4;
 }
 
-.auth input:focus {
+.login-form,
+.register-form {
+  text-align: left;
+}
+
+.form-control {
+  margin-top: 5px;
+}
+
+.login input:focus {
   outline: none;
+  height: auto;
   border: solid;
   border-width: 2px;
   border-color: rgb(236, 104, 33);
 }
 
-.auth input:hover {
-  width: 80%;
-  height: 50px;
-  padding: 10px 18px;
-  border: solid;
-  border-width: 2px;
-  border-color: rgb(236, 104, 33);
-}
-
-.auth .form-control-submit input {
+.login .form-control-submit input {
   background-color: rgb(245, 134, 74);
   border: 2px rgb(245, 134, 74);
 }
 
-.auth .form-control-submit input:hover {
+.login .form-control-submit input:hover {
   background-color: rgb(228, 97, 26);
   border: 2px rgb(219, 109, 49);
 }
 
-.auth .authstatus {
+.login-register {
   color: rgb(230, 160, 122);
   font-size: 16px;
   font-weight: 550;
 }
 
-.auth .authstatus:hover {
+.login-register:hover {
   color: rgb(228, 111, 49);
   text-decoration: underline;
 }
@@ -357,3 +409,5 @@ input {
   color: rgb(255, 0, 0);
   font-size: 16px;
 }
+
+/* --------------End login-page------------ */

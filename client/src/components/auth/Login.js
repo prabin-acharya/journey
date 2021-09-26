@@ -8,36 +8,32 @@ const Login = ({ setAuthStatus }) => {
   const [error, setError] = useState();
 
   return (
-    <div className="auth-container">
-      <nav>
-        <a href="/">
-          <strong>myjourney</strong>
-        </a>
-      </nav>
+    <div className="login" id="login">
+      <div>
+        <h1>{displayRegister ? "Sign Up" : "Log In"}</h1>
 
-      <h1>{displayRegister ? "Sign Up" : "Log In"}</h1>
+        <div className="login-main">
+          {displayRegister ? (
+            <RegisterForm setAuthStatus={setAuthStatus} setError={setError} />
+          ) : (
+            <LoginForm setAuthStatus={setAuthStatus} setError={setError} />
+          )}
+          {error && <div className="auth-error">{error}</div>}
 
-      <div className="auth">
-        {displayRegister ? (
-          <RegisterForm setAuthStatus={setAuthStatus} setError={setError} />
-        ) : (
-          <LoginForm setAuthStatus={setAuthStatus} setError={setError} />
-        )}
-        {error && <div className="auth-error">{error}</div>}
-
-        <button
-          onClick={() => {
-            setError();
-            setDisplayRegister(!displayRegister);
-          }}
-        >
-          {displayRegister
-            ? "Already have an account? "
-            : "Don't have an account? "}
-          <span className="authstatus">
-            {displayRegister ? "Log In" : "Sign Up"}
-          </span>
-        </button>
+          <button
+            onClick={() => {
+              setError();
+              setDisplayRegister(!displayRegister);
+            }}
+          >
+            {displayRegister
+              ? "Already have an account? "
+              : "Don't have an account? "}
+            <span className="login-register">
+              {displayRegister ? "Log In" : "Sign Up"}
+            </span>
+          </button>
+        </div>
       </div>
     </div>
   );

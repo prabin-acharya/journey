@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Sidebar from "./components/Sidebar";
 import Main from "./components/Main";
-import Login from "./components/auth/Login";
+import Loginpage from "./components/auth/Loginpage";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -58,7 +58,7 @@ function App() {
   if (!authStatus) {
     return (
       <>
-        <Login setAuthStatus={setAuthStatus} />
+        <Loginpage setAuthStatus={setAuthStatus} />
       </>
     );
   }

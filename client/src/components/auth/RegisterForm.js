@@ -53,34 +53,50 @@ const Register_form = ({ setAuthStatus, setError }) => {
 
   return (
     <form className="register-form" onSubmit={onSubmit}>
-      <input
-        type="text"
-        placeholder="Name"
-        value={name}
-        onChange={(e) => {
-          setName(e.target.value);
-          setError();
-        }}
-      />
-      <input
-        className="email"
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => {
-          setEmail(e.target.value);
-          setError();
-        }}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => {
-          setPassword(e.target.value);
-          setError();
-        }}
-      />
+      <div className="form-control">
+        <label>
+          What should we call you?
+          <input
+            id="name"
+            type="text"
+            placeholder="Name"
+            value={name}
+            onChange={(e) => {
+              setName(e.target.value);
+              setError();
+            }}
+          />
+        </label>
+      </div>
+      <div className="form-control">
+        <label>
+          Email
+          <input
+            className="email"
+            type="email"
+            placeholder="Enter your email address"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              setError();
+            }}
+          />
+        </label>
+      </div>
+      <div className="form-control">
+        <label>
+          Set a Password
+          <input
+            type="password"
+            placeholder="Password(min 8 characters)"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              setError();
+            }}
+          />
+        </label>
+      </div>
       <div className="form-control-submit">
         <input type="submit" value="Sign Up" className="btn-block" />
       </div>
