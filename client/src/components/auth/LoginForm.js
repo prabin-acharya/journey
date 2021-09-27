@@ -42,7 +42,7 @@ const Login_form = ({ setAuthStatus, setError }) => {
           Email
           <input
             type="email"
-            placeholder="Email"
+            placeholder="Enter your email address.."
             value={email}
             onChange={(e) => {
               setEmail(e.target.value);
@@ -53,10 +53,10 @@ const Login_form = ({ setAuthStatus, setError }) => {
       </div>
       <div className="form-control">
         <label>
-          Enter your password
+          Password
           <input
             type="password"
-            placeholder="Password"
+            placeholder="Enter your password..."
             value={password}
             onChange={(e) => {
               setPassword(e.target.value);
