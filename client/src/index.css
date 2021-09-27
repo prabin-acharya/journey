@@ -6,9 +6,9 @@
   scroll-behavior: smooth;
 }
 
-/* .app {
+.app {
   display: flex;
-} */
+}
 
 input {
   width: 100%;
