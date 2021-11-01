@@ -153,6 +153,20 @@ button {
   margin-bottom: 100px;
 }
 
+.more-icon {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  padding: 4px 4px;
+  color: #5f5d59;
+}
+
+.more-icon:hover {
+  border-radius: 5px;
+  background-color: #efefee;
+}
+
 .journal {
   width: 66%;
   overflow: hidden;
