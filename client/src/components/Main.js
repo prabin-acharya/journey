@@ -2,10 +2,11 @@ import { useState, useEffect, useRef } from "react";
 import AddPage from "./AddPage";
 import Page from "./Page";
 import Journal from "./Journal";
+import UserDropdown from "./UserDropdown";
 import { FiMoreHorizontal } from "react-icons/fi";
 
 const Main = ({ page, setOpenPage, fetchPages, search, user }) => {
-  const [showUserProfile, setShowUserProfile] = useState(false);
+  const [showUserDropdown, setShowUserDropdown] = useState(false);
   const userProfileRef = useRef(null);
 
   const handleClickOutside = (event) => {
@@ -13,7 +14,7 @@ const Main = ({ page, setOpenPage, fetchPages, search, user }) => {
       userProfileRef.current &&
       !userProfileRef.current.contains(event.target)
     ) {
-      setShowUserProfile(false);
+      setShowUserDropdown(false);
     }
   };
 
@@ -27,16 +28,13 @@ const Main = ({ page, setOpenPage, fetchPages, search, user }) => {
   return (
     <div className="main">
       <FiMoreHorizontal
-        onClick={() => setShowUserProfile(true)}
+        onClick={() => setShowUserDropdown(true)}
         size={30}
         className="more-icon"
       />
-      {showUserProfile && (
-        <div ref={userProfileRef} className="user-profile-dropdown">
-          <h2>{user.name}</h2>
-          {user.email}
-          <br />
-          Log Out
+      {showUserDropdown && (
+        <div ref={userProfileRef}>
+          <UserDropdown user={user} />
         </div>
       )}
 
