@@ -4,7 +4,7 @@ import Page from "./Page";
 import Journal from "./Journal";
 import { FiMoreHorizontal } from "react-icons/fi";
 
-const Main = ({ page, setOpenPage, fetchPages, search }) => {
+const Main = ({ page, setOpenPage, fetchPages, search, user }) => {
   const [showUserProfile, setShowUserProfile] = useState(false);
   const userProfileRef = useRef(null);
 
@@ -33,8 +33,8 @@ const Main = ({ page, setOpenPage, fetchPages, search }) => {
       />
       {showUserProfile && (
         <div ref={userProfileRef} className="user-profile-dropdown">
-          <h2>User Full Name</h2>
-          useremail@domain.com
+          <h2>{user.name}</h2>
+          {user.email}
           <br />
           Log Out
         </div>

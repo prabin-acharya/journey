@@ -1,6 +1,5 @@
 import Searchbar from "./Searchbar";
 import Button from "./Button";
-import { useState, useEffect } from "react";
 import { BiLogOut } from "react-icons/bi";
 
 const Sidebar = ({
@@ -10,32 +9,21 @@ const Sidebar = ({
   setSearch,
   openPage,
   setAuthStatus,
+  user,
 }) => {
-  const [name, setName] = useState("");
-  const [isLoading, setLoading] = useState(true);
-  let user = name + "'s ";
-  if (user.length > 24) {
-    user = name.substring(0, 24) + "..";
-  }
-
-  useEffect(() => {
-    fetch("/api/auth/user", {
-      headers: {
-        "Content-type": "application/json",
-        "x-auth-token": localStorage.getItem("token"),
-      },
-    }).then((res) =>
-      res.json().then((data) => {
-        setName(data.name);
-        setLoading(false);
-      })
-    );
-  }, []);
+  const displayName = (user) => {
+    const name = user.name;
+    if (name.length > 8) {
+      return name.substring(0, 8) + "'s.. Journey";
+    } else {
+      return name + "'s Journey";
+    }
+  };
 
   return (
     <div className="sidebar">
       <div className="user">
-        <h2> {!isLoading && user + "Journey"}</h2>
+        <h2> {user && displayName(user)}</h2>
 
         <button
           id="logout"

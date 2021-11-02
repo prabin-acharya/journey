@@ -9,6 +9,7 @@ function App() {
   const [pages, setPages] = useState([]);
   const [openPage, setOpenPage] = useState("Journal");
   const [search, setSearch] = useState("");
+  const [user, setUser] = useState();
 
   const getUser = () => {
     fetch("/api/auth/user", {
@@ -26,6 +27,7 @@ function App() {
           setAuthStatus(false);
         } else {
           setAuthStatus(true);
+          res.json().then((data) => setUser(data));
         }
       })
       .catch((err) => {
@@ -49,7 +51,9 @@ function App() {
     }
   };
 
-  token && getUser();
+  useEffect(() => {
+    token && getUser();
+  }, []);
 
   useEffect(() => {
     authStatus && fetchPages();
@@ -72,12 +76,14 @@ function App() {
         setSearch={setSearch}
         openPage={openPage}
         setAuthStatus={setAuthStatus}
+        user={user}
       />
       <Main
         page={openPage}
         fetchPages={fetchPages}
         setOpenPage={setOpenPage}
         search={search}
+        user={user}
       />
     </div>
   );
