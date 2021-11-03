@@ -53,11 +53,8 @@ function App() {
 
   useEffect(() => {
     token && getUser();
-  }, []);
-
-  useEffect(() => {
     authStatus && fetchPages();
-  }, [authStatus]);
+  }, [authStatus, token]);
 
   if (!authStatus) {
     return (
@@ -75,7 +72,6 @@ function App() {
         search={search}
         setSearch={setSearch}
         openPage={openPage}
-        setAuthStatus={setAuthStatus}
         user={user}
       />
       <Main
@@ -84,6 +80,7 @@ function App() {
         setOpenPage={setOpenPage}
         search={search}
         user={user}
+        setAuthStatus={setAuthStatus}
       />
     </div>
   );

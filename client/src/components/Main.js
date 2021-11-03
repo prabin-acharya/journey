@@ -5,7 +5,14 @@ import Journal from "./Journal";
 import UserDropdown from "./UserDropdown";
 import { FiMoreHorizontal } from "react-icons/fi";
 
-const Main = ({ page, setOpenPage, fetchPages, search, user }) => {
+const Main = ({
+  page,
+  setOpenPage,
+  fetchPages,
+  search,
+  user,
+  setAuthStatus,
+}) => {
   const [showUserDropdown, setShowUserDropdown] = useState(false);
   const userProfileRef = useRef(null);
 
@@ -34,7 +41,7 @@ const Main = ({ page, setOpenPage, fetchPages, search, user }) => {
       />
       {showUserDropdown && (
         <div ref={userProfileRef}>
-          <UserDropdown user={user} />
+          <UserDropdown user={user} setAuthStatus={setAuthStatus} />
         </div>
       )}
 

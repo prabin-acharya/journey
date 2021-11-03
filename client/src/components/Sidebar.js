@@ -1,16 +1,7 @@
 import Searchbar from "./Searchbar";
 import Button from "./Button";
-import { BiLogOut } from "react-icons/bi";
 
-const Sidebar = ({
-  pages,
-  setOpenPage,
-  search,
-  setSearch,
-  openPage,
-  setAuthStatus,
-  user,
-}) => {
+const Sidebar = ({ pages, setOpenPage, search, setSearch, openPage, user }) => {
   const displayName = (user) => {
     const name = user.name;
     if (name.length > 8) {
@@ -24,17 +15,6 @@ const Sidebar = ({
     <div className="sidebar">
       <div className="user">
         <h2> {user && displayName(user)}</h2>
-
-        <button
-          id="logout"
-          title="Log Out"
-          onClick={() => {
-            localStorage.removeItem("token");
-            setAuthStatus(false);
-          }}
-        >
-          <BiLogOut className="bi-lg" size="25px" type="logo" />
-        </button>
       </div>
       <Searchbar search={search} setSearch={setSearch} />
       <Button
