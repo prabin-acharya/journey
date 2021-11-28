@@ -144,13 +144,12 @@ button {
 
 .main {
   width: 100%;
+  min-height: 100vh;
   margin-left: 250px;
-  padding-left: 180px;
-  padding-top: 70px;
+  padding: 70px 0px 250px 180px;
   font-size: 16px;
   position: relative;
   line-height: 1.4;
-  margin-bottom: 100px;
 }
 
 .more-icon {
@@ -176,6 +175,8 @@ button {
   border: 1px solid rgba(0, 0, 0, 0.04);
   box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14);
 }
+
+/*----------------------Journal--------------------- */
 
 .journal {
   width: 66%;
@@ -218,6 +219,10 @@ button {
   color: rgb(29, 161, 242);
   padding: 0px 8px;
 }
+
+/*---------------------------End Journal ---------------------*/
+
+/*--------------------------- Page --------------------------*/
 
 .page-heading {
   width: 100%;
@@ -290,6 +295,8 @@ button {
 .addpage .form-control-title input {
   font-size: 32px;
 }
+
+/* -------------End Page--------- */
 
 /* -----------------End main--------------- */
 
