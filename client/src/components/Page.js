@@ -1,5 +1,6 @@
 import { useState } from "react";
 import EditPage from "./EditPage";
+import ReactMarkdown from "react-markdown";
 import { BiPencil } from "react-icons/bi";
 
 const Page = ({ page, setOpenPage, fetchPages }) => {
@@ -20,9 +21,7 @@ const Page = ({ page, setOpenPage, fetchPages }) => {
           />
         )}
       </div>
-      {!editStatus && <p>{page.content}</p>}
-
-      {/* <h1>{page.title}</h1> */}
+      {!editStatus && <ReactMarkdown children={page.content} />}
     </div>
   );
 };
