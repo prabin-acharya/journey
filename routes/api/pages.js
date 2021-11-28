@@ -31,7 +31,11 @@ router.post("/", auth, (req, res) => {
 //@desc   Save a new page to array of pages
 //@access Private
 router.put("/", auth, (req, res) => {
-  const newPage = { title: req.body.title, content: req.body.content };
+  const newPage = {
+    title: req.body.title,
+    topics: req.body.arrayTopics,
+    content: req.body.content,
+  };
   Page.findOneAndUpdate(
     { userid: req.user.id },
     { $push: { pages: newPage } },
