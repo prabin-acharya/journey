@@ -150,6 +150,7 @@ button {
   font-size: 16px;
   position: relative;
   line-height: 1.4;
+  background: #efefef;
 }
 
 .more-icon {
@@ -208,6 +209,7 @@ button {
   margin: 6px 8px 0px 8px;
   padding: 12px 8px;
   white-space: pre-wrap;
+  background-color: white;
 }
 
 .note b {
@@ -224,20 +226,28 @@ button {
 
 /*--------------------------- Page --------------------------*/
 
+.page {
+  width: 80%;
+  height: 100%;
+  padding: 40px;
+  font-size: 22px;
+  align-items: left;
+  white-space: pre-wrap;
+  border: 1px solid red;
+  border-radius: 16px;
+  background-color: white;
+}
+
 .page-heading {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 10px;
-  font-size: 16px;
+  margin-bottom: 25px;
 }
-
-.page {
-  align-items: left;
-  width: 70%;
-  white-space: pre-wrap;
-  font-size: 20px;
+.page-heading h1 {
+  font-size: 44px;
+  font-weight: 700;
 }
 
 #page-edit-icon {
@@ -248,6 +258,12 @@ button {
   width: 800px;
   margin-top: 20px;
   padding: 4px 8px;
+}
+
+.editpage input,
+textarea {
+  border: none;
+  outline: none;
 }
 
 .editpage input {
@@ -268,10 +284,10 @@ button {
   font-size: 32px;
 }
 
-.addpage {
-  width: 800px;
-  margin-top: 20px;
-  padding: 4px 8px;
+.addpage input,
+textarea {
+  border: none;
+  outline: none;
 }
 
 .addpage input {
@@ -279,9 +295,23 @@ button {
   height: 45px;
   padding: 3px 18px;
   font-size: 16px;
-  margin: 25px 0px;
   padding: 8px 5px;
   margin-bottom: 8px;
+}
+
+.addpage .form-control-title input {
+  font-size: 44px;
+  font-weight: 700;
+  margin-bottom: 0px;
+}
+
+.addpage .form-control-topics input {
+  margin: 5px;
+  margin-bottom: 10px;
+  word-spacing: 4px;
+  letter-spacing: 1px;
+  padding: 3px 7px;
+  font-size: 18px;
 }
 
 .addpage textarea {
@@ -289,11 +319,12 @@ button {
   height: 400px;
   margin: 5px;
   padding: 3px 7px;
-  font-size: 20px;
+  font-size: 22px;
+  letter-spacing: 1px;
 }
 
-.addpage .form-control-title input {
-  font-size: 32px;
+.addpage button {
+  margin-top: 10px;
 }
 
 /* -------------End Page--------- */
