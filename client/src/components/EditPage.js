@@ -35,22 +35,24 @@ const EditPage = ({ page, setOpenPage, fetchPages, setEditStatus }) => {
 
   return (
     <form className="editpage" onSubmit={onSubmit}>
-      <div className="form-control-title">
-        <input
-          className="title"
-          type="text"
-          placeholder="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-      </div>
-      <div className="form-control">
-        <textarea
-          type="text"
-          placeholder="Content"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-        />
+      <div className="page">
+        <div className="form-control-title">
+          <input
+            className="title"
+            type="text"
+            placeholder="Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+        </div>
+        <div className="form-control">
+          <textarea
+            type="text"
+            placeholder="Content"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+          />
+        </div>
       </div>
       <button type="submit" className="btn">
         Save Page

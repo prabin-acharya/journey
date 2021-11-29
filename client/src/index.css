@@ -243,21 +243,31 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 25px;
 }
 .page-heading h1 {
   font-size: 44px;
   font-weight: 700;
 }
 
+.page-topics {
+  color: rgb(29, 161, 242);
+  font-size: 20px;
+  font-weight: 300;
+  margin-bottom: 30px;
+}
+
+.page-topic {
+  padding: 2px 6px 2px 0px;
+  margin: 0px 10px;
+}
+
 #page-edit-icon {
   cursor: pointer;
 }
 
-.editpage {
-  width: 800px;
-  margin-top: 20px;
-  padding: 4px 8px;
+.page-content {
+  line-height: 36px;
+  word-spacing: 4px;
 }
 
 .editpage input,
@@ -271,17 +281,27 @@ textarea {
   height: 45px;
   padding: 3px 18px;
   font-size: 16px;
-  margin: 8px 0px;
   padding: 8px 5px;
-}
-
-.editpage textarea {
-  font-size: 20px;
-  height: 400px;
+  margin-bottom: 8px;
 }
 
 .editpage .form-control-title input {
-  font-size: 32px;
+  font-size: 44px;
+  font-weight: 700;
+  margin-bottom: 0px;
+}
+
+.editpage textarea {
+  width: 100%;
+  height: 400px;
+  margin: 5px;
+  padding: 3px 7px;
+  font-size: 22px;
+  letter-spacing: 1px;
+}
+
+.editpage button {
+  margin-top: 10px;
 }
 
 .addpage input,
