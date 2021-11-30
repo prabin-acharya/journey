@@ -4,6 +4,23 @@ import React from "react";
 const EditPage = ({ page, setOpenPage, fetchPages, setEditStatus }) => {
   const [title, setTitle] = useState(page.title);
   const [content, setContent] = useState(page.content);
+  const [strTopics, setStrTopics] = useState(
+    page.topics ? page.topics.toString().replace(/,/g, ", ") : ""
+  );
+  console.log(page.topics);
+
+  const addTopics = (newtopics) => {
+    if (newtopics.length > strTopics.length) {
+      if (newtopics.substr(newtopics.length - 1) === ",") {
+        newtopics = newtopics + " ";
+        setStrTopics(newtopics);
+      } else {
+        setStrTopics(newtopics);
+      }
+    } else {
+      setStrTopics(newtopics);
+    }
+  };
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -11,7 +28,8 @@ const EditPage = ({ page, setOpenPage, fetchPages, setEditStatus }) => {
       alert("Please add a title!");
       return;
     }
-    const newPage = { _id: page._id, title, content };
+    const topics = strTopics.split(", ");
+    const newPage = { _id: page._id, title, topics, content };
     editPage(newPage);
   };
 
@@ -22,7 +40,7 @@ const EditPage = ({ page, setOpenPage, fetchPages, setEditStatus }) => {
         "Content-type": "application/json",
         "x-auth-token": localStorage.getItem("token"),
       },
-      body: JSON.stringify({ title, content }),
+      body: JSON.stringify(newPage),
     })
       .then(() => {
         fetchPages().then(() => {
@@ -43,6 +61,15 @@ const EditPage = ({ page, setOpenPage, fetchPages, setEditStatus }) => {
             placeholder="Title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+          />
+        </div>
+        <div className="form-control-topics">
+          <input
+            className="title"
+            type="text"
+            placeholder="Add Relevant topics.."
+            value={strTopics}
+            onChange={(e) => addTopics(e.target.value)}
           />
         </div>
         <div className="form-control">

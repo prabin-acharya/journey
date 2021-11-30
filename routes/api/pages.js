@@ -60,6 +60,7 @@ router.put("/:id", auth, async (req, res) => {
       {
         $set: {
           "pages.$.title": req.body.title,
+          "pages.$.topics": req.body.topics,
           "pages.$.content": req.body.content,
         },
       },

@@ -5,7 +5,7 @@ import { BiPencil } from "react-icons/bi";
 
 const Page = ({ page, setOpenPage, fetchPages }) => {
   const [editStatus, setEditStatus] = useState(false);
-  console.log(page.topics);
+
   return (
     <>
       {editStatus ? (
