@@ -5,18 +5,17 @@ import { CgProfile } from "react-icons/cg";
 const UserDropdown = ({ user, setAuthStatus }) => {
   return (
     <div className="user-profile-dropdown">
-      <div className="test-user">
-        <div className="user-details">
-          <span className="user-profile-icon">
-            <CgProfile size={30} />
-          </span>
-          <span clasname="name-email">
-            <span className="user-name">{user.name}</span>
-            <br />
-            <span className="user-email">{user.email}</span>
-          </span>
-        </div>
+      <div className="user-details">
+        <span className="user-profile-icon">
+          <CgProfile size={30} color="#c4c4c1" />
+        </span>
+        <span classname="name-email">
+          <span className="user-name">{user.name}</span>
+          <br />
+          <span className="user-email">{user.email}</span>
+        </span>
       </div>
+      <hr />
       <div
         className="user-logout"
         onClick={() => {

@@ -173,17 +173,25 @@ button {
   right: 20px;
   width: 280px;
   z-index: 2;
-  padding: 10px 10px;
-  border: 1px solid #efefee;
+  padding-top: 5px;
+  padding-bottom: 5px;
   border-radius: 3px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 6px;
+  border: 1px solid #efefee;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+hr {
+  border: 1px solid #ebeae9;
+  border-bottom: none;
 }
 
 .user-details {
   display: flex;
   align-items: center;
-  /* border: 1px solid black; */
   cursor: pointer;
+  margin-bottom: 5px;
+  padding: 10px 0px;
+  padding-left: 15px;
 }
 .user-details:hover {
   background-color: #efefee;
@@ -194,23 +202,24 @@ button {
 }
 
 .user-name {
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 600;
-  padding: 0px;
-  margin: 0px;
+  color: #5f5d59;
 }
 
 .user-email {
   font-size: 12px;
   font-weight: 600;
-  margin: 0px;
+  color: #bfbfbc;
 }
 
 .user-logout {
-  /* border: 1px solid black; */
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 600;
-  padding: 0px 5px;
+  color: #c4c4c1;
+  margin-top: 5px;
+  padding: 4px 0px;
+  padding-left: 15px;
   cursor: pointer;
 }
 .user-logout:hover {
