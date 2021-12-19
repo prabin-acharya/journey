@@ -29,8 +29,10 @@ const Sidebar = ({ pages, setOpenPage, search, setSearch, openPage, user }) => {
             pages.map((page) => (
               <Button
                 id={openPage._id === page._id ? "button-clicked" : ""}
+                search={search}
                 key={page._id}
                 text={page.title}
+                topics={page.topics}
                 onClick={() => setOpenPage(page)}
               />
             ))}

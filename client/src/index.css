@@ -133,6 +133,10 @@ button {
   background: rgba(223, 215, 212, 0.822);
 }
 
+.search-highlight {
+  background: rgba(223, 215, 212, 0.822);
+}
+
 .sidebar input {
   width: 230px;
   margin: 25px 10px;
