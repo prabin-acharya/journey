@@ -4,21 +4,19 @@ import React from "react";
 const EditPage = ({ page, setOpenPage, fetchPages, setEditStatus }) => {
   const [title, setTitle] = useState(page.title);
   const [content, setContent] = useState(page.content);
-  const [strTopics, setStrTopics] = useState(
+  const [topics, setTopics] = useState(
     page.topics ? page.topics.toString().replace(/,/g, ", ") : ""
   );
   console.log(page.topics);
 
+  //add space after comma
   const addTopics = (newtopics) => {
-    if (newtopics.length > strTopics.length) {
-      if (newtopics.substr(newtopics.length - 1) === ",") {
-        newtopics = newtopics + " ";
-        setStrTopics(newtopics);
-      } else {
-        setStrTopics(newtopics);
-      }
+    if (newtopics.length > topics.length) {
+      newtopics.slice(-1) === ","
+        ? setTopics(newtopics + " ")
+        : setTopics(newtopics);
     } else {
-      setStrTopics(newtopics);
+      setTopics(newtopics);
     }
   };
 
@@ -28,8 +26,9 @@ const EditPage = ({ page, setOpenPage, fetchPages, setEditStatus }) => {
       alert("Please add a title!");
       return;
     }
-    const topics = strTopics.split(", ");
-    const newPage = { _id: page._id, title, topics, content };
+    let arrayTopics = topics.split(", ");
+    arrayTopics = arrayTopics.filter((topics) => topics.trim() !== "");
+    const newPage = { _id: page._id, title, arrayTopics, content };
     editPage(newPage);
   };
 
@@ -68,7 +67,7 @@ const EditPage = ({ page, setOpenPage, fetchPages, setEditStatus }) => {
             className="title"
             type="text"
             placeholder="Add Relevant topics.."
-            value={strTopics}
+            value={topics}
             onChange={(e) => addTopics(e.target.value)}
           />
         </div>
