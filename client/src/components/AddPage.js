@@ -24,14 +24,12 @@ const AddPage = ({ fetchPages, setOpenPage }) => {
       .catch((err) => console.log(err));
   };
 
+  //add space after comma
   const addTopics = (newtopics) => {
     if (newtopics.length > topics.length) {
-      if (newtopics.substr(newtopics.length - 1) === ",") {
-        newtopics = newtopics + " ";
-        setTopics(newtopics);
-      } else {
-        setTopics(newtopics);
-      }
+      newtopics.slice(-1) === ","
+        ? setTopics(newtopics + " ")
+        : setTopics(newtopics);
     } else {
       setTopics(newtopics);
     }
