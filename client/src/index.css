@@ -204,19 +204,18 @@ hr {
 .user-name {
   font-size: 18px;
   font-weight: 600;
-  color: #5f5d59;
 }
 
 .user-email {
   font-size: 12px;
   font-weight: 600;
-  color: #bfbfbc;
+  color: #727270;
 }
 
 .user-logout {
   font-size: 13px;
   font-weight: 600;
-  color: #c4c4c1;
+  color: #727270;
   margin-top: 5px;
   padding: 4px 0px;
   padding-left: 15px;
