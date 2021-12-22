@@ -133,6 +133,10 @@ button {
   background: rgba(223, 215, 212, 0.822);
 }
 
+.search-highlight {
+  background: rgba(223, 215, 212, 0.822);
+}
+
 .sidebar input {
   width: 230px;
   margin: 25px 10px;
@@ -144,13 +148,13 @@ button {
 
 .main {
   width: 100%;
+  min-height: 100vh;
   margin-left: 250px;
-  padding-left: 180px;
-  padding-top: 70px;
+  padding: 70px 0px 250px 180px;
   font-size: 16px;
   position: relative;
   line-height: 1.4;
-  margin-bottom: 100px;
+  background: #efefef;
 }
 
 .more-icon {
@@ -225,6 +229,8 @@ hr {
   background-color: #efefee;
 }
 
+/*----------------------Journal--------------------- */
+
 .journal {
   width: 66%;
   overflow: hidden;
@@ -255,6 +261,7 @@ hr {
   margin: 6px 8px 0px 8px;
   padding: 12px 8px;
   white-space: pre-wrap;
+  background-color: white;
 }
 
 .note b {
@@ -267,30 +274,58 @@ hr {
   padding: 0px 8px;
 }
 
+/*---------------------------End Journal ---------------------*/
+
+/*--------------------------- Page --------------------------*/
+
+.page {
+  width: 80%;
+  height: 100%;
+  padding: 40px;
+  font-size: 22px;
+  align-items: left;
+  white-space: pre-wrap;
+  border: 1px solid red;
+  border-radius: 12px;
+  background-color: white;
+}
+
 .page-heading {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 10px;
-  font-size: 16px;
+}
+.page-heading h1 {
+  font-size: 44px;
+  font-weight: 700;
 }
 
-.page {
-  align-items: left;
-  width: 70%;
-  white-space: pre-wrap;
+.page-topics {
+  color: rgb(29, 161, 242);
   font-size: 20px;
+  font-weight: 300;
+  margin-bottom: 30px;
+}
+
+.page-topic {
+  padding: 2px 6px 2px 0px;
+  margin: 0px 10px;
 }
 
 #page-edit-icon {
   cursor: pointer;
 }
 
-.editpage {
-  width: 800px;
-  margin-top: 20px;
-  padding: 4px 8px;
+.page-content {
+  line-height: 36px;
+  word-spacing: 4px;
+}
+
+.editpage input,
+textarea {
+  border: none;
+  outline: none;
 }
 
 .editpage input {
@@ -298,23 +333,42 @@ hr {
   height: 45px;
   padding: 3px 18px;
   font-size: 16px;
-  margin: 8px 0px;
   padding: 8px 5px;
-}
-
-.editpage textarea {
-  font-size: 20px;
-  height: 400px;
+  margin-bottom: 8px;
 }
 
 .editpage .form-control-title input {
-  font-size: 32px;
+  font-size: 44px;
+  font-weight: 700;
+  margin-bottom: 0px;
 }
 
-.addpage {
-  width: 800px;
-  margin-top: 20px;
-  padding: 4px 8px;
+.editpage .form-control-topics input {
+  margin: 5px;
+  margin-bottom: 10px;
+  word-spacing: 4px;
+  letter-spacing: 1px;
+  padding: 3px 7px;
+  font-size: 18px;
+}
+
+.editpage textarea {
+  width: 100%;
+  height: 400px;
+  margin: 5px;
+  padding: 3px 7px;
+  font-size: 22px;
+  letter-spacing: 1px;
+}
+
+.editpage button {
+  margin-top: 10px;
+}
+
+.addpage input,
+textarea {
+  border: none;
+  outline: none;
 }
 
 .addpage input {
@@ -322,9 +376,23 @@ hr {
   height: 45px;
   padding: 3px 18px;
   font-size: 16px;
-  margin: 25px 0px;
   padding: 8px 5px;
   margin-bottom: 8px;
+}
+
+.addpage .form-control-title input {
+  font-size: 44px;
+  font-weight: 700;
+  margin-bottom: 0px;
+}
+
+.addpage .form-control-topics input {
+  margin: 5px;
+  margin-bottom: 10px;
+  word-spacing: 4px;
+  letter-spacing: 1px;
+  padding: 3px 7px;
+  font-size: 18px;
 }
 
 .addpage textarea {
@@ -332,12 +400,15 @@ hr {
   height: 400px;
   margin: 5px;
   padding: 3px 7px;
-  font-size: 20px;
+  font-size: 22px;
+  letter-spacing: 1px;
 }
 
-.addpage .form-control-title input {
-  font-size: 32px;
+.addpage button {
+  margin-top: 10px;
 }
+
+/* -------------End Page--------- */
 
 /* -----------------End main--------------- */
 
