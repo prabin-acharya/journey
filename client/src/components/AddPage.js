@@ -39,7 +39,7 @@ const AddPage = ({ fetchPages, setOpenPage }) => {
     e.preventDefault();
     let arrayTopics = topics.split(", ");
     arrayTopics = arrayTopics.filter((topics) => topics.trim() !== "");
-    addPage({ title, content, arrayTopics });
+    addPage({ title, topics: arrayTopics, content });
   };
 
   return (

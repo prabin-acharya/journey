@@ -7,7 +7,6 @@ const EditPage = ({ page, setOpenPage, fetchPages, setEditStatus }) => {
   const [topics, setTopics] = useState(
     page.topics ? page.topics.toString().replace(/,/g, ", ") : ""
   );
-  console.log(page.topics);
 
   //add space after comma
   const addTopics = (newtopics) => {
@@ -28,7 +27,7 @@ const EditPage = ({ page, setOpenPage, fetchPages, setEditStatus }) => {
     }
     let arrayTopics = topics.split(", ");
     arrayTopics = arrayTopics.filter((topics) => topics.trim() !== "");
-    const newPage = { _id: page._id, title, arrayTopics, content };
+    const newPage = { _id: page._id, title, topics: arrayTopics, content };
     editPage(newPage);
   };
 

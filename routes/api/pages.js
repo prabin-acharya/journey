@@ -33,7 +33,7 @@ router.post("/", auth, (req, res) => {
 router.put("/", auth, (req, res) => {
   const newPage = {
     title: req.body.title,
-    topics: req.body.arrayTopics,
+    topics: req.body.topics,
     content: req.body.content,
   };
   Page.findOneAndUpdate(
