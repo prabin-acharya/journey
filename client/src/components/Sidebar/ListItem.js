@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const Button = ({ search, text, topics, onClick, id }) => {
+const ListItem = ({ search, text, topics, onClick, id }) => {
   const [highlight, setHighlight] = useState(false);
   const charLimit = 27;
 
@@ -20,16 +20,10 @@ const Button = ({ search, text, topics, onClick, id }) => {
   }, [search, topics, highlight]);
 
   return (
-    <div>
-      <button
-        id={id}
-        onClick={onClick}
-        className={highlight ? "search-highlight" : null}
-      >
-        <strong>{text}</strong>
-      </button>
+    <div id={id} className={"page-list"} onClick={onClick}>
+      <strong>{text}</strong>
     </div>
   );
 };
 
-export default Button;
+export default ListItem;

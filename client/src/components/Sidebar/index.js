@@ -1,5 +1,5 @@
 import Searchbar from "./Searchbar";
-import Button from "./Button";
+import ListItem from "./ListItem";
 
 const Sidebar = ({ pages, setOpenPage, search, setSearch, openPage, user }) => {
   const displayName = (user) => {
@@ -17,7 +17,7 @@ const Sidebar = ({ pages, setOpenPage, search, setSearch, openPage, user }) => {
         <h2> {user && displayName(user)}</h2>
       </div>
       <Searchbar search={search} setSearch={setSearch} />
-      <Button
+      <ListItem
         text="Daily Journal"
         onClick={() => setOpenPage("Journal")}
         id={openPage === "Journal" ? "button-clicked" : ""}
@@ -27,19 +27,21 @@ const Sidebar = ({ pages, setOpenPage, search, setSearch, openPage, user }) => {
         <ul>
           {pages[0] &&
             pages.map((page) => (
-              <Button
-                id={openPage._id === page._id ? "button-clicked" : ""}
-                search={search}
-                key={page._id}
-                text={page.title}
-                topics={page.topics}
-                onClick={() => setOpenPage(page)}
-              />
+              <li>
+                <ListItem
+                  id={openPage._id === page._id ? "button-clicked" : ""}
+                  key={page._id}
+                  search={search}
+                  text={page.title}
+                  topics={page.topics}
+                  onClick={() => setOpenPage(page)}
+                />
+              </li>
             ))}
         </ul>
       </div>
 
-      <Button
+      <ListItem
         text="Add Page"
         onClick={() => setOpenPage("AddPage")}
         id={openPage === "AddPage" ? "button-clicked" : ""}
