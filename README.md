@@ -30,6 +30,7 @@ blogs, essays
 - I tried implementing redux but found it too complex. I was just starting with react and just got overwhelmed so decided to understand React a little better first .
 
 ## If I had more time I would change this
+- Implement some sort of version history for pages, would be a fun challenge.
 - URLs for each pages: would make easier to directly visit a particular page, bookmark, and create links.
 - Improve authentication: Currently, the app stores JWT tokens in local Storage for authentication which is not totally secure.
 - Make the Add Page/Edit Page form more intuitive, where you can just start typing and the page will be saved automatically. Remove edit Page.
