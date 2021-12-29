@@ -27,7 +27,7 @@ const Sidebar = ({ pages, setOpenPage, search, setSearch, openPage, user }) => {
         <ul>
           {pages[0] &&
             pages.map((page) => (
-              <li>
+              <li key={page._id}>
                 <ListItem
                   id={openPage._id === page._id ? "button-clicked" : ""}
                   key={page._id}

@@ -1,5 +1,4 @@
 import React from "react";
-import { BiLogOut } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
 
 const UserDropdown = ({ user, setAuthStatus }) => {

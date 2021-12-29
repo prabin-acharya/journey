@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import React from "react";
 
 const EditPage = ({ page, setOpenPage, fetchPages, setEditStatus }) => {
@@ -48,12 +48,6 @@ const EditPage = ({ page, setOpenPage, fetchPages, setEditStatus }) => {
       })
       .catch((err) => console.log(err));
   };
-
-  useEffect(() => {
-    return () => {
-      setEditStatus(false);
-    };
-  });
 
   return (
     <form className="editpage" onSubmit={onSubmit}>
