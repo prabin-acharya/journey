@@ -1,5 +1,6 @@
 import Searchbar from "./Searchbar";
 import ListItem from "./ListItem";
+import { IoIosArrowDown } from "react-icons/io";
 
 const Sidebar = ({ pages, setOpenPage, search, setSearch, openPage, user }) => {
   const displayName = (user) => {
@@ -14,7 +15,7 @@ const Sidebar = ({ pages, setOpenPage, search, setSearch, openPage, user }) => {
   return (
     <div className="sidebar">
       <div className="user">
-        <h2> {user && displayName(user)}</h2>
+        {user && displayName(user)} <IoIosArrowDown />
       </div>
       <Searchbar search={search} setSearch={setSearch} />
       <ListItem
