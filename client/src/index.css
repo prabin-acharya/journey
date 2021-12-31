@@ -156,7 +156,6 @@ button {
   margin-left: 250px;
   padding: 70px 0px 250px 180px;
   font-size: 16px;
-  position: relative;
   line-height: 1.4;
   background: #efefef;
 }
@@ -178,10 +177,9 @@ button {
 .user-profile-dropdown {
   position: fixed;
   top: 45px;
-  right: 20px;
-  width: 280px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  left: 10px;
+  width: 260px;
+  padding: 5px 0px;
   border-radius: 3px;
   border: 1px solid #efefee;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -237,7 +235,7 @@ hr {
 
 .journal {
   width: 66%;
-  overflow: hidden;
+  /* overflow: hidden; */
   padding: 5px 5px;
 }
 

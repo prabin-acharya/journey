@@ -73,6 +73,7 @@ function App() {
         setSearch={setSearch}
         openPage={openPage}
         user={user}
+        setAuthStatus={setAuthStatus}
       />
       <Main
         page={openPage}

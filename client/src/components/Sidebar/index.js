@@ -1,8 +1,36 @@
+import { useState, useEffect, useRef } from "react";
+import UserDropdown from "./../UserDropdown";
+
 import Searchbar from "./Searchbar";
 import ListItem from "./ListItem";
 import { IoIosArrowDown } from "react-icons/io";
 
-const Sidebar = ({ pages, setOpenPage, search, setSearch, openPage, user }) => {
+const Sidebar = ({
+  pages,
+  setOpenPage,
+  search,
+  setSearch,
+  openPage,
+  user,
+  setAuthStatus,
+}) => {
+  const [showUserDropdown, setShowUserDropdown] = useState(false);
+  const userProfileRef = useRef(null);
+  const handleClickOutside = (event) => {
+    if (
+      userProfileRef.current &&
+      !userProfileRef.current.contains(event.target)
+    ) {
+      setShowUserDropdown(false);
+    }
+  };
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   const displayName = (user) => {
     const name = user.name;
     if (name.length > 8) {
@@ -14,9 +42,15 @@ const Sidebar = ({ pages, setOpenPage, search, setSearch, openPage, user }) => {
 
   return (
     <div className="sidebar">
-      <div className="user">
+      <div className="user" onClick={() => setShowUserDropdown(true)}>
         {user && displayName(user)} <IoIosArrowDown />
       </div>
+      {showUserDropdown && (
+        <div ref={userProfileRef}>
+          <UserDropdown user={user} setAuthStatus={setAuthStatus} />
+        </div>
+      )}
+
       <Searchbar search={search} setSearch={setSearch} />
       <ListItem
         text="Daily Journal"
