@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Page from "./components/Page";
+import LoginPage from "./components/auth/LoginPage";
 import Sidebar from "./components/Sidebar";
 import Journal from "./components/Journal";
-import Main from "./components/Main";
-import LoginPage from "./components/auth/LoginPage";
+import Page from "./components/Page";
 import EditPage from "./components/EditPage";
 import AddPage from "./components/AddPage";
 
@@ -81,48 +80,43 @@ function App() {
           user={user}
           setAuthStatus={setAuthStatus}
         />
-        <Routes>
-          <Route path="/" element={<Journal />} />
-          {pages.map((page) => {
-            return (
-              <Route
-                path={`/${page.title}`}
-                element={
-                  <Page
-                    page={page}
-                    setOpenPage={setOpenPage}
-                    fetchPages={fetchPages}
-                  />
-                }
-              ></Route>
-            );
-          })}
-          {pages.map((page) => {
-            return (
-              <Route
-                path={`/${page.title}/edit`}
-                element={
-                  <EditPage
-                    page={page}
-                    setOpenPage={setOpenPage}
-                    fetchPages={fetchPages}
-                  />
-                }
-              ></Route>
-            );
-          })}
-          <Route
-            path="/AddPage"
-            element={<AddPage fetchPages={fetchPages} />}
-          />
-        </Routes>
-
-        {/* <Main
-          page={openPage}
-          fetchPages={fetchPages}
-          setOpenPage={setOpenPage}
-          search={search}
-        /> */}
+        <div className="main">
+          <Routes>
+            <Route path="/" element={<Journal />} />
+            {pages.map((page) => {
+              return (
+                <Route
+                  path={`/${page.title}`}
+                  element={
+                    <Page
+                      page={page}
+                      setOpenPage={setOpenPage}
+                      fetchPages={fetchPages}
+                    />
+                  }
+                ></Route>
+              );
+            })}
+            {pages.map((page) => {
+              return (
+                <Route
+                  path={`/${page.title}/edit`}
+                  element={
+                    <EditPage
+                      page={page}
+                      setOpenPage={setOpenPage}
+                      fetchPages={fetchPages}
+                    />
+                  }
+                ></Route>
+              );
+            })}
+            <Route
+              path="/AddPage"
+              element={<AddPage fetchPages={fetchPages} />}
+            />
+          </Routes>
+        </div>
       </div>
     </BrowserRouter>
   );

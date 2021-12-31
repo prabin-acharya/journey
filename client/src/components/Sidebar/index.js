@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import UserDropdown from "./../UserDropdown";
-
 import Searchbar from "./Searchbar";
 import ListItem from "./ListItem";
 import { IoIosArrowDown } from "react-icons/io";

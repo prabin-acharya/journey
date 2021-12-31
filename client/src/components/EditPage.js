@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import React from "react";
 
@@ -51,41 +51,39 @@ const EditPage = ({ page, fetchPages }) => {
   };
 
   return (
-    <div className="main">
-      <form className="editpage" onSubmit={onSubmit}>
-        <div className="page">
-          <div className="form-control-title">
-            <input
-              className="title"
-              type="text"
-              placeholder="Title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-          </div>
-          <div className="form-control-topics">
-            <input
-              className="title"
-              type="text"
-              placeholder="Add Relevant topics.."
-              value={topics}
-              onChange={(e) => addTopics(e.target.value)}
-            />
-          </div>
-          <div className="form-control">
-            <textarea
-              type="text"
-              placeholder="Content"
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
-            />
-          </div>
+    <form className="editpage" onSubmit={onSubmit}>
+      <div className="page">
+        <div className="form-control-title">
+          <input
+            className="title"
+            type="text"
+            placeholder="Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
         </div>
-        <button type="submit" className="btn">
-          Save Page
-        </button>
-      </form>
-    </div>
+        <div className="form-control-topics">
+          <input
+            className="title"
+            type="text"
+            placeholder="Add Relevant topics.."
+            value={topics}
+            onChange={(e) => addTopics(e.target.value)}
+          />
+        </div>
+        <div className="form-control">
+          <textarea
+            type="text"
+            placeholder="Content"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+          />
+        </div>
+      </div>
+      <button type="submit" className="btn">
+        Save Page
+      </button>
+    </form>
   );
 };
 
