@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import UserDropdown from "./../UserDropdown";
 
 import Searchbar from "./Searchbar";
@@ -52,35 +53,40 @@ const Sidebar = ({
       )}
 
       <Searchbar search={search} setSearch={setSearch} />
-      <ListItem
-        text="Daily Journal"
-        onClick={() => setOpenPage("Journal")}
-        id={openPage === "Journal" ? "button-clicked" : ""}
-      />
+      <Link to="/">
+        <ListItem
+          text="Daily Journal"
+          onClick={() => setOpenPage("Journal")}
+          id={openPage === "Journal" ? "button-clicked" : ""}
+        />
+      </Link>
 
       <div className="pages-sidebar">
         <ul>
           {pages[0] &&
             pages.map((page) => (
               <li>
-                <ListItem
-                  id={openPage._id === page._id ? "button-clicked" : ""}
-                  key={page._id}
-                  search={search}
-                  text={page.title}
-                  topics={page.topics}
-                  onClick={() => setOpenPage(page)}
-                />
+                <Link to={`/${page.title}`}>
+                  <ListItem
+                    id={openPage._id === page._id ? "button-clicked" : ""}
+                    key={page._id}
+                    search={search}
+                    text={page.title}
+                    topics={page.topics}
+                    onClick={() => setOpenPage(page)}
+                  />
+                </Link>
               </li>
             ))}
         </ul>
       </div>
-
-      <ListItem
-        text="Add Page"
-        onClick={() => setOpenPage("AddPage")}
-        id={openPage === "AddPage" ? "button-clicked" : ""}
-      />
+      <Link to="AddPage">
+        <ListItem
+          text="Add Page"
+          onClick={() => setOpenPage("AddPage")}
+          id={openPage === "AddPage" ? "button-clicked" : ""}
+        />
+      </Link>
     </div>
   );
 };

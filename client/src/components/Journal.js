@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import AddNote from "./AddNote";
 import Note from "./Note";
 
-const Journal = ({ search }) => {
+const Journal = ({ search = "" }) => {
   const [notes, setNotes] = useState([]);
   const [searchedNotes, setSearchedNotes] = useState(notes);
 
@@ -40,17 +40,19 @@ const Journal = ({ search }) => {
   }, [search, notes]);
 
   return (
-    <div className="journal">
-      <span className="name">
-        <h1>Journal</h1>
-      </span>
-      <div>
-        Document your journey- thoughts, ideas, daily happenings.
-        <br />
-        Keep track of your progress, take notes.
+    <div className="main">
+      <div className="journal">
+        <span className="name">
+          <h1>Journal</h1>
+        </span>
+        <div>
+          Document your journey- thoughts, ideas, daily happenings.
+          <br />
+          Keep track of your progress, take notes.
+        </div>
+        <AddNote fetchJournal={fetchJournal} />
+        {searchedNotes[0] && searchedNotes.map((note) => Note(note))}
       </div>
-      <AddNote fetchJournal={fetchJournal} />
-      {searchedNotes[0] && searchedNotes.map((note) => Note(note))}
     </div>
   );
 };

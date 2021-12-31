@@ -7,7 +7,7 @@ const Page = ({ page, setOpenPage, fetchPages }) => {
   const [editStatus, setEditStatus] = useState(false);
 
   return (
-    <>
+    <div className="main">
       {editStatus ? (
         <EditPage
           page={page}
@@ -38,7 +38,7 @@ const Page = ({ page, setOpenPage, fetchPages }) => {
           </span>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

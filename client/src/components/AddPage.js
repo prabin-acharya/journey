@@ -43,39 +43,41 @@ const AddPage = ({ fetchPages, setOpenPage }) => {
   };
 
   return (
-    <form className="addpage" onSubmit={onSubmit}>
-      <div className="page">
-        <div className="form-control-title">
-          <input
-            className="title"
-            type="text"
-            placeholder="Untitled"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
+    <div className="main">
+      <form className="addpage" onSubmit={onSubmit}>
+        <div className="page">
+          <div className="form-control-title">
+            <input
+              className="title"
+              type="text"
+              placeholder="Untitled"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+          </div>
+          <div className="form-control-topics">
+            <input
+              className="title"
+              type="text"
+              placeholder="Add Relevant topics.."
+              value={topics}
+              onChange={(e) => addTopics(e.target.value)}
+            />
+          </div>
+          <div className="form-control">
+            <textarea
+              type="text"
+              placeholder="Start writing here..."
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+            />
+          </div>
         </div>
-        <div className="form-control-topics">
-          <input
-            className="title"
-            type="text"
-            placeholder="Add Relevant topics.."
-            value={topics}
-            onChange={(e) => addTopics(e.target.value)}
-          />
-        </div>
-        <div className="form-control">
-          <textarea
-            type="text"
-            placeholder="Start writing here..."
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-          />
-        </div>
-      </div>
-      <button disabled={!title.trim()} type="submit" className="btn">
-        Save Page
-      </button>
-    </form>
+        <button disabled={!title.trim()} type="submit" className="btn">
+          Save Page
+        </button>
+      </form>
+    </div>
   );
 };
 
