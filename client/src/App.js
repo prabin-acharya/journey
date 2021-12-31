@@ -97,6 +97,20 @@ function App() {
               ></Route>
             );
           })}
+          {pages.map((page) => {
+            return (
+              <Route
+                path={`/${page.title}/edit`}
+                element={
+                  <EditPage
+                    page={page}
+                    setOpenPage={setOpenPage}
+                    fetchPages={fetchPages}
+                  />
+                }
+              ></Route>
+            );
+          })}
           <Route path="/AddPage" element={<AddPage />} />
         </Routes>
 
