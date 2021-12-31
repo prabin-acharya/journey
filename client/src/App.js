@@ -111,7 +111,10 @@ function App() {
               ></Route>
             );
           })}
-          <Route path="/AddPage" element={<AddPage />} />
+          <Route
+            path="/AddPage"
+            element={<AddPage fetchPages={fetchPages} />}
+          />
         </Routes>
 
         {/* <Main

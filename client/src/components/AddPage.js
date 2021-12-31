@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router";
 import React from "react";
 
-const AddPage = ({ fetchPages, setOpenPage }) => {
+const AddPage = ({ fetchPages }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [topics, setTopics] = useState("");
+  const navigate = useNavigate();
 
   //Add Page
   const addPage = (page) => {
@@ -19,7 +21,8 @@ const AddPage = ({ fetchPages, setOpenPage }) => {
       .then((res) => res.json())
       .then((addedPage) => {
         addedPage = addedPage.raw.pages;
-        fetchPages().then(() => setOpenPage(addedPage[addedPage.length - 1]));
+        addedPage = addedPage[addedPage.length - 1];
+        fetchPages().then(() => navigate(`/${addedPage.title}`));
       })
       .catch((err) => console.log(err));
   };
