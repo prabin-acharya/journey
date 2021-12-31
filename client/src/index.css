@@ -68,6 +68,11 @@ button {
   font-size: 15px;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
 /* ----------Sidebar-----------  */
 .sidebar {
   background-color: rgba(214, 186, 171, 0.178);
