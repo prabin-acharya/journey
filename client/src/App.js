@@ -80,8 +80,6 @@ function App() {
         fetchPages={fetchPages}
         setOpenPage={setOpenPage}
         search={search}
-        user={user}
-        setAuthStatus={setAuthStatus}
       />
     </div>
   );
