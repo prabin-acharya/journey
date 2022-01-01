@@ -33,7 +33,6 @@ blogs, essays
 - Implement some sort of version history for pages, would be a fun challenge.
 - URLs for each pages: would make easier to directly visit a particular page, bookmark, and create links.
 - Improve authentication: Currently, the app stores JWT tokens in local Storage for authentication which is not totally secure.
-- Make the Add Page/Edit Page form more intuitive, where you can just start typing and the page will be saved automatically. Remove edit Page.
 - Add tests: Testing is an essential part of production applications. Cover the essential features of the app with tests.
 
 ## Built Using
