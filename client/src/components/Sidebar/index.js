@@ -65,7 +65,7 @@ const Sidebar = ({
           {pages[0] &&
             pages.map((page) => (
               <li>
-                <Link to={`/${page.title}`}>
+                <Link to={`/${page.title.replace(/\s+/g, "-")}-${page._id}`}>
                   <ListItem
                     id={openPage._id === page._id ? "button-clicked" : ""}
                     key={page._id}

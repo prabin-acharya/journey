@@ -29,7 +29,12 @@ const EditPage = ({ page, fetchPages }) => {
     }
     let arrayTopics = topics.split(", ");
     arrayTopics = arrayTopics.filter((topics) => topics.trim() !== "");
-    const newPage = { _id: page._id, title, topics: arrayTopics, content };
+    const newPage = {
+      _id: page._id,
+      title: title.trim(),
+      topics: arrayTopics,
+      content,
+    };
     editPage(newPage);
   };
 
@@ -44,7 +49,7 @@ const EditPage = ({ page, fetchPages }) => {
     })
       .then(() => {
         fetchPages().then(() => {
-          navigate(`/${page.title}`);
+          navigate(`/${page.title.replace(/\s+/g, "-")}-${page._id}`);
         });
       })
       .catch((err) => console.log(err));

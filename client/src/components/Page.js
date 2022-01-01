@@ -7,7 +7,7 @@ const Page = ({ page }) => {
     <div className="page">
       <span className="page-heading">
         <h1>{page.title}</h1>
-        <Link to={`/${page.title}/edit`}>
+        <Link to={`/${page.title.replace(/\s+/g, "-")}-${page._id}/edit`}>
           <BiPencil className="page-edit-icon" />
         </Link>
       </span>

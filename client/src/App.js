@@ -86,7 +86,7 @@ function App() {
             {pages.map((page) => {
               return (
                 <Route
-                  path={`/${page.title}`}
+                  path={`/${page.title.replace(/\s+/g, "-")}-${page._id}`}
                   element={
                     <Page
                       page={page}
@@ -100,7 +100,7 @@ function App() {
             {pages.map((page) => {
               return (
                 <Route
-                  path={`/${page.title}/edit`}
+                  path={`/${page.title.replace(/\s+/g, "-")}-${page._id}/edit`}
                   element={
                     <EditPage
                       page={page}
@@ -113,7 +113,9 @@ function App() {
             })}
             <Route
               path="/AddPage"
-              element={<AddPage fetchPages={fetchPages} />}
+              element={
+                <AddPage fetchPages={fetchPages} setOpenPage={setOpenPage} />
+              }
             />
           </Routes>
         </div>

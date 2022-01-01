@@ -70,7 +70,6 @@ router.put("/:id", auth, (req, res) => {
     }
   )
     .then((data) => {
-      console.log(data);
       res.json({ success: true, data });
     })
     .catch((err) => res.status(404).json({ success: false, err }));
