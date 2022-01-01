@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router";
 import React from "react";
 
 const AddPage = ({ fetchPages, setOpenPage }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [topics, setTopics] = useState("");
+  const navigate = useNavigate();
 
   //Add Page
   const addPage = (page) => {
@@ -18,8 +20,11 @@ const AddPage = ({ fetchPages, setOpenPage }) => {
     })
       .then((res) => res.json())
       .then((addedPage) => {
-        addedPage = addedPage.raw.pages;
-        fetchPages().then(() => setOpenPage(addedPage[addedPage.length - 1]));
+        fetchPages().then(() => {
+          const page = addedPage.data;
+          navigate(`/${page.title.replace(/\s+/g, "-")}-${page._id}`);
+          setOpenPage(addedPage.data);
+        });
       })
       .catch((err) => console.log(err));
   };
@@ -39,7 +44,7 @@ const AddPage = ({ fetchPages, setOpenPage }) => {
     e.preventDefault();
     let arrayTopics = topics.split(", ");
     arrayTopics = arrayTopics.filter((topics) => topics.trim() !== "");
-    addPage({ title, topics: arrayTopics, content });
+    addPage({ title: title.trim(), topics: arrayTopics, content });
   };
 
   return (

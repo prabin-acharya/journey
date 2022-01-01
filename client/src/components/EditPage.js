@@ -1,12 +1,14 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import React from "react";
 
-const EditPage = ({ page, setOpenPage, fetchPages, setEditStatus }) => {
+const EditPage = ({ page, fetchPages }) => {
   const [title, setTitle] = useState(page.title);
   const [content, setContent] = useState(page.content);
   const [topics, setTopics] = useState(
     page.topics ? page.topics.toString().replace(/,/g, ", ") : ""
   );
+  const navigate = useNavigate();
 
   //add space after comma
   const addTopics = (newtopics) => {
@@ -27,7 +29,12 @@ const EditPage = ({ page, setOpenPage, fetchPages, setEditStatus }) => {
     }
     let arrayTopics = topics.split(", ");
     arrayTopics = arrayTopics.filter((topics) => topics.trim() !== "");
-    const newPage = { _id: page._id, title, topics: arrayTopics, content };
+    const newPage = {
+      _id: page._id,
+      title: title.trim(),
+      topics: arrayTopics,
+      content,
+    };
     editPage(newPage);
   };
 
@@ -42,8 +49,7 @@ const EditPage = ({ page, setOpenPage, fetchPages, setEditStatus }) => {
     })
       .then(() => {
         fetchPages().then(() => {
-          setOpenPage(newPage);
-          setEditStatus(false);
+          navigate(`/${newPage.title.replace(/\s+/g, "-")}-${newPage._id}`);
         });
       })
       .catch((err) => console.log(err));

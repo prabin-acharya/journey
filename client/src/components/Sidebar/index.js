@@ -1,7 +1,30 @@
+import { useState, useEffect, useRef } from "react";
+import { Link, useLocation } from "react-router-dom";
+import UserDropdown from "./../UserDropdown";
 import Searchbar from "./Searchbar";
 import ListItem from "./ListItem";
+import { IoIosArrowDown } from "react-icons/io";
 
-const Sidebar = ({ pages, setOpenPage, search, setSearch, openPage, user }) => {
+const Sidebar = ({ pages, search, setSearch, user, setAuthStatus }) => {
+  const [showUserDropdown, setShowUserDropdown] = useState(false);
+  const userProfileRef = useRef(null);
+  const location = useLocation();
+  const urlPageId = location.pathname.split("/")[1].split("-").at(-1);
+  const handleClickOutside = (event) => {
+    if (
+      userProfileRef.current &&
+      !userProfileRef.current.contains(event.target)
+    ) {
+      setShowUserDropdown(false);
+    }
+  };
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   const displayName = (user) => {
     const name = user.name;
     if (name.length > 8) {
@@ -13,39 +36,47 @@ const Sidebar = ({ pages, setOpenPage, search, setSearch, openPage, user }) => {
 
   return (
     <div className="sidebar">
-      <div className="user">
-        <h2> {user && displayName(user)}</h2>
+      <div className="user" onClick={() => setShowUserDropdown(true)}>
+        {user && displayName(user)} <IoIosArrowDown />
       </div>
+      {showUserDropdown && (
+        <div ref={userProfileRef}>
+          <UserDropdown user={user} setAuthStatus={setAuthStatus} />
+        </div>
+      )}
+
       <Searchbar search={search} setSearch={setSearch} />
-      <ListItem
-        text="Daily Journal"
-        onClick={() => setOpenPage("Journal")}
-        id={openPage === "Journal" ? "button-clicked" : ""}
-      />
+      <Link to="/">
+        <ListItem
+          text="Daily Journal"
+          id={location.pathname === "/" ? "button-clicked" : ""}
+        />
+      </Link>
 
       <div className="pages-sidebar">
         <ul>
           {pages[0] &&
             pages.map((page) => (
               <li key={page._id}>
-                <ListItem
-                  id={openPage._id === page._id ? "button-clicked" : ""}
-                  key={page._id}
-                  search={search}
-                  text={page.title}
-                  topics={page.topics}
-                  onClick={() => setOpenPage(page)}
-                />
+                <Link to={`/${page.title.replace(/\s+/g, "-")}-${page._id}`}>
+                  <ListItem
+                    id={urlPageId === page._id ? "button-clicked" : ""}
+                    key={page._id}
+                    search={search}
+                    text={page.title}
+                    topics={page.topics}
+                  />
+                </Link>
               </li>
             ))}
         </ul>
       </div>
-
-      <ListItem
-        text="Add Page"
-        onClick={() => setOpenPage("AddPage")}
-        id={openPage === "AddPage" ? "button-clicked" : ""}
-      />
+      <Link to="AddPage">
+        <ListItem
+          text="Add Page"
+          id={urlPageId === "AddPage" ? "button-clicked" : ""}
+        />
+      </Link>
     </div>
   );
 };

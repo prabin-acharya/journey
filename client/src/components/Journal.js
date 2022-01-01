@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import AddNote from "./AddNote";
 import Note from "./Note";
 
-const Journal = ({ search }) => {
+const Journal = ({ search = "" }) => {
   const [notes, setNotes] = useState([]);
   const [searchedNotes, setSearchedNotes] = useState(notes);
 

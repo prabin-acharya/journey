@@ -8,7 +8,7 @@ const UserDropdown = ({ user, setAuthStatus }) => {
         <span className="user-profile-icon">
           <CgProfile size={30} color="#999999" />
         </span>
-        <span classname="name-email">
+        <span className="name-email">
           <span className="user-name">{user.name}</span>
           <br />
           <span className="user-email">{user.email}</span>

@@ -1,7 +1,11 @@
 import { useState, useEffect } from "react";
-import Sidebar from "./components/Sidebar";
-import Main from "./components/Main";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginPage from "./components/auth/LoginPage";
+import Sidebar from "./components/Sidebar";
+import Journal from "./components/Journal";
+import Page from "./components/Page";
+import EditPage from "./components/EditPage";
+import AddPage from "./components/AddPage";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -65,24 +69,58 @@ function App() {
   }
 
   return (
-    <div className="app">
-      <Sidebar
-        pages={pages}
-        setOpenPage={setOpenPage}
-        search={search}
-        setSearch={setSearch}
-        openPage={openPage}
-        user={user}
-      />
-      <Main
-        page={openPage}
-        fetchPages={fetchPages}
-        setOpenPage={setOpenPage}
-        search={search}
-        user={user}
-        setAuthStatus={setAuthStatus}
-      />
-    </div>
+    <BrowserRouter>
+      <div className="app">
+        <Sidebar
+          pages={pages}
+          setOpenPage={setOpenPage}
+          search={search}
+          setSearch={setSearch}
+          openPage={openPage}
+          user={user}
+          setAuthStatus={setAuthStatus}
+        />
+        <div className="main">
+          <Routes>
+            <Route path="/" element={<Journal />} />
+            {pages.map((page) => {
+              return (
+                <Route
+                  path={`/${page.title.replace(/\s+/g, "-")}-${page._id}`}
+                  element={
+                    <Page
+                      page={page}
+                      setOpenPage={setOpenPage}
+                      fetchPages={fetchPages}
+                    />
+                  }
+                ></Route>
+              );
+            })}
+            {pages.map((page) => {
+              return (
+                <Route
+                  path={`/${page.title.replace(/\s+/g, "-")}-${page._id}/edit`}
+                  element={
+                    <EditPage
+                      page={page}
+                      setOpenPage={setOpenPage}
+                      fetchPages={fetchPages}
+                    />
+                  }
+                ></Route>
+              );
+            })}
+            <Route
+              path="/AddPage"
+              element={
+                <AddPage fetchPages={fetchPages} setOpenPage={setOpenPage} />
+              }
+            />
+          </Routes>
+        </div>
+      </div>
+    </BrowserRouter>
   );
 }
 

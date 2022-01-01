@@ -5,22 +5,18 @@ const PageSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  pages: [
-    {
-      title: {
-        type: String,
-        required: true,
-      },
-      topics: { type: Array },
-      content: {
-        type: String,
-      },
-      Date: {
-        type: Date,
-        default: Date.now,
-      },
-    },
-  ],
+  title: {
+    type: String,
+    required: true,
+  },
+  topics: { type: Array },
+  content: {
+    type: String,
+  },
+  Date: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 module.exports = mongoose.model("page", PageSchema);
