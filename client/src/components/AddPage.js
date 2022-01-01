@@ -20,9 +20,10 @@ const AddPage = ({ fetchPages }) => {
     })
       .then((res) => res.json())
       .then((addedPage) => {
-        addedPage = addedPage.raw.pages;
-        addedPage = addedPage[addedPage.length - 1];
-        fetchPages().then(() => navigate(`/${addedPage.title}`));
+        // addedPage = addedPage.raw.pages;
+        // console.log(addedPage.raw.pages);
+        // addedPage = addedPage[addedPage.length - 1];
+        fetchPages().then(() => navigate(`/${addedPage.data.title}`));
       })
       .catch((err) => console.log(err));
   };
