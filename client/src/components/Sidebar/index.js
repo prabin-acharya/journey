@@ -1,21 +1,15 @@
 import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import UserDropdown from "./../UserDropdown";
 import Searchbar from "./Searchbar";
 import ListItem from "./ListItem";
 import { IoIosArrowDown } from "react-icons/io";
 
-const Sidebar = ({
-  pages,
-  setOpenPage,
-  search,
-  setSearch,
-  openPage,
-  user,
-  setAuthStatus,
-}) => {
+const Sidebar = ({ pages, search, setSearch, user, setAuthStatus }) => {
   const [showUserDropdown, setShowUserDropdown] = useState(false);
   const userProfileRef = useRef(null);
+  const location = useLocation();
+  const urlPageId = location.pathname.split("/")[1].split("-").at(-1);
   const handleClickOutside = (event) => {
     if (
       userProfileRef.current &&
@@ -55,8 +49,7 @@ const Sidebar = ({
       <Link to="/">
         <ListItem
           text="Daily Journal"
-          onClick={() => setOpenPage("Journal")}
-          id={openPage === "Journal" ? "button-clicked" : ""}
+          id={location.pathname === "/" ? "button-clicked" : ""}
         />
       </Link>
 
@@ -67,12 +60,11 @@ const Sidebar = ({
               <li>
                 <Link to={`/${page.title.replace(/\s+/g, "-")}-${page._id}`}>
                   <ListItem
-                    id={openPage._id === page._id ? "button-clicked" : ""}
+                    id={urlPageId === page._id ? "button-clicked" : ""}
                     key={page._id}
                     search={search}
                     text={page.title}
                     topics={page.topics}
-                    onClick={() => setOpenPage(page)}
                   />
                 </Link>
               </li>
@@ -82,8 +74,7 @@ const Sidebar = ({
       <Link to="AddPage">
         <ListItem
           text="Add Page"
-          onClick={() => setOpenPage("AddPage")}
-          id={openPage === "AddPage" ? "button-clicked" : ""}
+          id={urlPageId === "AddPage" ? "button-clicked" : ""}
         />
       </Link>
     </div>

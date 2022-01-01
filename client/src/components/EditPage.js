@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import React from "react";
 
 const EditPage = ({ page, fetchPages }) => {
@@ -49,7 +49,7 @@ const EditPage = ({ page, fetchPages }) => {
     })
       .then(() => {
         fetchPages().then(() => {
-          navigate(`/${page.title.replace(/\s+/g, "-")}-${page._id}`);
+          navigate(`/${newPage.title.replace(/\s+/g, "-")}-${newPage._id}`);
         });
       })
       .catch((err) => console.log(err));
