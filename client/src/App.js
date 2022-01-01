@@ -73,10 +73,9 @@ function App() {
       <div className="app">
         <Sidebar
           pages={pages}
-          setOpenPage={setOpenPage}
+          fetchPages={fetchPages}
           search={search}
           setSearch={setSearch}
-          openPage={openPage}
           user={user}
           setAuthStatus={setAuthStatus}
         />

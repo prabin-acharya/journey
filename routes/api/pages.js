@@ -47,7 +47,6 @@ router.put("/", auth, (req, res) => {
   newPage
     .save()
     .then((data) => {
-      console.log(data);
       res.json({ success: true, data });
     })
     .catch((err) => console.log(err));
@@ -78,8 +77,12 @@ router.put("/:id", auth, (req, res) => {
 //@route  POST api/pages/id
 //@desc   Delete the page
 //@access Private
-router.delete("/:id", auth, async (req, res) => {
-  await Page.findByIdAndDelete(req.params.id);
+router.delete("/:id", auth, (req, res) => {
+  Page.findByIdAndDelete(req.params.id)
+    .then((data) => {
+      res.json({ success: true, data });
+    })
+    .catch((err) => res.status(404).json({ success: false, err }));
 });
 
 module.exports = router;

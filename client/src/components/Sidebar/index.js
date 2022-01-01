@@ -1,11 +1,18 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { IoIosArrowDown } from "react-icons/io";
 import UserDropdown from "./../UserDropdown";
 import Searchbar from "./Searchbar";
 import ListItem from "./ListItem";
-import { IoIosArrowDown } from "react-icons/io";
 
-const Sidebar = ({ pages, search, setSearch, user, setAuthStatus }) => {
+const Sidebar = ({
+  pages,
+  fetchPages,
+  search,
+  setSearch,
+  user,
+  setAuthStatus,
+}) => {
   const [showUserDropdown, setShowUserDropdown] = useState(false);
   const userProfileRef = useRef(null);
   const location = useLocation();
@@ -47,10 +54,12 @@ const Sidebar = ({ pages, search, setSearch, user, setAuthStatus }) => {
 
       <Searchbar search={search} setSearch={setSearch} />
       <Link to="/">
-        <ListItem
-          text="Daily Journal"
+        <div
           id={location.pathname === "/" ? "button-clicked" : ""}
-        />
+          className={"page-list"}
+        >
+          <strong>Daily Journal</strong>
+        </div>
       </Link>
 
       <div className="pages-sidebar">
@@ -64,6 +73,8 @@ const Sidebar = ({ pages, search, setSearch, user, setAuthStatus }) => {
                     key={page._id}
                     search={search}
                     text={page.title}
+                    fetchPages={fetchPages}
+                    page={page}
                     topics={page.topics}
                   />
                 </Link>
@@ -71,11 +82,14 @@ const Sidebar = ({ pages, search, setSearch, user, setAuthStatus }) => {
             ))}
         </ul>
       </div>
+
       <Link to="AddPage">
-        <ListItem
-          text="Add Page"
+        <div
           id={urlPageId === "AddPage" ? "button-clicked" : ""}
-        />
+          className={"page-list"}
+        >
+          <strong>Add Page</strong>
+        </div>
       </Link>
     </div>
   );
