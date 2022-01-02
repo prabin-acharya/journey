@@ -5,6 +5,10 @@ const PageSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  pinned: {
+    type: Boolean,
+    default: false,
+  },
   title: {
     type: String,
     required: true,

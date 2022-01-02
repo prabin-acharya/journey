@@ -62,24 +62,55 @@ const Sidebar = ({
         </div>
       </Link>
 
+      {pages.filter((page) => page.pinned)[0] && (
+        <div className="pages-sidebar-pinned">
+          <span className="category">PINNED</span>
+          <ul>
+            {pages[0] &&
+              pages
+                .filter((page) => page.pinned)
+                .map((page) => (
+                  <li key={page._id}>
+                    <Link
+                      to={`/${page.title.replace(/\s+/g, "-")}-${page._id}`}
+                    >
+                      <ListItem
+                        id={urlPageId === page._id ? "button-clicked" : ""}
+                        key={page._id}
+                        search={search}
+                        text={page.title}
+                        fetchPages={fetchPages}
+                        page={page}
+                        topics={page.topics}
+                      />
+                    </Link>
+                  </li>
+                ))}
+          </ul>
+        </div>
+      )}
+
       <div className="pages-sidebar">
+        <span className="category">PAGES</span>
         <ul>
           {pages[0] &&
-            pages.map((page) => (
-              <li key={page._id}>
-                <Link to={`/${page.title.replace(/\s+/g, "-")}-${page._id}`}>
-                  <ListItem
-                    id={urlPageId === page._id ? "button-clicked" : ""}
-                    key={page._id}
-                    search={search}
-                    text={page.title}
-                    fetchPages={fetchPages}
-                    page={page}
-                    topics={page.topics}
-                  />
-                </Link>
-              </li>
-            ))}
+            pages
+              .filter((page) => !page.pinned)
+              .map((page) => (
+                <li key={page._id}>
+                  <Link to={`/${page.title.replace(/\s+/g, "-")}-${page._id}`}>
+                    <ListItem
+                      id={urlPageId === page._id ? "button-clicked" : ""}
+                      key={page._id}
+                      search={search}
+                      text={page.title}
+                      fetchPages={fetchPages}
+                      page={page}
+                      topics={page.topics}
+                    />
+                  </Link>
+                </li>
+              ))}
         </ul>
       </div>
 

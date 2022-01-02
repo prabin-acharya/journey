@@ -74,11 +74,24 @@ router.put("/:id", auth, (req, res) => {
     .catch((err) => res.status(404).json({ success: false, err }));
 });
 
+//@route  PUT api/pages/pin/id
+//@desc   Pin/Unpin the page
+//@access Private
+router.put("/pin/:id", auth, (req, res) => {
+  Page.updateOne({ _id: req.params.id }, [
+    { $set: { pinned: { $not: "$pinned" } } },
+  ])
+    .then((data) => {
+      res.json({ success: true, data });
+    })
+    .catch((err) => res.status(404).json({ success: false, err }));
+});
+
 //@route  POST api/pages/id
 //@desc   Delete the page
 //@access Private
 router.delete("/:id", auth, (req, res) => {
-  Page.findByIdAndDelete(req.params.id)
+  Page.deleteOne({ _id: req.params.id })
     .then((data) => {
       res.json({ success: true, data });
     })
