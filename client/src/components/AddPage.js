@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import React from "react";
 
-const AddPage = ({ fetchPages, setOpenPage }) => {
+const AddPage = ({ fetchPages }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [topics, setTopics] = useState("");
@@ -23,7 +23,6 @@ const AddPage = ({ fetchPages, setOpenPage }) => {
         fetchPages().then(() => {
           const page = addedPage.data;
           navigate(`/${page.title.replace(/\s+/g, "-")}-${page._id}`);
-          setOpenPage(addedPage.data);
         });
       })
       .catch((err) => console.log(err));

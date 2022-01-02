@@ -52,7 +52,7 @@ const Sidebar = ({
         </div>
       )}
 
-      <Searchbar search={search} setSearch={setSearch} />
+      <Searchbar setSearch={setSearch} />
       <Link to="/">
         <div
           id={location.pathname === "/" ? "button-clicked" : ""}

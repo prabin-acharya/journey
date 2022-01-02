@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const Searchbar = ({ search, setSearch }) => {
+const Searchbar = ({ setSearch }) => {
   useEffect(() => {
     fetch("/api/journal/topics", {
       method: "GET",

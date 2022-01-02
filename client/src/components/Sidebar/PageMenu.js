@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { BsPin } from "react-icons/bs";
 import { RiDeleteBin6Line, RiPushpin2Fill } from "react-icons/ri";
 
 const PageMenu = ({ page, fetchPages }) => {

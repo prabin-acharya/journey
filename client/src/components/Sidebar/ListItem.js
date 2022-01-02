@@ -6,7 +6,7 @@ const ListItem = ({ search, text, page, fetchPages, topics, onClick, id }) => {
   const [highlight, setHighlight] = useState(false);
   const [isActive, setIsActive] = useState(false);
   const menuRef = useRef(null);
-  const charLimit = 27;
+  const charLimit = 20;
 
   if (text.length > charLimit) {
     text = text.substring(0, charLimit) + "...";

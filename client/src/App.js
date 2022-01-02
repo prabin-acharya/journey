@@ -11,7 +11,6 @@ function App() {
   const token = localStorage.getItem("token");
   const [authStatus, setAuthStatus] = useState(token ? true : false);
   const [pages, setPages] = useState([]);
-  const [openPage, setOpenPage] = useState("Journal");
   const [search, setSearch] = useState("");
   const [user, setUser] = useState();
 
@@ -81,18 +80,13 @@ function App() {
         />
         <div className="main">
           <Routes>
-            <Route path="/" element={<Journal />} />
+            <Route path="" element={<Journal search={search} />} />
+
             {pages.map((page) => {
               return (
                 <Route
                   path={`/${page.title.replace(/\s+/g, "-")}-${page._id}`}
-                  element={
-                    <Page
-                      page={page}
-                      setOpenPage={setOpenPage}
-                      fetchPages={fetchPages}
-                    />
-                  }
+                  element={<Page page={page} />}
                 ></Route>
               );
             })}
@@ -100,21 +94,13 @@ function App() {
               return (
                 <Route
                   path={`/${page.title.replace(/\s+/g, "-")}-${page._id}/edit`}
-                  element={
-                    <EditPage
-                      page={page}
-                      setOpenPage={setOpenPage}
-                      fetchPages={fetchPages}
-                    />
-                  }
+                  element={<EditPage page={page} fetchPages={fetchPages} />}
                 ></Route>
               );
             })}
             <Route
               path="/AddPage"
-              element={
-                <AddPage fetchPages={fetchPages} setOpenPage={setOpenPage} />
-              }
+              element={<AddPage fetchPages={fetchPages} />}
             />
           </Routes>
         </div>
