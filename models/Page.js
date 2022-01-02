@@ -17,6 +17,9 @@ const PageSchema = mongoose.Schema({
   content: {
     type: String,
   },
+  lastEdit: {
+    type: Date,
+  },
   Date: {
     type: Date,
     default: Date.now,

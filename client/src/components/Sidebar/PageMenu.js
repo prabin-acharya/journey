@@ -6,6 +6,16 @@ import { RiDeleteBin6Line, RiPushpin2Fill } from "react-icons/ri";
 const PageMenu = ({ page, fetchPages }) => {
   const navigate = useNavigate();
 
+  const DATE_OPTIONS = {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+  };
+  const localDateTime = (date) =>
+    new Date(date).toLocaleString([], DATE_OPTIONS);
+
   const deletePage = () => {
     fetch(`/api/pages/${page._id}`, {
       method: "DELETE",
@@ -44,6 +54,24 @@ const PageMenu = ({ page, fetchPages }) => {
       </div>
       <div className="page-menu-item" onClick={() => deletePage()}>
         <RiDeleteBin6Line className="page-menu-icon" /> Delete
+      </div>
+      <hr />
+      <div className="page-activity">
+        {page.lastEdit ? (
+          <>
+            Last edit on:
+            <span className="page-activity-date">
+              {localDateTime(page.lastEdit)}
+            </span>
+          </>
+        ) : (
+          <>
+            Created at:
+            <span className="page-activity-date">
+              {localDateTime(page.Date)}
+            </span>
+          </>
+        )}
       </div>
     </div>
   );

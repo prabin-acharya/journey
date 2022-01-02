@@ -65,6 +65,7 @@ router.put("/:id", auth, (req, res) => {
         title: req.body.title,
         topics: req.body.topics,
         content: req.body.content,
+        lastEdit: Date.now(),
       },
     }
   )
