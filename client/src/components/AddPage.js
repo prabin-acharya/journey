@@ -8,6 +8,8 @@ const AddPage = ({ fetchPages }) => {
   const [topics, setTopics] = useState("");
   const navigate = useNavigate();
 
+  const validCharacters = /^[ A-Za-z0-9_]*$/;
+
   //Add Page
   const addPage = (page) => {
     fetch("/api/pages", {
@@ -55,7 +57,9 @@ const AddPage = ({ fetchPages }) => {
             type="text"
             placeholder="Untitled"
             value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={(e) => {
+              e.target.value.match(validCharacters) && setTitle(e.target.value);
+            }}
           />
         </div>
         <div className="form-control-topics">

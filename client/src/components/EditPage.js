@@ -10,6 +10,8 @@ const EditPage = ({ page, fetchPages }) => {
   );
   const navigate = useNavigate();
 
+  const validCharacters = /^[ A-Za-z0-9_]*$/;
+
   //add space after comma
   const addTopics = (newtopics) => {
     if (newtopics.length > topics.length) {
@@ -64,7 +66,9 @@ const EditPage = ({ page, fetchPages }) => {
             type="text"
             placeholder="Title"
             value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={(e) => {
+              e.target.value.match(validCharacters) && setTitle(e.target.value);
+            }}
           />
         </div>
         <div className="form-control-topics">
