@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { IoIosArrowDown } from "react-icons/io";
 import UserDropdown from "./../UserDropdown";
 import Searchbar from "./Searchbar";
+import { SearchBox } from "../SearchBox";
 import ListItem from "./ListItem";
 
 const Sidebar = ({
@@ -13,10 +14,14 @@ const Sidebar = ({
   user,
   setAuthStatus,
 }) => {
-  const [showUserDropdown, setShowUserDropdown] = useState(false);
-  const userProfileRef = useRef(null);
   const location = useLocation();
+  const [showUserDropdown, setShowUserDropdown] = useState(false);
+  const [showSearchBox, setShowSearchBox] = useState(false);
+  const userProfileRef = useRef(null);
+  const searchRef = useRef(null);
+
   const urlPageId = location.pathname.split("/")[1].split("-").at(-1);
+
   const handleClickOutside = (event) => {
     if (
       userProfileRef.current &&
@@ -24,7 +29,12 @@ const Sidebar = ({
     ) {
       setShowUserDropdown(false);
     }
+
+    if (searchRef.current && !searchRef.current.contains(event.target)) {
+      setShowSearchBox(false);
+    }
   };
+
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
@@ -52,7 +62,16 @@ const Sidebar = ({
         </div>
       )}
 
-      <Searchbar setSearch={setSearch} />
+      <div onClick={() => setShowSearchBox(true)}>
+        <Searchbar setSearch={setSearch} />
+      </div>
+
+      {showSearchBox && (
+        <div ref={searchRef}>
+          <SearchBox />
+        </div>
+      )}
+
       <Link to="/">
         <div
           id={location.pathname === "/" ? "button-clicked" : ""}
