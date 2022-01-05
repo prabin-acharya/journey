@@ -68,7 +68,7 @@ const Sidebar = ({
 
       {showSearchBox && (
         <div ref={searchRef}>
-          <SearchBox />
+          <SearchBox pages={pages} setShowSearchBox={setShowSearchBox} />
         </div>
       )}
 
