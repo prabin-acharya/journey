@@ -33,7 +33,20 @@ export const SearchBox = ({ pages, setShowSearchBox }) => {
                   >
                     {page.title}
                     <span className="search-result-page-content">
-                      {page.content.substring(index - 50, index + 50)}
+                      {page.content.substring(index - 150, index)}
+                      <span className="highlight-query">
+                        {page.content
+                          .substring(index, index + query.length)
+                          .replace(/([.?!])\s*(?=[A-Z])/g, "$1|")
+                          .split("|")
+                          .at(-1)}
+                      </span>
+                      {
+                        page.content
+                          .substring(index + query.length, index + 150)
+                          .replace(/([.?!])\s*(?=[A-Z])/g, "$1|")
+                          .split("|")[0]
+                      }
                     </span>
                   </div>
                 </Link>

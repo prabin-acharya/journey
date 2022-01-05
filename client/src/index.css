@@ -307,6 +307,10 @@ a {
   color: #727270;
 }
 
+.search-result-page-content .highlight-query {
+  color: rgb(29, 161, 242);
+}
+
 hr {
   border: 1px solid #ebeae9;
   border-bottom: none;
