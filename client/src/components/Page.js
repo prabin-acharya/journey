@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import { BiPencil } from "react-icons/bi";
+import Topics from "./Topics";
 
 const Page = ({ page }) => {
   return (
@@ -11,13 +12,7 @@ const Page = ({ page }) => {
           <BiPencil className="page-edit-icon" />
         </Link>
       </span>
-      <div className="page-topics">
-        {page.topics &&
-          page.topics.map((topic) => (
-            <span className="page-topic">#{topic}</span>
-          ))}
-      </div>
-
+      <Topics topics={page.topics} />
       <span className="page-content">
         <ReactMarkdown children={page.content} />
       </span>

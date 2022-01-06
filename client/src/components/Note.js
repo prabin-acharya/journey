@@ -1,3 +1,5 @@
+import Topics from "./Topics";
+
 const Note = (note) => {
   const DATE_OPTIONS = {
     year: "numeric",
@@ -10,9 +12,10 @@ const Note = (note) => {
 
   return (
     <div className="note" key={note._id}>
-      <b>{localDateTime}</b>
-      <span className="note-topics">{note.topics}</span>
-      <br />
+      <div className="note-header">
+        <b>{localDateTime}</b>
+        <Topics topics={note.topics} />
+      </div>
       {note.content}
     </div>
   );

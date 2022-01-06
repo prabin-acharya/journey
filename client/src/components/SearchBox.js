@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Topics from "./Topics";
 
 export const SearchBox = ({ pages, setShowSearchBox }) => {
   const [query, setQuery] = useState("");
@@ -31,7 +32,8 @@ export const SearchBox = ({ pages, setShowSearchBox }) => {
                     key={page._id}
                     onClick={() => setShowSearchBox(false)}
                   >
-                    {page.title}
+                    <span className="search-result-title">{page.title}</span>
+                    <Topics topics={page.topics} />
                     <span className="search-result-page-content">
                       {page.content.substring(index - 150, index)}
                       <span className="highlight-query">

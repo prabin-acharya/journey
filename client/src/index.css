@@ -73,6 +73,18 @@ a {
   color: black;
 }
 
+.topics {
+  color: rgb(29, 161, 242);
+  font-size: 20px;
+  font-weight: 300;
+  margin-bottom: 30px;
+}
+
+.topic {
+  padding: 2px 3px;
+  margin: 2px 5px;
+}
+
 /* ----------Sidebar-----------  */
 .sidebar {
   background-color: rgba(214, 186, 171, 0.178);
@@ -291,10 +303,18 @@ a {
   padding: 10px;
 }
 .search-result-page {
-  font-size: 17px;
+  font-size: 12px;
   padding: 8px 15px;
-  /* border: 1px solid #dfdfdf; */
   border: 1px solid #dfdfdf;
+}
+
+.search-result-title {
+  font-size: 18px;
+}
+
+.search-box .topics {
+  font-size: 10px;
+  color: black;
 }
 
 .search-result-page:hover {
@@ -396,9 +416,9 @@ hr {
   font-weight: 550;
 }
 
-.note-topics {
-  color: rgb(29, 161, 242);
-  padding: 0px 8px;
+.note .topic {
+  font-size: 15px;
+  margin: 2px 3px;
 }
 
 /*---------------------------End Journal ---------------------*/
@@ -427,18 +447,6 @@ hr {
 .page-heading h1 {
   font-size: 44px;
   font-weight: 700;
-}
-
-.page-topics {
-  color: rgb(29, 161, 242);
-  font-size: 20px;
-  font-weight: 300;
-  margin-bottom: 30px;
-}
-
-.page-topic {
-  padding: 2px 6px 2px 0px;
-  margin: 0px 10px;
 }
 
 .page-edit-icon {
