@@ -91,6 +91,7 @@ a {
   height: 100vh;
   width: 270px;
   position: fixed;
+  z-index: 1;
 }
 
 .name {
@@ -176,7 +177,6 @@ a {
   background-color: white;
   border-radius: 4px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
 }
 
 .page-menu-item {
@@ -222,10 +222,6 @@ a {
   color: rgba(245, 134, 74, 0.877);
 }
 
-.search-highlight {
-  background: rgba(223, 215, 212, 0.822);
-}
-
 .sidebar input {
   width: 230px;
   margin: 25px 10px;
@@ -236,13 +232,17 @@ a {
 /* ----------------Main--------------------- */
 
 .main {
+  display: flex;
   width: 100%;
+  height: fit-content;
   min-height: 100vh;
   margin-left: 270px;
-  padding: 70px 0px 250px 180px;
+  align-items: center;
+  justify-content: center;
   font-size: 16px;
   line-height: 1.4;
   background: #efefef;
+  padding-bottom: 100px;
 }
 
 .user-profile-dropdown {
@@ -260,14 +260,14 @@ a {
 .search-box {
   position: fixed;
   top: 10%;
-  left: 30%;
+  left: 35%;
   width: 690px;
   height: auto;
+  align-items: center;
+  justify-content: center;
   padding: 8px 0px;
   padding-bottom: 20px;
   border-radius: 12px;
-  /* border: 1px solid #efefee; */
-  box-shadow: rgba(99, 99, 99, 99) 400px 400px 400px 400px;
   background-color: white;
 }
 
@@ -275,14 +275,9 @@ a {
   --shadow: rgba(100, 99, 99, 0.7);
 }
 .search-box {
-  box-shadow: 9px 10px 5px 800px var(--shadow);
-  -webkit-box-shadow: 9px 10px 5px 800px var(--shadow);
-  -moz-box-shadow: 9px 10px 5px 800px var(--shadow);
-}
-
-.search-box {
-  align-items: center;
-  justify-content: center;
+  box-shadow: 9px 10px 5px 900px var(--shadow);
+  -webkit-box-shadow: 9px 10px 5px 900px var(--shadow);
+  -moz-box-shadow: 9px 10px 5px 900px var(--shadow);
 }
 
 .search-box input {
@@ -295,6 +290,7 @@ a {
   border: none;
   outline: none;
   font-size: 24px;
+  font-weight: 500;
 }
 
 .search-results-header {
@@ -302,6 +298,7 @@ a {
   margin-top: 5px;
   padding: 10px;
 }
+
 .search-result-page {
   font-size: 12px;
   padding: 8px 15px;
@@ -329,6 +326,10 @@ a {
 
 .search-result-page-content .highlight-query {
   color: rgb(29, 161, 242);
+}
+
+.search-highlight {
+  background: rgba(223, 215, 212, 0.822);
 }
 
 hr {
@@ -379,9 +380,9 @@ hr {
 /*----------------------Journal--------------------- */
 
 .journal {
-  width: 66%;
-  /* overflow: hidden; */
+  width: 60%;
   padding: 5px 5px;
+  margin-top: 80px;
 }
 
 .journal textarea {
@@ -426,16 +427,19 @@ hr {
 /*--------------------------- Page --------------------------*/
 
 .page {
-  width: 80%;
+  position: relative;
+  width: 70%;
   max-width: 1000px;
   height: 100%;
+  margin: auto;
+  margin-top: 100px;
   padding: 40px;
-  font-size: 22px;
-  align-items: left;
-  white-space: pre-wrap;
   border: 1px solid red;
   border-radius: 12px;
   background-color: white;
+  font-size: 21px;
+  align-items: left;
+  white-space: pre-wrap;
 }
 
 .page-heading {
@@ -459,70 +463,40 @@ hr {
 }
 
 .editpage input,
-textarea {
-  border: none;
-  outline: none;
-}
-
-.editpage input {
-  width: 100%;
-  height: 45px;
-  padding: 3px 18px;
-  font-size: 16px;
-  padding: 8px 5px;
-  margin-bottom: 8px;
-}
-
-.editpage .form-control-title input {
-  font-size: 44px;
-  font-weight: 700;
-  margin-bottom: 0px;
-}
-
-.editpage .form-control-topics input {
-  margin: 5px;
-  margin-bottom: 10px;
-  word-spacing: 4px;
-  letter-spacing: 1px;
-  padding: 3px 7px;
-  font-size: 18px;
-}
-
-.editpage textarea {
-  width: 100%;
-  height: 400px;
-  margin: 5px;
-  padding: 3px 7px;
-  font-size: 22px;
-  letter-spacing: 1px;
-}
-
-.editpage button {
-  margin-top: 10px;
-}
-
 .addpage input,
 textarea {
   border: none;
   outline: none;
+  width: 100%;
 }
 
+.editpage input,
 .addpage input {
-  width: 100%;
-  height: 45px;
-  padding: 3px 18px;
+  height: 54px;
   font-size: 16px;
-  padding: 8px 5px;
+  padding: 5px;
   margin-bottom: 8px;
 }
 
+.editpage textarea,
+.addpage textarea {
+  height: 400px;
+  font-size: 22px;
+  letter-spacing: 1px;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+.editpage .form-control-title input,
 .addpage .form-control-title input {
   font-size: 44px;
   font-weight: 700;
   margin-bottom: 0px;
 }
 
+.editpage .form-control-topics inpu,
 .addpage .form-control-topics input {
+  color: rgb(29, 161, 242);
   margin: 5px;
   margin-bottom: 10px;
   word-spacing: 4px;
@@ -531,19 +505,14 @@ textarea {
   font-size: 18px;
 }
 
-.addpage textarea {
-  width: 100%;
-  height: 400px;
-  margin: 5px;
-  padding: 3px 7px;
-  font-size: 22px;
-  letter-spacing: 1px;
-}
-
+.editpage button,
 .addpage button {
-  margin-top: 10px;
+  position: absolute;
+  left: 10px;
+  border: 1px solid red;
+  margin-top: 50px;
+  margin-left: 0px;
 }
-
 /* -------------End Page--------- */
 
 /* -----------------End main--------------- */

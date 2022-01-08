@@ -62,7 +62,10 @@ const Sidebar = ({
         </div>
       )}
 
-      <div onClick={() => setShowSearchBox(true)}>
+      <div
+        onClick={() => setShowSearchBox(true)}
+        className="searchbox-container"
+      >
         <Searchbar setSearch={setSearch} />
       </div>
 

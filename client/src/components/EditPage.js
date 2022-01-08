@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import React from "react";
+import Loader from "react-loader-spinner";
 
-const EditPage = ({ page, fetchPages }) => {
-  const [title, setTitle] = useState(page.title);
-  const [content, setContent] = useState(page.content);
-  const [topics, setTopics] = useState(
-    page.topics ? page.topics.toString().replace(/,/g, ", ") : ""
-  );
+const EditPage = ({ id, fetchPages }) => {
+  const [page, setPage] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [topics, setTopics] = useState("");
   const navigate = useNavigate();
 
   //add space after comma
@@ -20,6 +21,28 @@ const EditPage = ({ page, fetchPages }) => {
       setTopics(newtopics);
     }
   };
+
+  useEffect(() => {
+    fetch(`/api/pages/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+        "x-auth-token": localStorage.getItem("token"),
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setPage(data);
+        setTitle(data.title);
+        setTopics(
+          data.topics ? data.topics.toString().replace(/,/g, ", ") : ""
+        );
+        setContent(data.content);
+        setIsLoading(false);
+      })
+      .catch((err) => console.log(err));
+    return () => setPage();
+  }, [id]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -56,39 +79,54 @@ const EditPage = ({ page, fetchPages }) => {
   };
 
   return (
-    <form className="editpage" onSubmit={onSubmit}>
-      <div className="page">
-        <div className="form-control-title">
-          <input
-            className="title"
-            type="text"
-            placeholder="Title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+    <>
+      {isLoading ? (
+        <div className="loading">
+          <Loader
+            type="TailSpin"
+            color="grey"
+            // radius={10}
+            height={40}
+            width={40}
           />
         </div>
-        <div className="form-control-topics">
-          <input
-            className="title"
-            type="text"
-            placeholder="Add Relevant topics.."
-            value={topics}
-            onChange={(e) => addTopics(e.target.value)}
-          />
+      ) : (
+        <div className="page">
+          <form className="editpage" onSubmit={onSubmit}>
+            <div className="form-control-title">
+              <input
+                className="title"
+                type="text"
+                placeholder="Title"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
+            </div>
+            <div className="form-control-topics">
+              <input
+                className="title"
+                type="text"
+                placeholder="Add Relevant topics.."
+                value={topics}
+                onChange={(e) => addTopics(e.target.value)}
+              />
+            </div>
+            <div className="form-control-content">
+              <textarea
+                type="text"
+                placeholder="Content"
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
+              />
+            </div>
+
+            <button type="submit" className="btn">
+              Save Page
+            </button>
+          </form>
         </div>
-        <div className="form-control">
-          <textarea
-            type="text"
-            placeholder="Content"
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-          />
-        </div>
-      </div>
-      <button type="submit" className="btn">
-        Save Page
-      </button>
-    </form>
+      )}
+    </>
   );
 };
 

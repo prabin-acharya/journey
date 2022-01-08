@@ -16,7 +16,7 @@ const Searchbar = ({ setSearch }) => {
       <input
         type="text"
         readOnly="readOnly"
-        onFocus="this.blur();"
+        // onFocus="this.blur();"
         placeholder="Search"
         onChange={(e) => setSearch(e.target.value)}
       ></input>

@@ -57,7 +57,7 @@ function App() {
   useEffect(() => {
     token && getUser();
     authStatus && fetchPages();
-  }, [authStatus, token]);
+  }, [token, authStatus]);
 
   if (!authStatus) {
     return (
@@ -85,16 +85,18 @@ function App() {
             {pages.map((page) => {
               return (
                 <Route
+                  key={page._id}
                   path={`/${page.title.replace(/\s+/g, "-")}-${page._id}`}
-                  element={<Page page={page} />}
+                  element={<Page id={page._id} />}
                 ></Route>
               );
             })}
             {pages.map((page) => {
               return (
                 <Route
+                  key={page._id}
                   path={`/${page.title.replace(/\s+/g, "-")}-${page._id}/edit`}
-                  element={<EditPage page={page} fetchPages={fetchPages} />}
+                  element={<EditPage id={page._id} fetchPages={fetchPages} />}
                 ></Route>
               );
             })}

@@ -47,8 +47,8 @@ const AddPage = ({ fetchPages }) => {
   };
 
   return (
-    <form className="addpage" onSubmit={onSubmit}>
-      <div className="page">
+    <div className="page">
+      <form className="addpage" onSubmit={onSubmit}>
         <div className="form-control-title">
           <input
             className="title"
@@ -67,7 +67,7 @@ const AddPage = ({ fetchPages }) => {
             onChange={(e) => addTopics(e.target.value)}
           />
         </div>
-        <div className="form-control">
+        <div className="form-control-content">
           <textarea
             type="text"
             placeholder="Start writing here..."
@@ -75,11 +75,12 @@ const AddPage = ({ fetchPages }) => {
             onChange={(e) => setContent(e.target.value)}
           />
         </div>
-      </div>
-      <button disabled={!title.trim()} type="submit" className="btn">
-        Save Page
-      </button>
-    </form>
+
+        <button disabled={!title.trim()} type="submit" className="btn">
+          Save Page
+        </button>
+      </form>
+    </div>
   );
 };
 

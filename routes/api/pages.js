@@ -15,6 +15,17 @@ router.get("/", auth, (req, res) => {
     .catch((err) => console.log(err));
 });
 
+//@route  GET api/pages/:id
+//@desc   Get a page
+//@access Private
+router.get("/:id", auth, (req, res) => {
+  Page.findOne({ _id: req.params.id })
+    .then((page) => {
+      return res.json(page);
+    })
+    .catch((err) => console.log(err));
+});
+
 //@route  POST api/pages
 //@desc   Save Pages  for new User
 //@access Private
