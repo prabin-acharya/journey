@@ -15,6 +15,17 @@ router.get("/", auth, (req, res) => {
     .catch((err) => console.log(err));
 });
 
+//@route  GET api/pages/:id
+//@desc   Get a page
+//@access Private
+router.get("/:id", auth, (req, res) => {
+  Page.findOne({ _id: req.params.id })
+    .then((page) => {
+      return res.json(page);
+    })
+    .catch((err) => console.log(err));
+});
+
 //@route  POST api/pages
 //@desc   Save Pages  for new User
 //@access Private
@@ -73,6 +84,51 @@ router.put("/:id", auth, (req, res) => {
       res.json({ success: true, data });
     })
     .catch((err) => res.status(404).json({ success: false, err }));
+});
+
+//@route  POST api/pages/search
+//@desc   Get search results mongodb atlas
+//@access Private
+router.post("/search", auth, (req, res) => {
+  Page.aggregate([
+    {
+      $search: {
+        index: "default",
+        phrase: {
+          query: `${req.body.query}`,
+          // path: {
+          //   wildcard: "*",
+          // },
+          path: "content",
+          slop: 2,
+        },
+        highlight: {
+          path: "content",
+          maxNumPassages: 3,
+        },
+      },
+    },
+    { $match: { userid: req.user.id } },
+    {
+      $project: {
+        highlights: { $meta: "searchHighlights" },
+        title: 1,
+        topics: 1,
+      },
+    },
+    {
+      $addFields: {
+        hightext: { $max: "$highlights.score" },
+      },
+    },
+    { $sort: { hightext: -1 } },
+  ])
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({ message: err.message });
+    });
 });
 
 //@route  PUT api/pages/pin/id

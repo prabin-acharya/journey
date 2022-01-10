@@ -73,12 +73,25 @@ a {
   color: black;
 }
 
+.topics {
+  color: rgb(29, 161, 242);
+  font-size: 20px;
+  font-weight: 300;
+  margin-bottom: 30px;
+}
+
+.topic {
+  padding: 2px 3px;
+  margin: 2px 5px;
+}
+
 /* ----------Sidebar-----------  */
 .sidebar {
   background-color: rgba(214, 186, 171, 0.178);
   height: 100vh;
   width: 270px;
   position: fixed;
+  z-index: 1;
 }
 
 .name {
@@ -164,7 +177,6 @@ a {
   background-color: white;
   border-radius: 4px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
 }
 
 .page-menu-item {
@@ -210,10 +222,6 @@ a {
   color: rgba(245, 134, 74, 0.877);
 }
 
-.search-highlight {
-  background: rgba(223, 215, 212, 0.822);
-}
-
 .sidebar input {
   width: 230px;
   margin: 25px 10px;
@@ -224,13 +232,17 @@ a {
 /* ----------------Main--------------------- */
 
 .main {
+  display: flex;
   width: 100%;
+  height: fit-content;
   min-height: 100vh;
   margin-left: 270px;
-  padding: 70px 0px 250px 180px;
+  align-items: center;
+  justify-content: center;
   font-size: 16px;
   line-height: 1.4;
   background: #efefef;
+  padding-bottom: 100px;
 }
 
 .user-profile-dropdown {
@@ -243,6 +255,87 @@ a {
   border: 1px solid #efefee;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   background-color: white;
+}
+
+.search-box {
+  position: fixed;
+  top: 10%;
+  left: 35%;
+  width: 690px;
+  height: auto;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 0px;
+  padding-bottom: 20px;
+  border-radius: 12px;
+  background-color: white;
+  max-height: calc(100% - 150px);
+  overflow-y: auto;
+}
+
+:root {
+  --shadow: rgba(100, 99, 99, 0.7);
+}
+.search-box {
+  box-shadow: 9px 10px 5px 900px var(--shadow);
+  -webkit-box-shadow: 9px 10px 5px 900px var(--shadow);
+  -moz-box-shadow: 9px 10px 5px 900px var(--shadow);
+}
+
+/* .search-box input {
+  position: absolute;
+} */
+
+.search-box input {
+  display: block;
+  width: 100%;
+  height: 40px;
+  margin: auto;
+  padding: 4px 25px;
+  margin-bottom: 4px;
+  border: none;
+  outline: none;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.search-results-header {
+  font-size: 16px;
+  margin-top: 5px;
+  padding: 10px;
+}
+
+.search-result-page {
+  font-size: 12px;
+  padding: 8px 15px;
+  border: 1px solid #dfdfdf;
+}
+
+.search-result-title {
+  font-size: 18px;
+}
+
+.search-box .topics {
+  font-size: 10px;
+  color: black;
+}
+
+.search-result-page:hover {
+  background-color: #dfdfdf;
+  cursor: pointer;
+}
+
+.search-result-page-content {
+  font-size: 14px;
+  color: #727270;
+}
+
+.highlight-query {
+  color: rgb(29, 161, 242);
+}
+
+.search-highlight {
+  background: rgba(223, 215, 212, 0.822);
 }
 
 hr {
@@ -293,9 +386,10 @@ hr {
 /*----------------------Journal--------------------- */
 
 .journal {
-  width: 66%;
-  /* overflow: hidden; */
+  width: 60%;
   padding: 5px 5px;
+  margin-top: 80px;
+  margin-right: 100px;
 }
 
 .journal textarea {
@@ -330,9 +424,9 @@ hr {
   font-weight: 550;
 }
 
-.note-topics {
-  color: rgb(29, 161, 242);
-  padding: 0px 8px;
+.note .topic {
+  font-size: 15px;
+  margin: 2px 3px;
 }
 
 /*---------------------------End Journal ---------------------*/
@@ -340,15 +434,19 @@ hr {
 /*--------------------------- Page --------------------------*/
 
 .page {
-  width: 80%;
+  position: relative;
+  width: 70%;
+  max-width: 1000px;
   height: 100%;
+  margin: auto;
+  margin-top: 100px;
   padding: 40px;
-  font-size: 22px;
-  align-items: left;
-  white-space: pre-wrap;
   border: 1px solid red;
   border-radius: 12px;
   background-color: white;
+  font-size: 21px;
+  align-items: left;
+  white-space: pre-wrap;
 }
 
 .page-heading {
@@ -362,18 +460,6 @@ hr {
   font-weight: 700;
 }
 
-.page-topics {
-  color: rgb(29, 161, 242);
-  font-size: 20px;
-  font-weight: 300;
-  margin-bottom: 30px;
-}
-
-.page-topic {
-  padding: 2px 6px 2px 0px;
-  margin: 0px 10px;
-}
-
 .page-edit-icon {
   cursor: pointer;
 }
@@ -384,70 +470,43 @@ hr {
 }
 
 .editpage input,
+.addpage input,
 textarea {
   border: none;
   outline: none;
+  width: 100%;
 }
 
 .editpage input {
   width: 100%;
   padding: 3px 18px;
   font-size: 16px;
-  padding: 8px 5px;
+  padding: 5px;
   margin-bottom: 8px;
 }
 
-.editpage .form-control-title input {
-  height: 54px;
-  font-size: 44px;
-  font-weight: 700;
-  margin-bottom: 0px;
-}
-
-.editpage .form-control-topics input {
-  margin: 5px;
-  margin-bottom: 10px;
-  word-spacing: 4px;
-  letter-spacing: 1px;
-  padding: 3px 7px;
-  font-size: 18px;
-}
-
-.editpage textarea {
+.editpage textarea,
+.addpage textarea {
   width: 100%;
   height: 400px;
-  margin: 5px;
-  padding: 3px 7px;
   font-size: 22px;
   letter-spacing: 1px;
+  line-height: 1.5;
+  resize: vertical;
 }
 
-.editpage button {
-  margin-top: 10px;
-}
-
-.addpage input,
-textarea {
-  border: none;
-  outline: none;
-}
-
-.addpage input {
-  width: 100%;
-  padding: 3px 18px;
-  font-size: 16px;
-  padding: 8px 5px;
-  margin-bottom: 8px;
-}
-
+.editpage .form-control-title input,
 .addpage .form-control-title input {
   height: 54px;
   font-size: 44px;
   font-weight: 700;
   margin-bottom: 0px;
+  padding: 0;
 }
 
+.editpage .form-control-topics input,
 .addpage .form-control-topics input {
+  color: rgb(29, 161, 242);
   margin: 5px;
   margin-bottom: 10px;
   word-spacing: 4px;
@@ -456,19 +515,14 @@ textarea {
   font-size: 18px;
 }
 
-.addpage textarea {
-  width: 100%;
-  height: 400px;
-  margin: 5px;
-  padding: 3px 7px;
-  font-size: 22px;
-  letter-spacing: 1px;
-}
-
+.editpage button,
 .addpage button {
-  margin-top: 10px;
+  position: absolute;
+  left: 10px;
+  border: 1px solid red;
+  margin-top: 50px;
+  margin-left: 0px;
 }
-
 /* -------------End Page--------- */
 
 /* -----------------End main--------------- */
