@@ -269,6 +269,8 @@ a {
   padding-bottom: 20px;
   border-radius: 12px;
   background-color: white;
+  max-height: calc(100% - 150px);
+  overflow-y: auto;
 }
 
 :root {
@@ -279,6 +281,10 @@ a {
   -webkit-box-shadow: 9px 10px 5px 900px var(--shadow);
   -moz-box-shadow: 9px 10px 5px 900px var(--shadow);
 }
+
+/* .search-box input {
+  position: absolute;
+} */
 
 .search-box input {
   display: block;
@@ -316,15 +322,15 @@ a {
 
 .search-result-page:hover {
   background-color: #dfdfdf;
+  cursor: pointer;
 }
 
 .search-result-page-content {
-  display: block;
-  font-size: 12px;
+  font-size: 14px;
   color: #727270;
 }
 
-.search-result-page-content .highlight-query {
+.highlight-query {
   color: rgb(29, 161, 242);
 }
 
@@ -383,6 +389,7 @@ hr {
   width: 60%;
   padding: 5px 5px;
   margin-top: 80px;
+  margin-right: 100px;
 }
 
 .journal textarea {

@@ -86,6 +86,51 @@ router.put("/:id", auth, (req, res) => {
     .catch((err) => res.status(404).json({ success: false, err }));
 });
 
+//@route  POST api/pages/search
+//@desc   Get search results mongodb atlas
+//@access Private
+router.post("/search", auth, (req, res) => {
+  Page.aggregate([
+    {
+      $search: {
+        index: "default",
+        phrase: {
+          query: `${req.body.query}`,
+          // path: {
+          //   wildcard: "*",
+          // },
+          path: "content",
+          slop: 2,
+        },
+        highlight: {
+          path: "content",
+          maxNumPassages: 3,
+        },
+      },
+    },
+    { $match: { userid: req.user.id } },
+    {
+      $project: {
+        highlights: { $meta: "searchHighlights" },
+        title: 1,
+        topics: 1,
+      },
+    },
+    {
+      $addFields: {
+        hightext: { $max: "$highlights.score" },
+      },
+    },
+    { $sort: { hightext: -1 } },
+  ])
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({ message: err.message });
+    });
+});
+
 //@route  PUT api/pages/pin/id
 //@desc   Pin/Unpin the page
 //@access Private

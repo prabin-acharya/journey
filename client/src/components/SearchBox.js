@@ -1,10 +1,35 @@
 import React from "react";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Topics from "./Topics";
 
 export const SearchBox = ({ pages, setShowSearchBox }) => {
   const [query, setQuery] = useState("");
+  const [results, setResults] = useState([]);
+  const navigate = useNavigate();
+
+  const search = (query) => {
+    fetch(`/api/pages/search`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        "x-auth-token": localStorage.getItem("token"),
+      },
+      body: JSON.stringify(query),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setResults(data);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    if (query.length > 2) {
+      setResults([]);
+      search({ query: query.trim() });
+    }
+  }, [query]);
 
   return (
     <div className="search-box">
@@ -16,47 +41,45 @@ export const SearchBox = ({ pages, setShowSearchBox }) => {
       />
       <hr />
       <div className="search-results">
-        {query !== "" &&
-          pages.map((page) => {
-            const index = page.content
-              .toLowerCase()
-              .indexOf(query.toLowerCase());
-            if (index !== -1) {
-              return (
-                <Link
-                  to={`/${page.title.replace(/\s+/g, "-")}-${page._id}`}
-                  key={page._id}
-                >
-                  <div
-                    className="search-result-page"
-                    key={page._id}
-                    onClick={() => setShowSearchBox(false)}
-                  >
-                    <span className="search-result-title">{page.title}</span>
-                    <Topics topics={page.topics} />
-                    <span className="search-result-page-content">
-                      {page.content.substring(index - 150, index)}
-                      <span className="highlight-query">
-                        {page.content
-                          .substring(index, index + query.length)
-                          .replace(/([.?!])\s*(?=[A-Z])/g, "$1|")
-                          .split("|")
-                          .at(-1)}
-                      </span>
-                      {
-                        page.content
-                          .substring(index + query.length, index + 150)
-                          .replace(/([.?!])\s*(?=[A-Z])/g, "$1|")
-                          .split("|")[0]
-                      }
-                    </span>
-                  </div>
-                </Link>
-              );
-            } else {
-              <></>;
-            }
-          })}
+        {results.map((result) => {
+          return (
+            <div
+              key={result._id}
+              className="search-result-page"
+              onClick={() => {
+                setShowSearchBox(false);
+                navigate(`/${result.title.replace(/\s+/g, "-")}-${result._id}`);
+              }}
+            >
+              <div className="search-result-page-header">
+                <span className="search-result-title">{result.title}</span>
+                <Topics topics={result.topics} />
+              </div>
+              {result.highlights.map((highlight, index) => {
+                return (
+                  <span key={index}>
+                    {highlight.texts.map((text, index) => {
+                      return (
+                        <span
+                          key={index}
+                          className="search-result-page-content"
+                        >
+                          {text.type === "hit" ? (
+                            <span className="highlight-query">
+                              {text.value}
+                            </span>
+                          ) : (
+                            <> {text.value}</>
+                          )}
+                        </span>
+                      );
+                    })}
+                  </span>
+                );
+              })}
+            </div>
+          );
+        })}
       </div>
     </div>
   );
