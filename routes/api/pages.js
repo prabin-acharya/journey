@@ -87,10 +87,9 @@ router.put("/:id", auth, (req, res) => {
 });
 
 //@route  POST api/pages/search
-//@desc   Get search results mongodb atlas
+//@desc   Search Page
 //@access Private
 router.post("/search", auth, (req, res) => {
-  // query to search Page Content and highlight search query
   const aggContent = [
     {
       $search: {
@@ -125,19 +124,33 @@ router.post("/search", auth, (req, res) => {
     { $sort: { hightext: -1 } },
   ];
 
+  Page.aggregate(aggContent)
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({ message: err.message });
+    });
+});
+
+//@route  POST api/pages/search
+//@desc   Search Topics
+//@access Private
+router.post("/references", auth, (req, res) => {
   //query to search Page topics
   const aggTopics = [
     {
       $search: {
         text: {
-          query: req.body.query.substring(1),
+          query: req.body.query,
           path: "topics",
         },
       },
     },
+    { $match: { userid: req.user.id } },
   ];
 
-  Page.aggregate(aggContent)
+  Page.aggregate(aggTopics)
     .then((data) => {
       res.send(data);
     })
