@@ -148,11 +148,13 @@ router.post("/references", auth, (req, res) => {
       },
     },
     { $match: { userid: req.user.id } },
+    { $project: { _id: 1, topics: 1, title: 1, content: 1 } },
   ];
 
   Page.aggregate(aggTopics)
     .then((data) => {
       res.send(data);
+      console.log(data);
     })
     .catch((err) => {
       res.status(500).send({ message: err.message });
