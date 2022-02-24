@@ -23,29 +23,33 @@ const RelatedPages = ({ topics }) => {
   };
 
   useEffect(() => {
-    search({ query: topics });
+    topics && search({ query: topics });
   }, [topics]);
 
   return (
-    <div className="related-pages-container">
-      <h1>Related </h1>
-      <div className="related-pages">
-        {pages?.map((page) => {
-          return (
-            <div
-              className="related-page"
-              onClick={() => {
-                navigate(`/${page.title.replace(/\s+/g, "-")}-${page._id}`);
-              }}
-            >
-              <h2>{page.title}</h2>
-              <span className="topics">{page.topics.join("  ")}</span>
-              <span>{page.content.substring(0, 230)}...</span>
-            </div>
-          );
-        })}
-      </div>
-    </div>
+    <>
+      {pages && (
+        <div className="related-pages-container">
+          <h1>Related </h1>
+          <div className="related-pages">
+            {pages?.map((page) => {
+              return (
+                <div
+                  className="related-page"
+                  onClick={() => {
+                    navigate(`/${page.title.replace(/\s+/g, "-")}-${page._id}`);
+                  }}
+                >
+                  <h2>{page.title}</h2>
+                  <span className="topics">{page.topics.join("  ")}</span>
+                  <span>{page.content.substring(0, 230)}...</span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
